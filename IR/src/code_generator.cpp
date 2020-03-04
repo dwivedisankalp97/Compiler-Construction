@@ -301,18 +301,18 @@ namespace IR{
 			case array_dest:{
 				Instruction_array_dest* g1 = static_cast<Instruction_array_dest*>(g);
 				vector<int> tempIndexNums;
-				if(g1->dimensions.size() == 1){
-					outputFile<<"\t";
-					outputFile<<"%newVar"<<newVarNum<<" <- "<<g1->dimensions[0].labelName<<" * 8"<<endl;
-					outputFile<<"\t";
-					outputFile<<"%newVar"<<newVarNum<<" <- %newVar"<<newVarNum<<" + 8"<<endl;
-					outputFile<<"\t";
-					outputFile<<"%newVar"<<newVarNum<<" <- %newVar"<<newVarNum<<" + "<<g1->var.labelName<<endl;
-					outputFile<<"\t";
-					outputFile<<"store %newVar"<<newVarNum<<" <- "<<g1->src.labelName<<endl;
-					newVarNum++;
-					break;
-				}
+				// if(g1->dimensions.size() == 1){
+				// 	outputFile<<"\t";
+				// 	outputFile<<"%newVar"<<newVarNum<<" <- "<<g1->dimensions[0].labelName<<" * 8"<<endl;
+				// 	outputFile<<"\t";
+				// 	outputFile<<"%newVar"<<newVarNum<<" <- %newVar"<<newVarNum<<" + 8"<<endl;
+				// 	outputFile<<"\t";
+				// 	outputFile<<"%newVar"<<newVarNum<<" <- %newVar"<<newVarNum<<" + "<<g1->var.labelName<<endl;
+				// 	outputFile<<"\t";
+				// 	outputFile<<"store %newVar"<<newVarNum<<" <- "<<g1->src.labelName<<endl;
+				// 	newVarNum++;
+				// 	break;
+				// }
 				tempint = 24;
 				// Loading lengths in variables
 				for(tempint1 = 1; tempint1 < g1->dimensions.size(); tempint1++){
@@ -371,18 +371,18 @@ namespace IR{
 			case array_src:{
 				Instruction_array_src* g1 = static_cast<Instruction_array_src*>(g);
 				vector<int> tempIndexNums;
-				if(g1->dimensions.size() == 1){
-					outputFile<<"\t";
-					outputFile<<"%newVar"<<newVarNum<<" <- "<<g1->dimensions[0].labelName<<" * 8"<<endl;
-					outputFile<<"\t";
-					outputFile<<"%newVar"<<newVarNum<<" <- %newVar"<<newVarNum<<" + 8"<<endl;
-					outputFile<<"\t";
-					outputFile<<"%newVar"<<newVarNum<<" <- %newVar"<<newVarNum<<" + "<<g1->var.labelName<<endl;
-					outputFile<<"\t";
-					outputFile<<g1->dest.labelName<<" <- load %newVar"<<newVarNum<<endl;
-					newVarNum++;
-					break;
-				}
+				// if(g1->dimensions.size() == 1){
+				// 	outputFile<<"\t";
+				// 	outputFile<<"%newVar"<<newVarNum<<" <- "<<g1->dimensions[0].labelName<<" * 8"<<endl;
+				// 	outputFile<<"\t";
+				// 	outputFile<<"%newVar"<<newVarNum<<" <- %newVar"<<newVarNum<<" + 8"<<endl;
+				// 	outputFile<<"\t";
+				// 	outputFile<<"%newVar"<<newVarNum<<" <- %newVar"<<newVarNum<<" + "<<g1->var.labelName<<endl;
+				// 	outputFile<<"\t";
+				// 	outputFile<<g1->dest.labelName<<" <- load %newVar"<<newVarNum<<endl;
+				// 	newVarNum++;
+				// 	break;
+				// }
 				tempint = 24;
 				for(tempint1 = 1; tempint1 < g1->dimensions.size(); tempint1++){
 					outputFile<<"\t";

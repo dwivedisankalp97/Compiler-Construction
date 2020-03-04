@@ -1,0 +1,22 @@
+void main (){
+	int64 iNewVarLBscope0
+	iNewVarLBscope0 <- 10
+:NewLabelLB1
+	int64 NewVarLB1
+	NewVarLB1 <- iNewVarLBscope0 > 0
+	br NewVarLB1 :new_label0 :new_label1
+	:new_label0
+	print (iNewVarLBscope0)
+	iNewVarLBscope0 <- iNewVarLBscope0 - 1
+	int64 NewVarLB2
+	NewVarLB2 <- iNewVarLBscope0 > 2
+	br NewVarLB2 :true_label :false_label
+	:true_label
+	br :new_label1
+	:false_label
+	iNewVarLBscope0 <- iNewVarLBscope0 - 1
+	br :NewLabelLB1
+	:new_label1
+	return
+}
+

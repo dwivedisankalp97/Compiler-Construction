@@ -19,6 +19,6 @@ fi
 
 gcc ${CFLAGS} -O2 -c -g -o runtime.o ../lib/runtime.c
 
-gcc ${CFLAGS} -no-pie -o a.out prog.o runtime.o
+gcc ${CFLAGS} -o a.out prog.o runtime.o
 
 exit 0

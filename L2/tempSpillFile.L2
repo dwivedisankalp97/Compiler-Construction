@@ -1,0 +1,66 @@
+(:main
+	0
+	:main_newLabel0
+	%iNewVarLBscope000000 <- 21
+	mem rsp 0 <- %iNewVarLBscope000000
+	goto :main_NewLabelLB1
+	:main_NewLabelLB1
+	%iNewVarLBscope000001 <- mem rsp 0
+	%NewVarLA0 <- %iNewVarLBscope000001
+	%NewVarLA0 >>= 1
+	%NewVarLB1 <- 0 < %NewVarLA0
+	%NewVarLB1 <<= 1
+	%NewVarLB1 += 1
+	%NewVarLA1 <- %NewVarLB1
+	%NewVarLA1 >>= 1
+	cjump %NewVarLA1 = 1 :main_new_label0
+	goto :main_new_label1
+	:main_new_label0
+	%iNewVarLBscope000002 <- mem rsp 0
+	rdi <- %iNewVarLBscope000002
+	call print 1
+	%iNewVarLBscope000003 <- mem rsp 0
+	%NewVarLA2 <- %iNewVarLBscope000003
+	%NewVarLA2 >>= 1
+	%iNewVarLBscope000004 <- %NewVarLA2
+	mem rsp 0 <- %iNewVarLBscope000004
+	%iNewVarLBscope000005 <- mem rsp 0
+	%iNewVarLBscope000005 -= 1
+	mem rsp 0 <- %iNewVarLBscope000005
+	%iNewVarLBscope000006 <- mem rsp 0
+	%iNewVarLBscope000006 <<= 1
+	mem rsp 0 <- %iNewVarLBscope000006
+	%iNewVarLBscope000007 <- mem rsp 0
+	%iNewVarLBscope000007 += 1
+	mem rsp 0 <- %iNewVarLBscope000007
+	%iNewVarLBscope000008 <- mem rsp 0
+	%NewVarLA3 <- %iNewVarLBscope000008
+	%NewVarLA3 >>= 1
+	%NewVarLB2 <- 2 < %NewVarLA3
+	%NewVarLB2 <<= 1
+	%NewVarLB2 += 1
+	%NewVarLA4 <- %NewVarLB2
+	%NewVarLA4 >>= 1
+	cjump %NewVarLA4 = 1 :main_true_label
+	goto :main_false_label
+	:main_true_label
+	goto :main_new_label1
+	:main_new_label1
+	return
+:main_false_label
+	%iNewVarLBscope000009 <- mem rsp 0
+	%NewVarLA5 <- %iNewVarLBscope000009
+	%NewVarLA5 >>= 1
+	%iNewVarLBscope0000010 <- %NewVarLA5
+	mem rsp 0 <- %iNewVarLBscope0000010
+	%iNewVarLBscope0000011 <- mem rsp 0
+	%iNewVarLBscope0000011 -= 1
+	mem rsp 0 <- %iNewVarLBscope0000011
+	%iNewVarLBscope0000012 <- mem rsp 0
+	%iNewVarLBscope0000012 <<= 1
+	mem rsp 0 <- %iNewVarLBscope0000012
+	%iNewVarLBscope0000013 <- mem rsp 0
+	%iNewVarLBscope0000013 += 1
+	mem rsp 0 <- %iNewVarLBscope0000013
+	goto :main_NewLabelLB1
+	)

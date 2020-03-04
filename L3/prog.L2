@@ -1,0 +1,49 @@
+(:main
+(:main
+0
+	:main_newLabel0
+	%iNewVarLBscope0 <- 21
+	goto :main_NewLabelLB1
+	:main_NewLabelLB1
+	%NewVarLA0 <- %iNewVarLBscope0
+	%NewVarLA0 >>= 1
+	%NewVarLB1 <- 0 < %NewVarLA0
+	%NewVarLB1 <<= 1
+	%NewVarLB1 += 1
+	%NewVarLA1 <- %NewVarLB1
+	%NewVarLA1 >>= 1
+	cjump %NewVarLA1 = 1 :main_new_label0
+	goto :main_new_label1
+	:main_new_label0
+	rdi <- %iNewVarLBscope0
+	call print 1
+	%NewVarLA2 <- %iNewVarLBscope0
+	%NewVarLA2 >>= 1
+	%iNewVarLBscope0 <- %NewVarLA2
+	%iNewVarLBscope0 -= 1
+	%iNewVarLBscope0 <<= 1
+	%iNewVarLBscope0 += 1
+	%NewVarLA3 <- %iNewVarLBscope0
+	%NewVarLA3 >>= 1
+	%NewVarLB2 <- 2 < %NewVarLA3
+	%NewVarLB2 <<= 1
+	%NewVarLB2 += 1
+	%NewVarLA4 <- %NewVarLB2
+	%NewVarLA4 >>= 1
+	cjump %NewVarLA4 = 1 :main_true_label
+	goto :main_false_label
+	:main_true_label
+	goto :main_new_label1
+	:main_new_label1
+	return
+	:main_false_label
+	%NewVarLA5 <- %iNewVarLBscope0
+	%NewVarLA5 >>= 1
+	%iNewVarLBscope0 <- %NewVarLA5
+	%iNewVarLBscope0 -= 1
+	%iNewVarLBscope0 <<= 1
+	%iNewVarLBscope0 += 1
+	goto :main_NewLabelLB1
+)
+
+)

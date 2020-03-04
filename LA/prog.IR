@@ -1,0 +1,44 @@
+define void :main (){
+	:newLabel0
+	int64 %iNewVarLBscope0
+	%iNewVarLBscope0 <- 21
+	br :NewLabelLB1
+	:NewLabelLB1
+	int64 %NewVarLB1
+	int64 %NewVarLA0
+	%NewVarLA0 <- %iNewVarLBscope0 >> 1
+	%NewVarLB1 <- %NewVarLA0 > 0
+	%NewVarLB1 <- %NewVarLB1 << 1
+	%NewVarLB1 <- %NewVarLB1 + 1
+	int64 %NewVarLA1
+	%NewVarLA1 <- %NewVarLB1 >> 1
+	br %NewVarLA1 :new_label0 :new_label1
+	:new_label0
+	call print (%iNewVarLBscope0)
+	int64 %NewVarLA2
+	%NewVarLA2 <- %iNewVarLBscope0 >> 1
+	%iNewVarLBscope0 <- %NewVarLA2 - 1
+	%iNewVarLBscope0 <- %iNewVarLBscope0 << 1
+	%iNewVarLBscope0 <- %iNewVarLBscope0 + 1
+	int64 %NewVarLB2
+	int64 %NewVarLA3
+	%NewVarLA3 <- %iNewVarLBscope0 >> 1
+	%NewVarLB2 <- %NewVarLA3 > 2
+	%NewVarLB2 <- %NewVarLB2 << 1
+	%NewVarLB2 <- %NewVarLB2 + 1
+	int64 %NewVarLA4
+	%NewVarLA4 <- %NewVarLB2 >> 1
+	br %NewVarLA4 :true_label :false_label
+	:true_label
+	br :new_label1
+	:false_label
+	int64 %NewVarLA5
+	%NewVarLA5 <- %iNewVarLBscope0 >> 1
+	%iNewVarLBscope0 <- %NewVarLA5 - 1
+	%iNewVarLBscope0 <- %iNewVarLBscope0 << 1
+	%iNewVarLBscope0 <- %iNewVarLBscope0 + 1
+	br :NewLabelLB1
+	:new_label1
+	return
+}
+

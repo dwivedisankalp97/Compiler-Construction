@@ -412,7 +412,13 @@ namespace LA{
 			case assign:{
 				outputFile<<"\t";
 				Instruction_assignment* g1 = static_cast<Instruction_assignment*>(g);
-				AddPercent(g1->src);
+				unordered_set<string>::iterator tempiter;
+				tempiter = codeMap.find(g1->dst.labelName);
+				if(tempiter != codeMap.end()){
+					g1->src.labelName = ":" + g1->src.labelName;
+				}
+				else
+					AddPercent(g1->src);
 				AddPercent(g1->dst);
 				outputFile<<g1->tostring();
 				break;
