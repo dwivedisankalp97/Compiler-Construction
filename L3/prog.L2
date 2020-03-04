@@ -1,49 +1,279 @@
 (:main
 (:main
 0
-	:main_newLabel0
-	%iNewVarLBscope0 <- 21
-	goto :main_NewLabelLB1
-	:main_NewLabelLB1
-	%NewVarLA0 <- %iNewVarLBscope0
-	%NewVarLA0 >>= 1
-	%NewVarLB1 <- 0 < %NewVarLA0
-	%NewVarLB1 <<= 1
-	%NewVarLB1 += 1
-	%NewVarLA1 <- %NewVarLB1
-	%NewVarLA1 >>= 1
-	cjump %NewVarLA1 = 1 :main_new_label0
-	goto :main_new_label1
-	:main_new_label0
-	rdi <- %iNewVarLBscope0
+	%encoded <- 5
+	%encoded <<= 1
+	%encoded += 1
+	rdi <- %encoded
+	rsi <- 3
+	call allocate 2
+	%array <- rax
+	%newVar <- %array
+	%newVar += 8
+	mem %newVar 0 <- 5
+	%newVar2 <- %array
+	%newVar2 += 16
+	mem %newVar2 0 <- 7
+	rdi <- %array
 	call print 1
-	%NewVarLA2 <- %iNewVarLBscope0
-	%NewVarLA2 >>= 1
-	%iNewVarLBscope0 <- %NewVarLA2
-	%iNewVarLBscope0 -= 1
-	%iNewVarLBscope0 <<= 1
-	%iNewVarLBscope0 += 1
-	%NewVarLA3 <- %iNewVarLBscope0
-	%NewVarLA3 >>= 1
-	%NewVarLB2 <- 2 < %NewVarLA3
-	%NewVarLB2 <<= 1
-	%NewVarLB2 += 1
-	%NewVarLA4 <- %NewVarLB2
-	%NewVarLA4 >>= 1
-	cjump %NewVarLA4 = 1 :main_true_label
-	goto :main_false_label
-	:main_true_label
-	goto :main_new_label1
-	:main_new_label1
+	rdi <- %encoded
+	rsi <- 3
+	call allocate 2
+	%array2 <- rax
+	mem rsp -8 <- :main_ret3
+	rdi <- %array2
+	rsi <- 3
+	rdx <- 1
+	call :storeValueToArray 3
+	:main_ret3
+	rdi <- %array2
+	call print 1
+	mem rsp -8 <- :main_ret5
+	rdi <- %array
+	rsi <- %array2
+	call :isArraySame 2
+	:main_ret5
+	%same <- rax
+	mem rsp -8 <- :main_ret6
+	rdi <- %same
+	call :encode 1
+	:main_ret6
+	%decoded_same <- rax
+	rdi <- %decoded_same
+	call print 1
 	return
-	:main_false_label
-	%NewVarLA5 <- %iNewVarLBscope0
-	%NewVarLA5 >>= 1
-	%iNewVarLBscope0 <- %NewVarLA5
-	%iNewVarLBscope0 -= 1
-	%iNewVarLBscope0 <<= 1
-	%iNewVarLBscope0 += 1
-	goto :main_NewLabelLB1
+)
+
+(:isAddress
+1
+	%p1 <- rdi
+	%p2 <- %p1
+	%p2 &= 1
+	%p2 <- %p2 = 0
+	cjump %p2 = 1 :isAddress_isAddress
+	goto :isAddress_isNumber
+	:isAddress_isAddress
+	rax <- 1
+	return
+	:isAddress_isNumber
+	rax <- 0
+	return
+)
+
+(:encode
+1
+	%var <- rdi
+	:encode_entry
+	%var <<= 1
+	%var += 1
+	rax <- %var
+	return
+)
+
+(:increaseOne
+1
+	%p1 <- rdi
+	%p5 <- %p1
+	%p5 += 1
+	rax <- %p5
+	return
+)
+
+(:isEqual
+2
+	%p1 <- rdi
+	%p2 <- rsi
+	%p3 <- %p1 = %p2
+	cjump %p3 = 1 :isEqual_equal
+	goto :isEqual_not_equal
+	:isEqual_equal
+	rax <- 1
+	return
+	:isEqual_not_equal
+	rax <- 0
+	return
+)
+
+(:getSamller
+2
+	%p1 <- rdi
+	%p2 <- rsi
+	mem rsp -8 <- :getSamller_ret0
+	rdi <- %p1
+	rsi <- %p2
+	call :isSmallerAndEqual 2
+	:getSamller_ret0
+	%sign <- rax
+	cjump %sign = 1 :getSamller_p1_smaller
+	goto :getSamller_p2_smaller
+	:getSamller_p1_smaller
+	rax <- %p1
+	return
+	:getSamller_p2_smaller
+	rax <- %p2
+	return
+)
+
+(:isSmaller
+2
+	%p1 <- rdi
+	%p2 <- rsi
+	%p3 <- %p1 < 1
+	cjump %p3 = 1 :isSmaller_smaller
+	goto :isSmaller_larger
+	:isSmaller_smaller
+	rax <- 1
+	return
+	:isSmaller_larger
+	rax <- 0
+	return
+)
+
+(:isSmallerAndEqual
+2
+	%p1 <- rdi
+	%p2 <- rsi
+	%p3 <- %p1 <= 1
+	cjump %p3 = 1 :isSmallerAndEqual_smaller
+	goto :isSmallerAndEqual_larger
+	:isSmallerAndEqual_smaller
+	rax <- 1
+	return
+	:isSmallerAndEqual_larger
+	rax <- 0
+	return
+)
+
+(:getArrayElementByIndex
+2
+	%array <- rdi
+	%index <- rsi
+	mem rsp -8 <- :getArrayElementByIndex_ret0
+	rdi <- %index
+	call :increaseOne 1
+	:getArrayElementByIndex_ret0
+	%index <- rax
+	%offest <- 8
+	%offest *= %index
+	%addr <- %array
+	%addr += %offest
+	%element <- mem %addr 0
+	rax <- %element
+	return
+)
+
+(:storeValueToArray
+3
+	%A1 <- rdi
+	%a <- rsi
+	%index <- rdx
+	mem rsp -8 <- :storeValueToArray_ret0
+	rdi <- %A1
+	call :isAddress 1
+	:storeValueToArray_ret0
+	%is_A1_address <- rax
+	cjump %is_A1_address = 1 :storeValueToArray_is_array_label
+	goto :storeValueToArray_end_label
+	:storeValueToArray_is_array_label
+	%length <- mem %A1 0
+	mem rsp -8 <- :storeValueToArray_ret1
+	rdi <- 3
+	rsi <- %length
+	call :getSamller 2
+	:storeValueToArray_ret1
+	%length <- rax
+	:storeValueToArray_loop_start
+	%tmp <- %index < %length
+	cjump %tmp = 1 :storeValueToArray_loop_next
+	goto :storeValueToArray_end_label
+	:storeValueToArray_loop_next
+	mem rsp -8 <- :storeValueToArray_ret2
+	rdi <- %index
+	call :increaseOne 1
+	:storeValueToArray_ret2
+	%offest_index <- rax
+	%offest <- 8
+	%offest *= %offest_index
+	%addr <- %A1
+	%addr += %offest
+	%a += %index
+	mem rsp -8 <- :storeValueToArray_ret3
+	rdi <- %a
+	call :encode 1
+	:storeValueToArray_ret3
+	%encoded_a <- rax
+	mem %addr 0 <- %encoded_a
+	%index += 1
+	goto :storeValueToArray_loop_start
+	:storeValueToArray_end_label
+	return
+)
+
+(:isArraySame
+2
+	%A1 <- rdi
+	%A2 <- rsi
+	mem rsp -8 <- :isArraySame_ret0
+	rdi <- %A1
+	call :isAddress 1
+	:isArraySame_ret0
+	%is_A1_address <- rax
+	mem rsp -8 <- :isArraySame_ret1
+	rdi <- %A2
+	call :isAddress 1
+	:isArraySame_ret1
+	%is_A2_address <- rax
+	cjump %is_A1_address = 1 :isArraySame_go_ahead_label
+	goto :isArraySame_end_label
+	cjump %is_A2_address = 1 :isArraySame_go_ahead_label
+	goto :isArraySame_end_label
+	:isArraySame_end_label
+	rax <- 0
+	return
+	:isArraySame_go_ahead_label
+	%length_A1 <- mem %A1 0
+	%length_A2 <- mem %A2 0
+	mem rsp -8 <- :isArraySame_ret2
+	rdi <- %length_A1
+	rsi <- %length_A2
+	call :isEqual 2
+	:isArraySame_ret2
+	%sign <- rax
+	cjump %sign = 1 :isArraySame_chek_elements_label
+	goto :isArraySame_end_label
+	:isArraySame_chek_elements_label
+	%index <- 0
+	:isArraySame_loop_start
+	%tmp <- %index < %length_A1
+	cjump %tmp = 1 :isArraySame_loop_next
+	goto :isArraySame_loop_end
+	:isArraySame_loop_next
+	mem rsp -8 <- :isArraySame_ret3
+	rdi <- %A1
+	rsi <- %index
+	call :getArrayElementByIndex 2
+	:isArraySame_ret3
+	%element1 <- rax
+	mem rsp -8 <- :isArraySame_ret4
+	rdi <- %A2
+	rsi <- %index
+	call :getArrayElementByIndex 2
+	:isArraySame_ret4
+	%element2 <- rax
+	mem rsp -8 <- :isArraySame_ret5
+	rdi <- %element1
+	rsi <- %element2
+	call :isEqual 2
+	:isArraySame_ret5
+	%sign <- rax
+	cjump %sign = 1 :isArraySame_continue_checking_label
+	goto :isArraySame_end_label
+	:isArraySame_continue_checking_label
+	%index += 1
+	goto :isArraySame_loop_start
+	:isArraySame_loop_end
+	rax <- 1
+	return
 )
 
 )

@@ -505,7 +505,10 @@ Command strings
     pegtl::seq<
       str_br,
       seps,
-      var_rule,
+      pegtl::sor<
+        var_rule,
+        Number_rule
+      >,
       seps,
       Label_rule
     > { };  
