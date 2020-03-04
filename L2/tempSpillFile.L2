@@ -1,87 +1,14 @@
-(:isArraySame
-	2
-	%A100000 <- rdi
-	mem rsp 40 <- %A100000
-	%A200000 <- rsi
-	mem rsp 32 <- %A200000
-	mem rsp -8 <- :isArraySame_ret0
-	%A100001 <- mem rsp 40
-	rdi <- %A100001
-	call :isAddress 1
-	:isArraySame_ret0
-	%is_A1_address00000 <- rax
-	mem rsp 0 <- %is_A1_address00000
-	mem rsp -8 <- :isArraySame_ret1
-	%A200001 <- mem rsp 32
-	rdi <- %A200001
-	call :isAddress 1
-	:isArraySame_ret1
-	%is_A2_address <- rax
-	%is_A1_address00001 <- mem rsp 0
-	cjump %is_A1_address00001 = 1 :isArraySame_go_ahead_label
-	goto :isArraySame_end_label
-	cjump %is_A2_address = 1 :isArraySame_go_ahead_label
-	goto :isArraySame_end_label
-	:isArraySame_end_label
-	rax <- 0
+(:main
+	0
+	:main_entry
+	cjump 0 = 1 :main_TRUE
+	goto :main_FALSE
+	:main_TRUE
+	rdi <- 3
+	call print 1
 	return
-:isArraySame_go_ahead_label
-	%A100002 <- mem rsp 40
-	%length_A100000 <- mem %A100002 0
-	mem rsp 24 <- %length_A100000
-	%A200002 <- mem rsp 32
-	%length_A2 <- mem %A200002 0
-	mem rsp -8 <- :isArraySame_ret2
-	%length_A100001 <- mem rsp 24
-	rdi <- %length_A100001
-	rsi <- %length_A2
-	call :isEqual 2
-	:isArraySame_ret2
-	%sign <- rax
-	cjump %sign = 1 :isArraySame_chek_elements_label
-	goto :isArraySame_end_label
-	:isArraySame_chek_elements_label
-	%index00000 <- 0
-	mem rsp 16 <- %index00000
-	:isArraySame_loop_start
-	%index00001 <- mem rsp 16
-	%length_A100002 <- mem rsp 24
-	%tmp <- %index00001 < %length_A100002
-	cjump %tmp = 1 :isArraySame_loop_next
-	goto :isArraySame_loop_end
-	:isArraySame_loop_next
-	mem rsp -8 <- :isArraySame_ret3
-	%A100003 <- mem rsp 40
-	rdi <- %A100003
-	%index00002 <- mem rsp 16
-	rsi <- %index00002
-	call :getArrayElementByIndex 2
-	:isArraySame_ret3
-	%element100000 <- rax
-	mem rsp 8 <- %element100000
-	mem rsp -8 <- :isArraySame_ret4
-	%A200003 <- mem rsp 32
-	rdi <- %A200003
-	%index00003 <- mem rsp 16
-	rsi <- %index00003
-	call :getArrayElementByIndex 2
-	:isArraySame_ret4
-	%element2 <- rax
-	mem rsp -8 <- :isArraySame_ret5
-	%element100001 <- mem rsp 8
-	rdi <- %element100001
-	rsi <- %element2
-	call :isEqual 2
-	:isArraySame_ret5
-	%sign <- rax
-	cjump %sign = 1 :isArraySame_continue_checking_label
-	goto :isArraySame_end_label
-	:isArraySame_continue_checking_label
-	%index00004 <- mem rsp 16
-	%index00004 += 1
-	mem rsp 16 <- %index00004
-	goto :isArraySame_loop_start
-	:isArraySame_loop_end
-	rax <- 1
+:main_FALSE
+	rdi <- 5
+	call print 1
 	return
 )
