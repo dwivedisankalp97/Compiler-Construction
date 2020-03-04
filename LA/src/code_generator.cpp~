@@ -1,0 +1,205 @@
+#include <string>
+#include <iostream>
+#include <fstream>
+
+#include <code_generator.h>
+
+using namespace std;
+
+namespace L1{
+
+	
+
+  string removeColon(string a){
+	a[0] = '_';
+	return a;
+  }
+
+  void generate_code(Program p){
+	string enumToString[17] = {"rdi", "rax", "rbx", "rbp", "r10", "r11", "r12", "r13", "r14", "r15", "rsi", "r8", "r9", "rcx", "rdx", "rsp"};
+
+    /* 
+     * Open the output file.
+     */ 
+	std::ofstream outputFile;
+	outputFile.open("prog.S");
+	outputFile<< ".text\n.globl go\ngo:\npushq %rbx\npushq %rbp\npushq %r12\npushq %r13\npushq %r14\npushq %r15\n"; 
+	string tempstr1;
+	string tempstr = p.entryPointLabel;
+	tempstr =removeColon(tempstr);
+	outputFile<<"call "<<tempstr<<'\n';
+	outputFile << "popq %r15\npopq %r14\npopq %r13\npopq %r12\npopq %rbp\npopq %rbx\nretq\n";
+	outputFile << tempstr << ":\n";
+
+	Function* entryFun;
+	for (vector<Function *>::iterator i = p.functions.begin();i!=p.functions.end();i++){
+		auto g = *i;
+		if(g->name == p.entryPointLabel){
+			entryFun = g;
+			break;
+		}
+	}
+
+	//outputFile << entryFun->name<<"\n";
+
+	for(vector<Instruction *>::iterator i = entryFun->instructions.begin(); i != entryFun->instructions.end(); i++){
+		auto g = *i;
+		cout<<g->iType()<<endl;
+		IType ins_type = g->iType();
+		switch (ins_type)
+		{
+			case ret:
+				outputFile << "retq\n";
+				break;
+
+
+			case assign_cmp:
+				outputFile << "assign_cmp\n";
+				break;
+
+
+			case assign:{
+				outputFile << "moveq ";
+				Instruction_assignment* g1 = static_cast<Instruction_assignment*>(g);
+				if(g1->src.isANumber){
+					outputFile<<"$" + g1->src.labelName;
+				}
+				else if(g1->src.isARegister){
+					outputFile<<"%" + enumToString[g1->src.r];
+				}
+				else {
+					g1->src.labelName = removeColon(g1->src.labelName);
+					outputFile<<"$" + g1->src.labelName;
+				}
+				outputFile<<", %" + enumToString[g1->dst.r]<<endl;
+				outputFile << "assign\n";}
+				break;
+
+
+			case assign_mem:{
+				outputFile << "moveq ";
+				instruction_assignment_mem_x_M* g1 = static_cast<instruction_assignment_mem_x_M*>(g);
+				tempstr = g1->M.labelName + "(%" + enumToString[g1->x.r] + ")";
+				if(g1->isSrc){
+					outputFile<<" " + tempstr + ", " + "%" + enumToString[g1->other.r]<<endl;
+				}
+				else{
+					if(g1->other.isANumber){
+						tempstr1 = "$" + g1->other.labelName;
+					}
+					else if(g1->other.isARegister){
+						tempstr1 = "%" + enumToString[g1->other.r];
+					}
+					else {
+						g1->other.labelName = removeColon(g1->other.labelName);
+						tempstr1 = "$" + g1->other.labelName;
+					}
+					outputFile<<tempstr1 + ", " + tempstr<<endl;
+				}
+				outputFile << "assign\n";
+			}
+				break;
+
+
+			case aop:{
+				instruction_aop* g1 = static_cast<instruction_aop*>(g);
+				if(g1->operation.labelName == "&="){
+					tempstr = "andq ";
+				}
+				else if(g1->operation.labelName == "+="){
+					tempstr = "addq ";
+				}
+				else if(g1->operation.labelName == "-="){
+					tempstr = "subq ";
+				}
+				else if(g1->operation.labelName == "*="){
+					tempstr = "imulq ";
+				}
+				if(g1->src.isANumber){
+					tempstr1 = "$" + g1->src.labelName;
+				}
+				else if(g1->src.isARegister){
+					tempstr1 = "%" + enumToString[g1->src.r];
+				}
+				else {
+					g1->src.labelName = removeColon(g1->src.labelName);
+					tempstr1 = "$" + g1->src.labelName;
+				}
+				outputFile << tempstr + " " + tempstr1 + ", %" + enumToString[g1->dest.r]<<endl;
+			}
+				outputFile << "aop\n";
+				break;
+
+
+			case sop:{
+				instruction_sop* g1 = static_cast<instruction_sop*>(g);	
+				if(g1->operation.labelName == "<<=")
+					tempstr = "salq";
+				else
+					tempstr = "sarq";
+				if(g1->rightop.isARegister)
+					tempstr1 = '%' + "cl";
+				else
+					tempstr1 = "$" + g1->rightop.labelName;
+				outputFile << tempstr + " " + tempstr1 + ", " + "%" + enumToString[g1->leftop.r]<<endl;
+			}
+				outputFile << "sop\n";
+				break;
+
+
+			case aop_mem:{
+				instruction_aop_mem_x_M* g1 = static_cast<instruction_aop_mem_x_M*>(g);
+				if(g1->isLeft){
+					
+				}
+			}
+				outputFile << "aop_mem\n";
+				break;
+			case cjump:
+				outputFile << "cjump\n";
+				break;
+			case labelType:{
+				Instruction_label* g1 = static_cast<Instruction_label*>(g);
+				g1->label.labelName = removeColon(g1->label.labelName);
+				outputFile << g1->label.labelName << "\n";}
+				break;
+			case goto1:{
+				Instruction_goto* g1 = static_cast<Instruction_goto*>(g);
+				g1->label.labelName = removeColon(g1->label.labelName);
+				outputFile << "goto "<< g1->label.labelName << "\n";}
+				break;
+			case call:
+				outputFile << "call\n";
+				break;
+			case print:
+				outputFile << "print\n";
+				break;
+			case allocate:
+				outputFile << "allocate\n";
+				break;
+			case array:
+				outputFile << "array\n";
+				break;
+			case inc_dec:
+				outputFile << "inc_dec\n";
+				break;
+
+		}
+	}
+		 
+
+  
+    /* 
+     * Generate target code
+     */ 
+    //TODO
+
+    /* 
+     * Close the output file.
+     */ 
+
+    outputFile.close();
+   
+    return ;
+  }
+}
