@@ -1,42 +1,1166 @@
 void main (){
-	int64 iNewVarLBscope0
-	iNewVarLBscope0 <- 21
+	int64[][] m1NewVarLBscope0
+	m1NewVarLBscope0 <- 0
+	int64[][] m2NewVarLBscope0
+	m2NewVarLBscope0 <- 0
+	int64[][] m3NewVarLBscope0
+	m3NewVarLBscope0 <- 0
+	int64 dimNewVarLBscope0
+	dimNewVarLBscope0 <- 601
+	m1NewVarLBscope0 <- new Array  (dimNewVarLBscope0,dimNewVarLBscope0)
+	m2NewVarLBscope0 <- new Array  (dimNewVarLBscope0,dimNewVarLBscope0)
+	m3NewVarLBscope0 <- new Array  (dimNewVarLBscope0,dimNewVarLBscope0)
+	computeAndPrint (m1NewVarLBscope0,m2NewVarLBscope0,m3NewVarLBscope0,1)
+	return
+}
+
+void computeAndPrint (int64[][] m1,int64[][] m2,int64[][] m3,int64 v1){
+	initMatrix (m1,v1)
+	initMatrix (m2,v1)
+	matrixMultiplication (m1,m2,m3)
+	int64 tNewVarLBscope0
+	tNewVarLBscope0 <- totalSum (m1)
+	print (tNewVarLBscope0)
+	tNewVarLBscope0 <- totalSum (m2)
+	print (tNewVarLBscope0)
+	tNewVarLBscope0 <- totalSum (m3)
+	print (tNewVarLBscope0)
+	return
+}
+
+void initMatrix (int64[][] m,int64 initValue){
+	int64 l1NewVarLBscope0
+	int64 l2NewVarLBscope0
+	int64 index1NewVarLBscope0
+	l1NewVarLBscope0 <- length  m 0
+	l2NewVarLBscope0 <- length  m 1
+	index1NewVarLBscope0 <- 1
 	:NewLabelLB1
 	int64 NewVarLB1
 	int64 NewVarLA0
-	NewVarLA0 <- iNewVarLBscope0 >> 1
-	NewVarLB1 <- NewVarLA0 > 0
+	NewVarLA0 <- index1NewVarLBscope0 >> 1
+	int64 NewVarLA1
+	NewVarLA1 <- l1NewVarLBscope0 >> 1
+	NewVarLB1 <- NewVarLA0 < NewVarLA1
 	NewVarLB1 <- NewVarLB1 << 1
 	NewVarLB1 <- NewVarLB1 + 1
-		int64 NewVarLA1
-	NewVarLA1 <- NewVarLB1 >> 1
-br NewVarLA1 :new_label0 :new_label1
-	:new_label0
-	print (iNewVarLBscope0)
-	int64 NewVarLA2
-	NewVarLA2 <- iNewVarLBscope0 >> 1
-	iNewVarLBscope0 <- NewVarLA2 - 1
-	iNewVarLBscope0 <- iNewVarLBscope0 << 1
-	iNewVarLBscope0 <- iNewVarLBscope0 + 1
+		int64 NewVarLA2
+	NewVarLA2 <- NewVarLB1 >> 1
+br NewVarLA2 :outerBody :leave
+	:outerBody
+	int64 index2NewVarLBscope1
+	index2NewVarLBscope1 <- 1
+	:NewLabelLB2
 	int64 NewVarLB2
 	int64 NewVarLA3
-	NewVarLA3 <- iNewVarLBscope0 >> 1
-	NewVarLB2 <- NewVarLA3 > 2
+	NewVarLA3 <- index2NewVarLBscope1 >> 1
+	int64 NewVarLA4
+	NewVarLA4 <- l2NewVarLBscope0 >> 1
+	NewVarLB2 <- NewVarLA3 < NewVarLA4
 	NewVarLB2 <- NewVarLB2 << 1
 	NewVarLB2 <- NewVarLB2 + 1
-		int64 NewVarLA4
-	NewVarLA4 <- NewVarLB2 >> 1
-br NewVarLA4 :true_label :false_label
-	:true_label
-	br :new_label1
-	:false_label
-	int64 NewVarLA5
-	NewVarLA5 <- iNewVarLBscope0 >> 1
-	iNewVarLBscope0 <- NewVarLA5 - 1
+		int64 NewVarLA5
+	NewVarLA5 <- NewVarLB2 >> 1
+br NewVarLA5 :innerBody :endOuterBody
+	:innerBody
+	int64 valueToStoreNewVarLBscope2
+	int64 NewVarLA6
+	NewVarLA6 <- initValue >> 1
+	int64 NewVarLA7
+	NewVarLA7 <- index1NewVarLBscope0 >> 1
+	valueToStoreNewVarLBscope2 <- NewVarLA6 + NewVarLA7
+	valueToStoreNewVarLBscope2 <- valueToStoreNewVarLBscope2 << 1
+	valueToStoreNewVarLBscope2 <- valueToStoreNewVarLBscope2 + 1
+	int64 NewVarLA8
+	NewVarLA8 <- valueToStoreNewVarLBscope2 >> 1
+	int64 NewVarLA9
+	NewVarLA9 <- index2NewVarLBscope1 >> 1
+	valueToStoreNewVarLBscope2 <- NewVarLA8 + NewVarLA9
+	valueToStoreNewVarLBscope2 <- valueToStoreNewVarLBscope2 << 1
+	valueToStoreNewVarLBscope2 <- valueToStoreNewVarLBscope2 + 1
+		int64 NewVarLA10
+	NewVarLA10 <- m = 0
+	br NewVarLA10 :newLabel0F :newLabel0T
+	:newLabel0F
+	array-error(0,0)
+	:newLabel0T
+	int64 NewVarLA11
+	NewVarLA11 <- length m 0
+	NewVarLA11 <- NewVarLA11 >> 1
+	int64 NewVarLA12
+	NewVarLA12 <- index1NewVarLBscope0 >> 1
+	int64 NewVarLA13
+	NewVarLA13 <- NewVarLA12 < NewVarLA11
+	br NewVarLA13 :newLabel1T :newLabel1F
+	:newLabel1F
+	NewVarLA12 <- NewVarLA12 << 1
+	NewVarLA12 <- NewVarLA12 + 1
+	array-error(m,NewVarLA12)
+	:newLabel1T
+	int64 NewVarLA14
+	NewVarLA14 <- length m 1
+	NewVarLA14 <- NewVarLA14 >> 1
+	int64 NewVarLA15
+	NewVarLA15 <- index2NewVarLBscope1 >> 1
+	int64 NewVarLA16
+	NewVarLA16 <- NewVarLA15 < NewVarLA14
+	br NewVarLA16 :newLabel2T :newLabel2F
+	:newLabel2F
+	NewVarLA15 <- NewVarLA15 << 1
+	NewVarLA15 <- NewVarLA15 + 1
+	array-error(m,NewVarLA15)
+	:newLabel2T
+	int64 NewVarLA17
+	NewVarLA17 <- index1NewVarLBscope0 >> 1
+	int64 NewVarLA18
+	NewVarLA18 <- index2NewVarLBscope1 >> 1
+	m[NewVarLA17][NewVarLA18] <- valueToStoreNewVarLBscope2
+	int64 NewVarLA19
+	NewVarLA19 <- index2NewVarLBscope1 >> 1
+	index2NewVarLBscope1 <- NewVarLA19 + 1
+	index2NewVarLBscope1 <- index2NewVarLBscope1 << 1
+	index2NewVarLBscope1 <- index2NewVarLBscope1 + 1
+	br :NewLabelLB2
+	:endOuterBody
+	int64 NewVarLA20
+	NewVarLA20 <- index1NewVarLBscope0 >> 1
+	index1NewVarLBscope0 <- NewVarLA20 + 1
+	index1NewVarLBscope0 <- index1NewVarLBscope0 << 1
+	index1NewVarLBscope0 <- index1NewVarLBscope0 + 1
+	br :NewLabelLB1
+	:leave
+	return
+}
+
+void matrixMultiplication (int64[][] m1,int64[][] m2,int64[][] m3){
+	int64 m1_l1NewVarLBscope0
+	int64 m1_l2NewVarLBscope0
+	int64 m2_l1NewVarLBscope0
+	int64 m2_l2NewVarLBscope0
+	int64 m3_l1NewVarLBscope0
+	int64 m3_l2NewVarLBscope0
+	m1_l1NewVarLBscope0 <- length  m1 0
+	m1_l2NewVarLBscope0 <- length  m1 1
+	m2_l1NewVarLBscope0 <- length  m2 0
+	m2_l2NewVarLBscope0 <- length  m2 1
+	m3_l1NewVarLBscope0 <- length  m3 0
+	m3_l2NewVarLBscope0 <- length  m3 1
+	int64 NewVarLB3
+	int64 NewVarLA21
+	NewVarLA21 <- m1_l2NewVarLBscope0 >> 1
+	int64 NewVarLA22
+	NewVarLA22 <- m2_l1NewVarLBscope0 >> 1
+	NewVarLB3 <- NewVarLA21 = NewVarLA22
+	NewVarLB3 <- NewVarLB3 << 1
+	NewVarLB3 <- NewVarLB3 + 1
+		int64 NewVarLA23
+	NewVarLA23 <- NewVarLB3 >> 1
+br NewVarLA23 :go1 :leave
+	:go1
+	int64 NewVarLB4
+	int64 NewVarLA24
+	NewVarLA24 <- m3_l1NewVarLBscope0 >> 1
+	int64 NewVarLA25
+	NewVarLA25 <- m1_l1NewVarLBscope0 >> 1
+	NewVarLB4 <- NewVarLA24 = NewVarLA25
+	NewVarLB4 <- NewVarLB4 << 1
+	NewVarLB4 <- NewVarLB4 + 1
+		int64 NewVarLA26
+	NewVarLA26 <- NewVarLB4 >> 1
+br NewVarLA26 :go2 :leave
+	:go2
+	int64 NewVarLB5
+	int64 NewVarLA27
+	NewVarLA27 <- m3_l2NewVarLBscope0 >> 1
+	int64 NewVarLA28
+	NewVarLA28 <- m2_l2NewVarLBscope0 >> 1
+	NewVarLB5 <- NewVarLA27 = NewVarLA28
+	NewVarLB5 <- NewVarLB5 << 1
+	NewVarLB5 <- NewVarLB5 + 1
+		int64 NewVarLA29
+	NewVarLA29 <- NewVarLB5 >> 1
+br NewVarLA29 :go :leave
+	:go
+	int64 iNewVarLBscope1
+	int64 jNewVarLBscope1
+	int64 kNewVarLBscope1
+	iNewVarLBscope1 <- 1
+	:NewLabelLB3
+	int64 NewVarLB6
+	int64 NewVarLA30
+	NewVarLA30 <- iNewVarLBscope1 >> 1
+	int64 NewVarLA31
+	NewVarLA31 <- m1_l1NewVarLBscope0 >> 1
+	NewVarLB6 <- NewVarLA30 < NewVarLA31
+	NewVarLB6 <- NewVarLB6 << 1
+	NewVarLB6 <- NewVarLB6 + 1
+		int64 NewVarLA32
+	NewVarLA32 <- NewVarLB6 >> 1
+br NewVarLA32 :body1_init :done_init
+	:body1_init
+	jNewVarLBscope1 <- 1
+	:NewLabelLB4
+	int64 NewVarLB7
+	int64 NewVarLA33
+	NewVarLA33 <- jNewVarLBscope1 >> 1
+	int64 NewVarLA34
+	NewVarLA34 <- m2_l2NewVarLBscope0 >> 1
+	NewVarLB7 <- NewVarLA33 < NewVarLA34
+	NewVarLB7 <- NewVarLB7 << 1
+	NewVarLB7 <- NewVarLB7 + 1
+		int64 NewVarLA35
+	NewVarLA35 <- NewVarLB7 >> 1
+br NewVarLA35 :body2_init :endBody1_init
+	:body2_init
+	kNewVarLBscope1 <- 1
+	:NewLabelLB5
+	int64 NewVarLB8
+	int64 NewVarLA36
+	NewVarLA36 <- kNewVarLBscope1 >> 1
+	int64 NewVarLA37
+	NewVarLA37 <- m1_l2NewVarLBscope0 >> 1
+	NewVarLB8 <- NewVarLA36 < NewVarLA37
+	NewVarLB8 <- NewVarLB8 << 1
+	NewVarLB8 <- NewVarLB8 + 1
+		int64 NewVarLA38
+	NewVarLA38 <- NewVarLB8 >> 1
+br NewVarLA38 :body3_init :endBody2_init
+	:body3_init
+	int64 tmpNewVarLBscope4
+	tmpNewVarLBscope4 <- 3
+	int64 NewVarLA39
+	NewVarLA39 <- tmpNewVarLBscope4 >> 1
+	tmpNewVarLBscope4 <- NewVarLA39 * 4
+	tmpNewVarLBscope4 <- tmpNewVarLBscope4 << 1
+	tmpNewVarLBscope4 <- tmpNewVarLBscope4 + 1
+	int64 NewVarLA40
+	NewVarLA40 <- tmpNewVarLBscope4 >> 1
+	tmpNewVarLBscope4 <- NewVarLA40 + 2
+	tmpNewVarLBscope4 <- tmpNewVarLBscope4 << 1
+	tmpNewVarLBscope4 <- tmpNewVarLBscope4 + 1
+	int64 NewVarLA41
+	NewVarLA41 <- tmpNewVarLBscope4 >> 1
+	tmpNewVarLBscope4 <- NewVarLA41 * 8
+	tmpNewVarLBscope4 <- tmpNewVarLBscope4 << 1
+	tmpNewVarLBscope4 <- tmpNewVarLBscope4 + 1
+		int64 NewVarLA42
+	NewVarLA42 <- m3 = 0
+	br NewVarLA42 :newLabel3F :newLabel3T
+	:newLabel3F
+	array-error(0,0)
+	:newLabel3T
+	int64 NewVarLA43
+	NewVarLA43 <- length m3 0
+	NewVarLA43 <- NewVarLA43 >> 1
+	int64 NewVarLA44
+	NewVarLA44 <- iNewVarLBscope1 >> 1
+	int64 NewVarLA45
+	NewVarLA45 <- NewVarLA44 < NewVarLA43
+	br NewVarLA45 :newLabel4T :newLabel4F
+	:newLabel4F
+	NewVarLA44 <- NewVarLA44 << 1
+	NewVarLA44 <- NewVarLA44 + 1
+	array-error(m3,NewVarLA44)
+	:newLabel4T
+	int64 NewVarLA46
+	NewVarLA46 <- length m3 1
+	NewVarLA46 <- NewVarLA46 >> 1
+	int64 NewVarLA47
+	NewVarLA47 <- jNewVarLBscope1 >> 1
+	int64 NewVarLA48
+	NewVarLA48 <- NewVarLA47 < NewVarLA46
+	br NewVarLA48 :newLabel5T :newLabel5F
+	:newLabel5F
+	NewVarLA47 <- NewVarLA47 << 1
+	NewVarLA47 <- NewVarLA47 + 1
+	array-error(m3,NewVarLA47)
+	:newLabel5T
+	int64 NewVarLA49
+	NewVarLA49 <- iNewVarLBscope1 >> 1
+	int64 NewVarLA50
+	NewVarLA50 <- jNewVarLBscope1 >> 1
+	m3[NewVarLA49][NewVarLA50] <- 1
+	int64 NewVarLA51
+	NewVarLA51 <- m3 = 0
+	br NewVarLA51 :newLabel6F :newLabel6T
+	:newLabel6F
+	array-error(0,0)
+	:newLabel6T
+	int64 NewVarLA52
+	NewVarLA52 <- length m3 0
+	NewVarLA52 <- NewVarLA52 >> 1
+	int64 NewVarLA53
+	NewVarLA53 <- iNewVarLBscope1 >> 1
+	int64 NewVarLA54
+	NewVarLA54 <- NewVarLA53 < NewVarLA52
+	br NewVarLA54 :newLabel7T :newLabel7F
+	:newLabel7F
+	NewVarLA53 <- NewVarLA53 << 1
+	NewVarLA53 <- NewVarLA53 + 1
+	array-error(m3,NewVarLA53)
+	:newLabel7T
+	int64 NewVarLA55
+	NewVarLA55 <- length m3 1
+	NewVarLA55 <- NewVarLA55 >> 1
+	int64 NewVarLA56
+	NewVarLA56 <- jNewVarLBscope1 >> 1
+	int64 NewVarLA57
+	NewVarLA57 <- NewVarLA56 < NewVarLA55
+	br NewVarLA57 :newLabel8T :newLabel8F
+	:newLabel8F
+	NewVarLA56 <- NewVarLA56 << 1
+	NewVarLA56 <- NewVarLA56 + 1
+	array-error(m3,NewVarLA56)
+	:newLabel8T
+	int64 NewVarLA58
+	NewVarLA58 <- iNewVarLBscope1 >> 1
+	int64 NewVarLA59
+	NewVarLA59 <- jNewVarLBscope1 >> 1
+tmpNewVarLBscope4 <- m3[NewVarLA58][NewVarLA59]
+	int64 NewVarLA60
+	NewVarLA60 <- tmpNewVarLBscope4 >> 1
+	tmpNewVarLBscope4 <- NewVarLA60 + 4
+	tmpNewVarLBscope4 <- tmpNewVarLBscope4 << 1
+	tmpNewVarLBscope4 <- tmpNewVarLBscope4 + 1
+		int64 NewVarLA61
+	NewVarLA61 <- m3 = 0
+	br NewVarLA61 :newLabel9F :newLabel9T
+	:newLabel9F
+	array-error(0,0)
+	:newLabel9T
+	int64 NewVarLA62
+	NewVarLA62 <- length m3 0
+	NewVarLA62 <- NewVarLA62 >> 1
+	int64 NewVarLA63
+	NewVarLA63 <- iNewVarLBscope1 >> 1
+	int64 NewVarLA64
+	NewVarLA64 <- NewVarLA63 < NewVarLA62
+	br NewVarLA64 :newLabel10T :newLabel10F
+	:newLabel10F
+	NewVarLA63 <- NewVarLA63 << 1
+	NewVarLA63 <- NewVarLA63 + 1
+	array-error(m3,NewVarLA63)
+	:newLabel10T
+	int64 NewVarLA65
+	NewVarLA65 <- length m3 1
+	NewVarLA65 <- NewVarLA65 >> 1
+	int64 NewVarLA66
+	NewVarLA66 <- jNewVarLBscope1 >> 1
+	int64 NewVarLA67
+	NewVarLA67 <- NewVarLA66 < NewVarLA65
+	br NewVarLA67 :newLabel11T :newLabel11F
+	:newLabel11F
+	NewVarLA66 <- NewVarLA66 << 1
+	NewVarLA66 <- NewVarLA66 + 1
+	array-error(m3,NewVarLA66)
+	:newLabel11T
+	int64 NewVarLA68
+	NewVarLA68 <- iNewVarLBscope1 >> 1
+	int64 NewVarLA69
+	NewVarLA69 <- jNewVarLBscope1 >> 1
+	m3[NewVarLA68][NewVarLA69] <- tmpNewVarLBscope4
+	int64 NewVarLA70
+	NewVarLA70 <- m3 = 0
+	br NewVarLA70 :newLabel12F :newLabel12T
+	:newLabel12F
+	array-error(0,0)
+	:newLabel12T
+	int64 NewVarLA71
+	NewVarLA71 <- length m3 0
+	NewVarLA71 <- NewVarLA71 >> 1
+	int64 NewVarLA72
+	NewVarLA72 <- iNewVarLBscope1 >> 1
+	int64 NewVarLA73
+	NewVarLA73 <- NewVarLA72 < NewVarLA71
+	br NewVarLA73 :newLabel13T :newLabel13F
+	:newLabel13F
+	NewVarLA72 <- NewVarLA72 << 1
+	NewVarLA72 <- NewVarLA72 + 1
+	array-error(m3,NewVarLA72)
+	:newLabel13T
+	int64 NewVarLA74
+	NewVarLA74 <- length m3 1
+	NewVarLA74 <- NewVarLA74 >> 1
+	int64 NewVarLA75
+	NewVarLA75 <- jNewVarLBscope1 >> 1
+	int64 NewVarLA76
+	NewVarLA76 <- NewVarLA75 < NewVarLA74
+	br NewVarLA76 :newLabel14T :newLabel14F
+	:newLabel14F
+	NewVarLA75 <- NewVarLA75 << 1
+	NewVarLA75 <- NewVarLA75 + 1
+	array-error(m3,NewVarLA75)
+	:newLabel14T
+	int64 NewVarLA77
+	NewVarLA77 <- iNewVarLBscope1 >> 1
+	int64 NewVarLA78
+	NewVarLA78 <- jNewVarLBscope1 >> 1
+tmpNewVarLBscope4 <- m3[NewVarLA77][NewVarLA78]
+	int64 NewVarLA79
+	NewVarLA79 <- tmpNewVarLBscope4 >> 1
+	tmpNewVarLBscope4 <- NewVarLA79 * 4
+	tmpNewVarLBscope4 <- tmpNewVarLBscope4 << 1
+	tmpNewVarLBscope4 <- tmpNewVarLBscope4 + 1
+		int64 NewVarLA80
+	NewVarLA80 <- m3 = 0
+	br NewVarLA80 :newLabel15F :newLabel15T
+	:newLabel15F
+	array-error(0,0)
+	:newLabel15T
+	int64 NewVarLA81
+	NewVarLA81 <- length m3 0
+	NewVarLA81 <- NewVarLA81 >> 1
+	int64 NewVarLA82
+	NewVarLA82 <- iNewVarLBscope1 >> 1
+	int64 NewVarLA83
+	NewVarLA83 <- NewVarLA82 < NewVarLA81
+	br NewVarLA83 :newLabel16T :newLabel16F
+	:newLabel16F
+	NewVarLA82 <- NewVarLA82 << 1
+	NewVarLA82 <- NewVarLA82 + 1
+	array-error(m3,NewVarLA82)
+	:newLabel16T
+	int64 NewVarLA84
+	NewVarLA84 <- length m3 1
+	NewVarLA84 <- NewVarLA84 >> 1
+	int64 NewVarLA85
+	NewVarLA85 <- jNewVarLBscope1 >> 1
+	int64 NewVarLA86
+	NewVarLA86 <- NewVarLA85 < NewVarLA84
+	br NewVarLA86 :newLabel17T :newLabel17F
+	:newLabel17F
+	NewVarLA85 <- NewVarLA85 << 1
+	NewVarLA85 <- NewVarLA85 + 1
+	array-error(m3,NewVarLA85)
+	:newLabel17T
+	int64 NewVarLA87
+	NewVarLA87 <- iNewVarLBscope1 >> 1
+	int64 NewVarLA88
+	NewVarLA88 <- jNewVarLBscope1 >> 1
+	m3[NewVarLA87][NewVarLA88] <- tmpNewVarLBscope4
+	int64 NewVarLA89
+	NewVarLA89 <- kNewVarLBscope1 >> 1
+	kNewVarLBscope1 <- NewVarLA89 + 1
+	kNewVarLBscope1 <- kNewVarLBscope1 << 1
+	kNewVarLBscope1 <- kNewVarLBscope1 + 1
+	br :NewLabelLB5
+	:endBody2_init
+	int64 NewVarLA90
+	NewVarLA90 <- jNewVarLBscope1 >> 1
+	jNewVarLBscope1 <- NewVarLA90 + 1
+	jNewVarLBscope1 <- jNewVarLBscope1 << 1
+	jNewVarLBscope1 <- jNewVarLBscope1 + 1
+	br :NewLabelLB4
+	:endBody1_init
+	int64 NewVarLA91
+	NewVarLA91 <- iNewVarLBscope1 >> 1
+	iNewVarLBscope1 <- NewVarLA91 + 1
+	iNewVarLBscope1 <- iNewVarLBscope1 << 1
+	iNewVarLBscope1 <- iNewVarLBscope1 + 1
+	br :NewLabelLB3
+	:done_init
+	int64 totNewVarLBscope0
+	int64 iNewVarLBscope0
+	int64 jNewVarLBscope0
+	int64 kNewVarLBscope0
+	iNewVarLBscope0 <- 1
+	totNewVarLBscope0 <- 1
+	:NewLabelLB6
+	int64 NewVarLB9
+	int64 NewVarLA92
+	NewVarLA92 <- iNewVarLBscope0 >> 1
+	int64 NewVarLA93
+	NewVarLA93 <- m1_l1NewVarLBscope0 >> 1
+	NewVarLB9 <- NewVarLA92 < NewVarLA93
+	NewVarLB9 <- NewVarLB9 << 1
+	NewVarLB9 <- NewVarLB9 + 1
+		int64 NewVarLA94
+	NewVarLA94 <- NewVarLB9 >> 1
+br NewVarLA94 :body1 :leave
+	:body1
+	jNewVarLBscope0 <- 1
+	:NewLabelLB7
+	int64 NewVarLB10
+	int64 NewVarLA95
+	NewVarLA95 <- jNewVarLBscope0 >> 1
+	int64 NewVarLA96
+	NewVarLA96 <- m2_l2NewVarLBscope0 >> 1
+	NewVarLB10 <- NewVarLA95 < NewVarLA96
+	NewVarLB10 <- NewVarLB10 << 1
+	NewVarLB10 <- NewVarLB10 + 1
+		int64 NewVarLA97
+	NewVarLA97 <- NewVarLB10 >> 1
+br NewVarLA97 :body2 :endBody1
+	:body2
+	kNewVarLBscope0 <- 1
+	:NewLabelLB8
+	int64 NewVarLB11
+	int64 NewVarLA98
+	NewVarLA98 <- kNewVarLBscope0 >> 1
+	int64 NewVarLA99
+	NewVarLA99 <- m1_l2NewVarLBscope0 >> 1
+	NewVarLB11 <- NewVarLA98 < NewVarLA99
+	NewVarLB11 <- NewVarLB11 << 1
+	NewVarLB11 <- NewVarLB11 + 1
+		int64 NewVarLA100
+	NewVarLA100 <- NewVarLB11 >> 1
+br NewVarLA100 :body3 :endBody2
+	:body3
+	int64 ANewVarLBscope3
+	int64 BNewVarLBscope3
+	int64 CNewVarLBscope3
+	int64 DNewVarLBscope3
+	int64 ENewVarLBscope3
+	int64 FNewVarLBscope3
+	int64 NewVarLA101
+	NewVarLA101 <- m1 = 0
+	br NewVarLA101 :newLabel18F :newLabel18T
+	:newLabel18F
+	array-error(0,0)
+	:newLabel18T
+	int64 NewVarLA102
+	NewVarLA102 <- length m1 0
+	NewVarLA102 <- NewVarLA102 >> 1
+	int64 NewVarLA103
+	NewVarLA103 <- iNewVarLBscope0 >> 1
+	int64 NewVarLA104
+	NewVarLA104 <- NewVarLA103 < NewVarLA102
+	br NewVarLA104 :newLabel19T :newLabel19F
+	:newLabel19F
+	NewVarLA103 <- NewVarLA103 << 1
+	NewVarLA103 <- NewVarLA103 + 1
+	array-error(m1,NewVarLA103)
+	:newLabel19T
+	int64 NewVarLA105
+	NewVarLA105 <- length m1 1
+	NewVarLA105 <- NewVarLA105 >> 1
+	int64 NewVarLA106
+	NewVarLA106 <- kNewVarLBscope0 >> 1
+	int64 NewVarLA107
+	NewVarLA107 <- NewVarLA106 < NewVarLA105
+	br NewVarLA107 :newLabel20T :newLabel20F
+	:newLabel20F
+	NewVarLA106 <- NewVarLA106 << 1
+	NewVarLA106 <- NewVarLA106 + 1
+	array-error(m1,NewVarLA106)
+	:newLabel20T
+	int64 NewVarLA108
+	NewVarLA108 <- iNewVarLBscope0 >> 1
+	int64 NewVarLA109
+	NewVarLA109 <- kNewVarLBscope0 >> 1
+ANewVarLBscope3 <- m1[NewVarLA108][NewVarLA109]
+	int64 NewVarLA110
+	NewVarLA110 <- m2 = 0
+	br NewVarLA110 :newLabel21F :newLabel21T
+	:newLabel21F
+	array-error(0,0)
+	:newLabel21T
+	int64 NewVarLA111
+	NewVarLA111 <- length m2 0
+	NewVarLA111 <- NewVarLA111 >> 1
+	int64 NewVarLA112
+	NewVarLA112 <- kNewVarLBscope0 >> 1
+	int64 NewVarLA113
+	NewVarLA113 <- NewVarLA112 < NewVarLA111
+	br NewVarLA113 :newLabel22T :newLabel22F
+	:newLabel22F
+	NewVarLA112 <- NewVarLA112 << 1
+	NewVarLA112 <- NewVarLA112 + 1
+	array-error(m2,NewVarLA112)
+	:newLabel22T
+	int64 NewVarLA114
+	NewVarLA114 <- length m2 1
+	NewVarLA114 <- NewVarLA114 >> 1
+	int64 NewVarLA115
+	NewVarLA115 <- jNewVarLBscope0 >> 1
+	int64 NewVarLA116
+	NewVarLA116 <- NewVarLA115 < NewVarLA114
+	br NewVarLA116 :newLabel23T :newLabel23F
+	:newLabel23F
+	NewVarLA115 <- NewVarLA115 << 1
+	NewVarLA115 <- NewVarLA115 + 1
+	array-error(m2,NewVarLA115)
+	:newLabel23T
+	int64 NewVarLA117
+	NewVarLA117 <- kNewVarLBscope0 >> 1
+	int64 NewVarLA118
+	NewVarLA118 <- jNewVarLBscope0 >> 1
+BNewVarLBscope3 <- m2[NewVarLA117][NewVarLA118]
+	int64 NewVarLA119
+	NewVarLA119 <- ANewVarLBscope3 >> 1
+	int64 NewVarLA120
+	NewVarLA120 <- BNewVarLBscope3 >> 1
+	CNewVarLBscope3 <- NewVarLA119 * NewVarLA120
+	CNewVarLBscope3 <- CNewVarLBscope3 << 1
+	CNewVarLBscope3 <- CNewVarLBscope3 + 1
+	int64 NewVarLA121
+	NewVarLA121 <- m3 = 0
+	br NewVarLA121 :newLabel24F :newLabel24T
+	:newLabel24F
+	array-error(0,0)
+	:newLabel24T
+	int64 NewVarLA122
+	NewVarLA122 <- length m3 0
+	NewVarLA122 <- NewVarLA122 >> 1
+	int64 NewVarLA123
+	NewVarLA123 <- iNewVarLBscope0 >> 1
+	int64 NewVarLA124
+	NewVarLA124 <- NewVarLA123 < NewVarLA122
+	br NewVarLA124 :newLabel25T :newLabel25F
+	:newLabel25F
+	NewVarLA123 <- NewVarLA123 << 1
+	NewVarLA123 <- NewVarLA123 + 1
+	array-error(m3,NewVarLA123)
+	:newLabel25T
+	int64 NewVarLA125
+	NewVarLA125 <- length m3 1
+	NewVarLA125 <- NewVarLA125 >> 1
+	int64 NewVarLA126
+	NewVarLA126 <- jNewVarLBscope0 >> 1
+	int64 NewVarLA127
+	NewVarLA127 <- NewVarLA126 < NewVarLA125
+	br NewVarLA127 :newLabel26T :newLabel26F
+	:newLabel26F
+	NewVarLA126 <- NewVarLA126 << 1
+	NewVarLA126 <- NewVarLA126 + 1
+	array-error(m3,NewVarLA126)
+	:newLabel26T
+	int64 NewVarLA128
+	NewVarLA128 <- iNewVarLBscope0 >> 1
+	int64 NewVarLA129
+	NewVarLA129 <- jNewVarLBscope0 >> 1
+DNewVarLBscope3 <- m3[NewVarLA128][NewVarLA129]
+	int64 NewVarLA130
+	NewVarLA130 <- DNewVarLBscope3 >> 1
+	ENewVarLBscope3 <- NewVarLA130 * 4
+	ENewVarLBscope3 <- ENewVarLBscope3 << 1
+	ENewVarLBscope3 <- ENewVarLBscope3 + 1
+	int64 NewVarLA131
+	NewVarLA131 <- ENewVarLBscope3 >> 1
+	FNewVarLBscope3 <- NewVarLA131 + 2
+	FNewVarLBscope3 <- FNewVarLBscope3 << 1
+	FNewVarLBscope3 <- FNewVarLBscope3 + 1
+		int64 NewVarLA132
+	NewVarLA132 <- m3 = 0
+	br NewVarLA132 :newLabel27F :newLabel27T
+	:newLabel27F
+	array-error(0,0)
+	:newLabel27T
+	int64 NewVarLA133
+	NewVarLA133 <- length m3 0
+	NewVarLA133 <- NewVarLA133 >> 1
+	int64 NewVarLA134
+	NewVarLA134 <- iNewVarLBscope0 >> 1
+	int64 NewVarLA135
+	NewVarLA135 <- NewVarLA134 < NewVarLA133
+	br NewVarLA135 :newLabel28T :newLabel28F
+	:newLabel28F
+	NewVarLA134 <- NewVarLA134 << 1
+	NewVarLA134 <- NewVarLA134 + 1
+	array-error(m3,NewVarLA134)
+	:newLabel28T
+	int64 NewVarLA136
+	NewVarLA136 <- length m3 1
+	NewVarLA136 <- NewVarLA136 >> 1
+	int64 NewVarLA137
+	NewVarLA137 <- jNewVarLBscope0 >> 1
+	int64 NewVarLA138
+	NewVarLA138 <- NewVarLA137 < NewVarLA136
+	br NewVarLA138 :newLabel29T :newLabel29F
+	:newLabel29F
+	NewVarLA137 <- NewVarLA137 << 1
+	NewVarLA137 <- NewVarLA137 + 1
+	array-error(m3,NewVarLA137)
+	:newLabel29T
+	int64 NewVarLA139
+	NewVarLA139 <- iNewVarLBscope0 >> 1
+	int64 NewVarLA140
+	NewVarLA140 <- jNewVarLBscope0 >> 1
+	m3[NewVarLA139][NewVarLA140] <- FNewVarLBscope3
+	int64 GNewVarLBscope3
+	int64 NewVarLA141
+	NewVarLA141 <- FNewVarLBscope3 >> 1
+	GNewVarLBscope3 <- NewVarLA141 * 1
+	GNewVarLBscope3 <- GNewVarLBscope3 << 1
+	GNewVarLBscope3 <- GNewVarLBscope3 + 1
+		int64 NewVarLA142
+	NewVarLA142 <- m3 = 0
+	br NewVarLA142 :newLabel30F :newLabel30T
+	:newLabel30F
+	array-error(0,0)
+	:newLabel30T
+	int64 NewVarLA143
+	NewVarLA143 <- length m3 0
+	NewVarLA143 <- NewVarLA143 >> 1
+	int64 NewVarLA144
+	NewVarLA144 <- iNewVarLBscope0 >> 1
+	int64 NewVarLA145
+	NewVarLA145 <- NewVarLA144 < NewVarLA143
+	br NewVarLA145 :newLabel31T :newLabel31F
+	:newLabel31F
+	NewVarLA144 <- NewVarLA144 << 1
+	NewVarLA144 <- NewVarLA144 + 1
+	array-error(m3,NewVarLA144)
+	:newLabel31T
+	int64 NewVarLA146
+	NewVarLA146 <- length m3 1
+	NewVarLA146 <- NewVarLA146 >> 1
+	int64 NewVarLA147
+	NewVarLA147 <- jNewVarLBscope0 >> 1
+	int64 NewVarLA148
+	NewVarLA148 <- NewVarLA147 < NewVarLA146
+	br NewVarLA148 :newLabel32T :newLabel32F
+	:newLabel32F
+	NewVarLA147 <- NewVarLA147 << 1
+	NewVarLA147 <- NewVarLA147 + 1
+	array-error(m3,NewVarLA147)
+	:newLabel32T
+	int64 NewVarLA149
+	NewVarLA149 <- iNewVarLBscope0 >> 1
+	int64 NewVarLA150
+	NewVarLA150 <- jNewVarLBscope0 >> 1
+	m3[NewVarLA149][NewVarLA150] <- GNewVarLBscope3
+	int64 NewVarLA151
+	NewVarLA151 <- FNewVarLBscope3 >> 1
+	GNewVarLBscope3 <- NewVarLA151 + 0
+	GNewVarLBscope3 <- GNewVarLBscope3 << 1
+	GNewVarLBscope3 <- GNewVarLBscope3 + 1
+		int64 NewVarLA152
+	NewVarLA152 <- m3 = 0
+	br NewVarLA152 :newLabel33F :newLabel33T
+	:newLabel33F
+	array-error(0,0)
+	:newLabel33T
+	int64 NewVarLA153
+	NewVarLA153 <- length m3 0
+	NewVarLA153 <- NewVarLA153 >> 1
+	int64 NewVarLA154
+	NewVarLA154 <- iNewVarLBscope0 >> 1
+	int64 NewVarLA155
+	NewVarLA155 <- NewVarLA154 < NewVarLA153
+	br NewVarLA155 :newLabel34T :newLabel34F
+	:newLabel34F
+	NewVarLA154 <- NewVarLA154 << 1
+	NewVarLA154 <- NewVarLA154 + 1
+	array-error(m3,NewVarLA154)
+	:newLabel34T
+	int64 NewVarLA156
+	NewVarLA156 <- length m3 1
+	NewVarLA156 <- NewVarLA156 >> 1
+	int64 NewVarLA157
+	NewVarLA157 <- jNewVarLBscope0 >> 1
+	int64 NewVarLA158
+	NewVarLA158 <- NewVarLA157 < NewVarLA156
+	br NewVarLA158 :newLabel35T :newLabel35F
+	:newLabel35F
+	NewVarLA157 <- NewVarLA157 << 1
+	NewVarLA157 <- NewVarLA157 + 1
+	array-error(m3,NewVarLA157)
+	:newLabel35T
+	int64 NewVarLA159
+	NewVarLA159 <- iNewVarLBscope0 >> 1
+	int64 NewVarLA160
+	NewVarLA160 <- jNewVarLBscope0 >> 1
+	m3[NewVarLA159][NewVarLA160] <- GNewVarLBscope3
+	int64 NewVarLA161
+	NewVarLA161 <- FNewVarLBscope3 >> 1
+	GNewVarLBscope3 <- NewVarLA161 * 1
+	GNewVarLBscope3 <- GNewVarLBscope3 << 1
+	GNewVarLBscope3 <- GNewVarLBscope3 + 1
+		int64 NewVarLA162
+	NewVarLA162 <- m3 = 0
+	br NewVarLA162 :newLabel36F :newLabel36T
+	:newLabel36F
+	array-error(0,0)
+	:newLabel36T
+	int64 NewVarLA163
+	NewVarLA163 <- length m3 0
+	NewVarLA163 <- NewVarLA163 >> 1
+	int64 NewVarLA164
+	NewVarLA164 <- iNewVarLBscope0 >> 1
+	int64 NewVarLA165
+	NewVarLA165 <- NewVarLA164 < NewVarLA163
+	br NewVarLA165 :newLabel37T :newLabel37F
+	:newLabel37F
+	NewVarLA164 <- NewVarLA164 << 1
+	NewVarLA164 <- NewVarLA164 + 1
+	array-error(m3,NewVarLA164)
+	:newLabel37T
+	int64 NewVarLA166
+	NewVarLA166 <- length m3 1
+	NewVarLA166 <- NewVarLA166 >> 1
+	int64 NewVarLA167
+	NewVarLA167 <- jNewVarLBscope0 >> 1
+	int64 NewVarLA168
+	NewVarLA168 <- NewVarLA167 < NewVarLA166
+	br NewVarLA168 :newLabel38T :newLabel38F
+	:newLabel38F
+	NewVarLA167 <- NewVarLA167 << 1
+	NewVarLA167 <- NewVarLA167 + 1
+	array-error(m3,NewVarLA167)
+	:newLabel38T
+	int64 NewVarLA169
+	NewVarLA169 <- iNewVarLBscope0 >> 1
+	int64 NewVarLA170
+	NewVarLA170 <- jNewVarLBscope0 >> 1
+	m3[NewVarLA169][NewVarLA170] <- GNewVarLBscope3
+	int64 NewVarLA171
+	NewVarLA171 <- FNewVarLBscope3 >> 1
+	GNewVarLBscope3 <- NewVarLA171 + 0
+	GNewVarLBscope3 <- GNewVarLBscope3 << 1
+	GNewVarLBscope3 <- GNewVarLBscope3 + 1
+		int64 NewVarLA172
+	NewVarLA172 <- m3 = 0
+	br NewVarLA172 :newLabel39F :newLabel39T
+	:newLabel39F
+	array-error(0,0)
+	:newLabel39T
+	int64 NewVarLA173
+	NewVarLA173 <- length m3 0
+	NewVarLA173 <- NewVarLA173 >> 1
+	int64 NewVarLA174
+	NewVarLA174 <- iNewVarLBscope0 >> 1
+	int64 NewVarLA175
+	NewVarLA175 <- NewVarLA174 < NewVarLA173
+	br NewVarLA175 :newLabel40T :newLabel40F
+	:newLabel40F
+	NewVarLA174 <- NewVarLA174 << 1
+	NewVarLA174 <- NewVarLA174 + 1
+	array-error(m3,NewVarLA174)
+	:newLabel40T
+	int64 NewVarLA176
+	NewVarLA176 <- length m3 1
+	NewVarLA176 <- NewVarLA176 >> 1
+	int64 NewVarLA177
+	NewVarLA177 <- jNewVarLBscope0 >> 1
+	int64 NewVarLA178
+	NewVarLA178 <- NewVarLA177 < NewVarLA176
+	br NewVarLA178 :newLabel41T :newLabel41F
+	:newLabel41F
+	NewVarLA177 <- NewVarLA177 << 1
+	NewVarLA177 <- NewVarLA177 + 1
+	array-error(m3,NewVarLA177)
+	:newLabel41T
+	int64 NewVarLA179
+	NewVarLA179 <- iNewVarLBscope0 >> 1
+	int64 NewVarLA180
+	NewVarLA180 <- jNewVarLBscope0 >> 1
+	m3[NewVarLA179][NewVarLA180] <- GNewVarLBscope3
+	int64 tmpNewVarLBscope3
+	tmpNewVarLBscope3 <- GNewVarLBscope3
+	int64 NewVarLA181
+	NewVarLA181 <- tmpNewVarLBscope3 >> 1
+	tmpNewVarLBscope3 <- NewVarLA181 * 4
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 << 1
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 1
+	int64 NewVarLA182
+	NewVarLA182 <- tmpNewVarLBscope3 >> 1
+	tmpNewVarLBscope3 <- NewVarLA182 + 2
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 << 1
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 1
+	int64 NewVarLA183
+	NewVarLA183 <- tmpNewVarLBscope3 >> 1
+	tmpNewVarLBscope3 <- NewVarLA183 * 8
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 << 1
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 1
+	int64 NewVarLA184
+	NewVarLA184 <- tmpNewVarLBscope3 >> 1
+	tmpNewVarLBscope3 <- NewVarLA184 * 4
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 << 1
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 1
+	int64 NewVarLA185
+	NewVarLA185 <- tmpNewVarLBscope3 >> 1
+	tmpNewVarLBscope3 <- NewVarLA185 + 2
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 << 1
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 1
+	int64 NewVarLA186
+	NewVarLA186 <- tmpNewVarLBscope3 >> 1
+	tmpNewVarLBscope3 <- NewVarLA186 * 8
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 << 1
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 1
+	int64 NewVarLA187
+	NewVarLA187 <- tmpNewVarLBscope3 >> 1
+	tmpNewVarLBscope3 <- NewVarLA187 * 4
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 << 1
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 1
+	int64 NewVarLA188
+	NewVarLA188 <- tmpNewVarLBscope3 >> 1
+	tmpNewVarLBscope3 <- NewVarLA188 + 2
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 << 1
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 1
+	int64 NewVarLA189
+	NewVarLA189 <- tmpNewVarLBscope3 >> 1
+	tmpNewVarLBscope3 <- NewVarLA189 * 8
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 << 1
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 1
+	int64 NewVarLA190
+	NewVarLA190 <- tmpNewVarLBscope3 >> 1
+	tmpNewVarLBscope3 <- NewVarLA190 * 4
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 << 1
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 1
+	int64 NewVarLA191
+	NewVarLA191 <- tmpNewVarLBscope3 >> 1
+	tmpNewVarLBscope3 <- NewVarLA191 + 2
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 << 1
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 1
+	int64 NewVarLA192
+	NewVarLA192 <- tmpNewVarLBscope3 >> 1
+	tmpNewVarLBscope3 <- NewVarLA192 * 8
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 << 1
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 1
+	int64 NewVarLA193
+	NewVarLA193 <- tmpNewVarLBscope3 >> 1
+	tmpNewVarLBscope3 <- NewVarLA193 * 4
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 << 1
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 1
+	int64 NewVarLA194
+	NewVarLA194 <- tmpNewVarLBscope3 >> 1
+	tmpNewVarLBscope3 <- NewVarLA194 + 2
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 << 1
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 1
+	int64 NewVarLA195
+	NewVarLA195 <- tmpNewVarLBscope3 >> 1
+	tmpNewVarLBscope3 <- NewVarLA195 * 8
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 << 1
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 1
+	int64 NewVarLA196
+	NewVarLA196 <- tmpNewVarLBscope3 >> 1
+	tmpNewVarLBscope3 <- NewVarLA196 * 4
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 << 1
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 1
+	int64 NewVarLA197
+	NewVarLA197 <- tmpNewVarLBscope3 >> 1
+	tmpNewVarLBscope3 <- NewVarLA197 + 2
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 << 1
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 1
+	int64 NewVarLA198
+	NewVarLA198 <- tmpNewVarLBscope3 >> 1
+	tmpNewVarLBscope3 <- NewVarLA198 * 8
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 << 1
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 1
+	int64 NewVarLA199
+	NewVarLA199 <- tmpNewVarLBscope3 >> 1
+	tmpNewVarLBscope3 <- NewVarLA199 << 2
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 << 1
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 1
+	int64 NewVarLA200
+	NewVarLA200 <- tmpNewVarLBscope3 >> 1
+	tmpNewVarLBscope3 <- NewVarLA200 + 2
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 << 1
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 1
+	int64 NewVarLA201
+	NewVarLA201 <- tmpNewVarLBscope3 >> 1
+	tmpNewVarLBscope3 <- NewVarLA201 * 8
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 << 1
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 1
+	int64 NewVarLA202
+	NewVarLA202 <- tmpNewVarLBscope3 >> 1
+	tmpNewVarLBscope3 <- NewVarLA202 * 4
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 << 1
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 1
+	int64 NewVarLA203
+	NewVarLA203 <- tmpNewVarLBscope3 >> 1
+	tmpNewVarLBscope3 <- NewVarLA203 << 2
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 << 1
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 1
+	int64 NewVarLA204
+	NewVarLA204 <- tmpNewVarLBscope3 >> 1
+	tmpNewVarLBscope3 <- NewVarLA204 + 2
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 << 1
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 1
+	int64 NewVarLA205
+	NewVarLA205 <- tmpNewVarLBscope3 >> 1
+	tmpNewVarLBscope3 <- NewVarLA205 * 8
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 << 1
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 1
+	int64 NewVarLA206
+	NewVarLA206 <- tmpNewVarLBscope3 >> 1
+	tmpNewVarLBscope3 <- NewVarLA206 * 4
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 << 1
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 1
+	int64 NewVarLA207
+	NewVarLA207 <- tmpNewVarLBscope3 >> 1
+	tmpNewVarLBscope3 <- NewVarLA207 << 4
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 << 1
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 1
+	int64 NewVarLA208
+	NewVarLA208 <- tmpNewVarLBscope3 >> 1
+	tmpNewVarLBscope3 <- NewVarLA208 + 2
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 << 1
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 1
+	int64 NewVarLA209
+	NewVarLA209 <- tmpNewVarLBscope3 >> 1
+	tmpNewVarLBscope3 <- NewVarLA209 >> 2
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 << 1
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 1
+	int64 NewVarLA210
+	NewVarLA210 <- tmpNewVarLBscope3 >> 1
+	tmpNewVarLBscope3 <- NewVarLA210 * 8
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 << 1
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 1
+	int64 NewVarLA211
+	NewVarLA211 <- tmpNewVarLBscope3 >> 1
+	tmpNewVarLBscope3 <- NewVarLA211 * 4
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 << 1
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 1
+	int64 NewVarLA212
+	NewVarLA212 <- tmpNewVarLBscope3 >> 1
+	tmpNewVarLBscope3 <- NewVarLA212 + 2
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 << 1
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 1
+	int64 NewVarLA213
+	NewVarLA213 <- tmpNewVarLBscope3 >> 1
+	tmpNewVarLBscope3 <- NewVarLA213 * 8
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 << 1
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 1
+	int64 NewVarLA214
+	NewVarLA214 <- tmpNewVarLBscope3 >> 1
+	tmpNewVarLBscope3 <- NewVarLA214 * 4
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 << 1
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 1
+	int64 NewVarLA215
+	NewVarLA215 <- tmpNewVarLBscope3 >> 1
+	tmpNewVarLBscope3 <- NewVarLA215 + 2
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 << 1
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 1
+	int64 NewVarLA216
+	NewVarLA216 <- tmpNewVarLBscope3 >> 1
+	tmpNewVarLBscope3 <- NewVarLA216 * 8
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 << 1
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 1
+	int64 tot2NewVarLBscope3
+	int64 tot3NewVarLBscope3
+	int64 NewVarLA217
+	NewVarLA217 <- totNewVarLBscope0 >> 1
+	tot2NewVarLBscope3 <- NewVarLA217 * 4
+	tot2NewVarLBscope3 <- tot2NewVarLBscope3 << 1
+	tot2NewVarLBscope3 <- tot2NewVarLBscope3 + 1
+	int64 NewVarLA218
+	NewVarLA218 <- tot2NewVarLBscope3 >> 1
+	tot3NewVarLBscope3 <- NewVarLA218 + 2
+	tot3NewVarLBscope3 <- tot3NewVarLBscope3 << 1
+	tot3NewVarLBscope3 <- tot3NewVarLBscope3 + 1
+	totNewVarLBscope0 <- totNewVarLBscope0
+	int64 NewVarLA219
+	NewVarLA219 <- kNewVarLBscope0 >> 1
+	kNewVarLBscope0 <- NewVarLA219 + 1
+	kNewVarLBscope0 <- kNewVarLBscope0 << 1
+	kNewVarLBscope0 <- kNewVarLBscope0 + 1
+	br :NewLabelLB8
+	:endBody2
+	int64 NewVarLA220
+	NewVarLA220 <- jNewVarLBscope0 >> 1
+	jNewVarLBscope0 <- NewVarLA220 + 1
+	jNewVarLBscope0 <- jNewVarLBscope0 << 1
+	jNewVarLBscope0 <- jNewVarLBscope0 + 1
+	br :NewLabelLB7
+	:endBody1
+	int64 NewVarLA221
+	NewVarLA221 <- iNewVarLBscope0 >> 1
+	iNewVarLBscope0 <- NewVarLA221 + 1
 	iNewVarLBscope0 <- iNewVarLBscope0 << 1
 	iNewVarLBscope0 <- iNewVarLBscope0 + 1
-	br :NewLabelLB1
-	:new_label1
+	br :NewLabelLB6
+	:leave
 	return
+}
+
+int64 totalSum (int64[][] m){
+	int64 sumNewVarLBscope0
+	int64 l1NewVarLBscope0
+	int64 l2NewVarLBscope0
+	int64 index1NewVarLBscope0
+	l1NewVarLBscope0 <- length  m 0
+	l2NewVarLBscope0 <- length  m 1
+	index1NewVarLBscope0 <- 1
+	sumNewVarLBscope0 <- 1
+	:NewLabelLB9
+	int64 NewVarLB12
+	int64 NewVarLA222
+	NewVarLA222 <- index1NewVarLBscope0 >> 1
+	int64 NewVarLA223
+	NewVarLA223 <- l1NewVarLBscope0 >> 1
+	NewVarLB12 <- NewVarLA222 < NewVarLA223
+	NewVarLB12 <- NewVarLB12 << 1
+	NewVarLB12 <- NewVarLB12 + 1
+		int64 NewVarLA224
+	NewVarLA224 <- NewVarLB12 >> 1
+br NewVarLA224 :outerBody :leave
+	:outerBody
+	int64 index2NewVarLBscope1
+	index2NewVarLBscope1 <- 1
+	:NewLabelLB10
+	int64 NewVarLB13
+	int64 NewVarLA225
+	NewVarLA225 <- index2NewVarLBscope1 >> 1
+	int64 NewVarLA226
+	NewVarLA226 <- l2NewVarLBscope0 >> 1
+	NewVarLB13 <- NewVarLA225 < NewVarLA226
+	NewVarLB13 <- NewVarLB13 << 1
+	NewVarLB13 <- NewVarLB13 + 1
+		int64 NewVarLA227
+	NewVarLA227 <- NewVarLB13 >> 1
+br NewVarLA227 :innerBody :endOuterBody
+	:innerBody
+	int64 tempNewVarLBscope2
+	int64 NewVarLA228
+	NewVarLA228 <- m = 0
+	br NewVarLA228 :newLabel42F :newLabel42T
+	:newLabel42F
+	array-error(0,0)
+	:newLabel42T
+	int64 NewVarLA229
+	NewVarLA229 <- length m 0
+	NewVarLA229 <- NewVarLA229 >> 1
+	int64 NewVarLA230
+	NewVarLA230 <- index1NewVarLBscope0 >> 1
+	int64 NewVarLA231
+	NewVarLA231 <- NewVarLA230 < NewVarLA229
+	br NewVarLA231 :newLabel43T :newLabel43F
+	:newLabel43F
+	NewVarLA230 <- NewVarLA230 << 1
+	NewVarLA230 <- NewVarLA230 + 1
+	array-error(m,NewVarLA230)
+	:newLabel43T
+	int64 NewVarLA232
+	NewVarLA232 <- length m 1
+	NewVarLA232 <- NewVarLA232 >> 1
+	int64 NewVarLA233
+	NewVarLA233 <- index2NewVarLBscope1 >> 1
+	int64 NewVarLA234
+	NewVarLA234 <- NewVarLA233 < NewVarLA232
+	br NewVarLA234 :newLabel44T :newLabel44F
+	:newLabel44F
+	NewVarLA233 <- NewVarLA233 << 1
+	NewVarLA233 <- NewVarLA233 + 1
+	array-error(m,NewVarLA233)
+	:newLabel44T
+	int64 NewVarLA235
+	NewVarLA235 <- index1NewVarLBscope0 >> 1
+	int64 NewVarLA236
+	NewVarLA236 <- index2NewVarLBscope1 >> 1
+tempNewVarLBscope2 <- m[NewVarLA235][NewVarLA236]
+	int64 NewVarLA237
+	NewVarLA237 <- sumNewVarLBscope0 >> 1
+	int64 NewVarLA238
+	NewVarLA238 <- tempNewVarLBscope2 >> 1
+	sumNewVarLBscope0 <- NewVarLA237 + NewVarLA238
+	sumNewVarLBscope0 <- sumNewVarLBscope0 << 1
+	sumNewVarLBscope0 <- sumNewVarLBscope0 + 1
+	int64 NewVarLA239
+	NewVarLA239 <- index2NewVarLBscope1 >> 1
+	index2NewVarLBscope1 <- NewVarLA239 + 1
+	index2NewVarLBscope1 <- index2NewVarLBscope1 << 1
+	index2NewVarLBscope1 <- index2NewVarLBscope1 + 1
+	br :NewLabelLB10
+	:endOuterBody
+	int64 NewVarLA240
+	NewVarLA240 <- index1NewVarLBscope0 >> 1
+	index1NewVarLBscope0 <- NewVarLA240 + 1
+	index1NewVarLBscope0 <- index1NewVarLBscope0 << 1
+	index1NewVarLBscope0 <- index1NewVarLBscope0 + 1
+	br :NewLabelLB9
+	:leave
+	return sumNewVarLBscope0
 }
 

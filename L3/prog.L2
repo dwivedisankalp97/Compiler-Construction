@@ -1,16 +1,1918 @@
 (:main
 (:main
 0
-	:main_entry
-	cjump 0 = 1 :main_TRUE
-	goto :main_FALSE
-	:main_TRUE
-	rdi <- 3
+	:main_newLabel45
+	%m1NewVarLBscope0 <- 0
+	%m2NewVarLBscope0 <- 0
+	%m3NewVarLBscope0 <- 0
+	%dimNewVarLBscope0 <- 601
+	%newVar1 <- %dimNewVarLBscope0
+	%newVar1 >>= 1
+	%newVar0 <- %newVar1
+	%newVar2 <- %dimNewVarLBscope0
+	%newVar2 >>= 1
+	%newVar0 *= %newVar2
+	%newVar0 <<= 1
+	%newVar0 += 1
+	%newVar0 += 6
+	rdi <- %newVar0
+	rsi <- 1
+	call allocate 2
+	%m1NewVarLBscope0 <- rax
+	%newVar3 <- %m1NewVarLBscope0
+	%newVar3 += 8
+	mem %newVar3 0 <- 5
+	%newVar4 <- %m1NewVarLBscope0
+	%newVar4 += 16
+	mem %newVar4 0 <- %dimNewVarLBscope0
+	%newVar5 <- %m1NewVarLBscope0
+	%newVar5 += 24
+	mem %newVar5 0 <- %dimNewVarLBscope0
+	%newVar7 <- %dimNewVarLBscope0
+	%newVar7 >>= 1
+	%newVar6 <- %newVar7
+	%newVar8 <- %dimNewVarLBscope0
+	%newVar8 >>= 1
+	%newVar6 *= %newVar8
+	%newVar6 <<= 1
+	%newVar6 += 1
+	%newVar6 += 6
+	rdi <- %newVar6
+	rsi <- 1
+	call allocate 2
+	%m2NewVarLBscope0 <- rax
+	%newVar9 <- %m2NewVarLBscope0
+	%newVar9 += 8
+	mem %newVar9 0 <- 5
+	%newVar10 <- %m2NewVarLBscope0
+	%newVar10 += 16
+	mem %newVar10 0 <- %dimNewVarLBscope0
+	%newVar11 <- %m2NewVarLBscope0
+	%newVar11 += 24
+	mem %newVar11 0 <- %dimNewVarLBscope0
+	%newVar13 <- %dimNewVarLBscope0
+	%newVar13 >>= 1
+	%newVar12 <- %newVar13
+	%newVar14 <- %dimNewVarLBscope0
+	%newVar14 >>= 1
+	%newVar12 *= %newVar14
+	%newVar12 <<= 1
+	%newVar12 += 1
+	%newVar12 += 6
+	rdi <- %newVar12
+	rsi <- 1
+	call allocate 2
+	%m3NewVarLBscope0 <- rax
+	%newVar15 <- %m3NewVarLBscope0
+	%newVar15 += 8
+	mem %newVar15 0 <- 5
+	%newVar16 <- %m3NewVarLBscope0
+	%newVar16 += 16
+	mem %newVar16 0 <- %dimNewVarLBscope0
+	%newVar17 <- %m3NewVarLBscope0
+	%newVar17 += 24
+	mem %newVar17 0 <- %dimNewVarLBscope0
+	mem rsp -8 <- :main_ret3
+	rdi <- %m1NewVarLBscope0
+	rsi <- %m2NewVarLBscope0
+	rdx <- %m3NewVarLBscope0
+	rcx <- 1
+	call :computeAndPrint 4
+	:main_ret3
+	return
+)
+
+(:computeAndPrint
+4
+	%m1 <- rdi
+	%m2 <- rsi
+	%m3 <- rdx
+	%v1 <- rcx
+	:computeAndPrint_newLabel46
+	mem rsp -8 <- :computeAndPrint_ret0
+	rdi <- %m1
+	rsi <- %v1
+	call :initMatrix 2
+	:computeAndPrint_ret0
+	mem rsp -8 <- :computeAndPrint_ret1
+	rdi <- %m2
+	rsi <- %v1
+	call :initMatrix 2
+	:computeAndPrint_ret1
+	mem rsp -8 <- :computeAndPrint_ret2
+	rdi <- %m1
+	rsi <- %m2
+	rdx <- %m3
+	call :matrixMultiplication 3
+	:computeAndPrint_ret2
+	mem rsp -8 <- :computeAndPrint_ret3
+	rdi <- %m1
+	call :totalSum 1
+	:computeAndPrint_ret3
+	%tNewVarLBscope0 <- rax
+	rdi <- %tNewVarLBscope0
+	call print 1
+	mem rsp -8 <- :computeAndPrint_ret5
+	rdi <- %m2
+	call :totalSum 1
+	:computeAndPrint_ret5
+	%tNewVarLBscope0 <- rax
+	rdi <- %tNewVarLBscope0
+	call print 1
+	mem rsp -8 <- :computeAndPrint_ret7
+	rdi <- %m3
+	call :totalSum 1
+	:computeAndPrint_ret7
+	%tNewVarLBscope0 <- rax
+	rdi <- %tNewVarLBscope0
 	call print 1
 	return
-	:main_FALSE
-	rdi <- 5
-	call print 1
+)
+
+(:initMatrix
+2
+	%m <- rdi
+	%initValue <- rsi
+	:initMatrix_newLabel47
+	%newVar0 <- 0
+	%newVar0 *= 8
+	%newVar1 <- %newVar0
+	%newVar1 += 16
+	%newVar2 <- %m
+	%newVar2 += %newVar1
+	%l1NewVarLBscope0 <- mem %newVar2 0
+	%newVar3 <- 1
+	%newVar3 *= 8
+	%newVar4 <- %newVar3
+	%newVar4 += 16
+	%newVar5 <- %m
+	%newVar5 += %newVar4
+	%l2NewVarLBscope0 <- mem %newVar5 0
+	%index1NewVarLBscope0 <- 1
+	goto :initMatrix_NewLabelLB1
+	:initMatrix_NewLabelLB1
+	%NewVarLA0 <- %index1NewVarLBscope0
+	%NewVarLA0 >>= 1
+	%NewVarLA1 <- %l1NewVarLBscope0
+	%NewVarLA1 >>= 1
+	%NewVarLB1 <- %NewVarLA0 < %NewVarLA1
+	%NewVarLB1 <<= 1
+	%NewVarLB1 += 1
+	%NewVarLA2 <- %NewVarLB1
+	%NewVarLA2 >>= 1
+	cjump %NewVarLA2 = 1 :initMatrix_outerBody
+	goto :initMatrix_leave
+	:initMatrix_outerBody
+	%index2NewVarLBscope1 <- 1
+	goto :initMatrix_NewLabelLB2
+	:initMatrix_NewLabelLB2
+	%NewVarLA3 <- %index2NewVarLBscope1
+	%NewVarLA3 >>= 1
+	%NewVarLA4 <- %l2NewVarLBscope0
+	%NewVarLA4 >>= 1
+	%NewVarLB2 <- %NewVarLA3 < %NewVarLA4
+	%NewVarLB2 <<= 1
+	%NewVarLB2 += 1
+	%NewVarLA5 <- %NewVarLB2
+	%NewVarLA5 >>= 1
+	cjump %NewVarLA5 = 1 :initMatrix_innerBody
+	goto :initMatrix_endOuterBody
+	:initMatrix_innerBody
+	%NewVarLA6 <- %initValue
+	%NewVarLA6 >>= 1
+	%NewVarLA7 <- %index1NewVarLBscope0
+	%NewVarLA7 >>= 1
+	%valueToStoreNewVarLBscope2 <- %NewVarLA6
+	%valueToStoreNewVarLBscope2 += %NewVarLA7
+	%valueToStoreNewVarLBscope2 <<= 1
+	%valueToStoreNewVarLBscope2 += 1
+	%NewVarLA8 <- %valueToStoreNewVarLBscope2
+	%NewVarLA8 >>= 1
+	%NewVarLA9 <- %index2NewVarLBscope1
+	%NewVarLA9 >>= 1
+	%valueToStoreNewVarLBscope2 <- %NewVarLA8
+	%valueToStoreNewVarLBscope2 += %NewVarLA9
+	%valueToStoreNewVarLBscope2 <<= 1
+	%valueToStoreNewVarLBscope2 += 1
+	%NewVarLA10 <- %m = 0
+	cjump %NewVarLA10 = 1 :initMatrix_newLabel0F
+	goto :initMatrix_newLabel0T
+	:initMatrix_newLabel0F
+	rdi <- 0
+	rsi <- 0
+	call array-error 2
+	goto :initMatrix_newLabel0T
+	:initMatrix_newLabel0T
+	%newVar6 <- 0
+	%newVar6 *= 8
+	%newVar7 <- %newVar6
+	%newVar7 += 16
+	%newVar8 <- %m
+	%newVar8 += %newVar7
+	%NewVarLA11 <- mem %newVar8 0
+	%NewVarLA11 >>= 1
+	%NewVarLA12 <- %index1NewVarLBscope0
+	%NewVarLA12 >>= 1
+	%NewVarLA13 <- %NewVarLA12 < %NewVarLA11
+	cjump %NewVarLA13 = 1 :initMatrix_newLabel1T
+	goto :initMatrix_newLabel1F
+	:initMatrix_newLabel1T
+	%newVar9 <- 1
+	%newVar9 *= 8
+	%newVar10 <- %newVar9
+	%newVar10 += 16
+	%newVar11 <- %m
+	%newVar11 += %newVar10
+	%NewVarLA14 <- mem %newVar11 0
+	%NewVarLA14 >>= 1
+	%NewVarLA15 <- %index2NewVarLBscope1
+	%NewVarLA15 >>= 1
+	%NewVarLA16 <- %NewVarLA15 < %NewVarLA14
+	cjump %NewVarLA16 = 1 :initMatrix_newLabel2T
+	goto :initMatrix_newLabel2F
+	:initMatrix_newLabel2T
+	%NewVarLA17 <- %index1NewVarLBscope0
+	%NewVarLA17 >>= 1
+	%NewVarLA18 <- %index2NewVarLBscope1
+	%NewVarLA18 >>= 1
+	%newVar12 <- %m
+	%newVar12 += 24
+	%newVar13 <- mem %newVar12 0
+	%newVar14 <- %newVar13
+	%newVar14 >>= 1
+	%newVar15 <- 1
+	%newVar15 *= %newVar14
+	%newVar15 *= %NewVarLA17
+	%newVar16 <- 1
+	%newVar16 *= %NewVarLA18
+	%newVar17 <- 0
+	%newVar17 += %newVar15
+	%newVar17 += %newVar16
+	%newVar17 *= 8
+	%newVar17 += 32
+	%newVar18 <- %m
+	%newVar18 += %newVar17
+	mem %newVar18 0 <- %valueToStoreNewVarLBscope2
+	%NewVarLA19 <- %index2NewVarLBscope1
+	%NewVarLA19 >>= 1
+	%index2NewVarLBscope1 <- %NewVarLA19
+	%index2NewVarLBscope1 += 1
+	%index2NewVarLBscope1 <<= 1
+	%index2NewVarLBscope1 += 1
+	goto :initMatrix_NewLabelLB2
+	:initMatrix_newLabel1F
+	%NewVarLA12 <<= 1
+	%NewVarLA12 += 1
+	rdi <- %m
+	rsi <- %NewVarLA12
+	call array-error 2
+	goto :initMatrix_newLabel1T
+	:initMatrix_newLabel2F
+	%NewVarLA15 <<= 1
+	%NewVarLA15 += 1
+	rdi <- %m
+	rsi <- %NewVarLA15
+	call array-error 2
+	goto :initMatrix_newLabel2T
+	:initMatrix_endOuterBody
+	%NewVarLA20 <- %index1NewVarLBscope0
+	%NewVarLA20 >>= 1
+	%index1NewVarLBscope0 <- %NewVarLA20
+	%index1NewVarLBscope0 += 1
+	%index1NewVarLBscope0 <<= 1
+	%index1NewVarLBscope0 += 1
+	goto :initMatrix_NewLabelLB1
+	:initMatrix_leave
+	return
+)
+
+(:matrixMultiplication
+3
+	%m1 <- rdi
+	%m2 <- rsi
+	%m3 <- rdx
+	:matrixMultiplication_newLabel48
+	%newVar0 <- 0
+	%newVar0 *= 8
+	%newVar1 <- %newVar0
+	%newVar1 += 16
+	%newVar2 <- %m1
+	%newVar2 += %newVar1
+	%m1_l1NewVarLBscope0 <- mem %newVar2 0
+	%newVar3 <- 1
+	%newVar3 *= 8
+	%newVar4 <- %newVar3
+	%newVar4 += 16
+	%newVar5 <- %m1
+	%newVar5 += %newVar4
+	%m1_l2NewVarLBscope0 <- mem %newVar5 0
+	%newVar6 <- 0
+	%newVar6 *= 8
+	%newVar7 <- %newVar6
+	%newVar7 += 16
+	%newVar8 <- %m2
+	%newVar8 += %newVar7
+	%m2_l1NewVarLBscope0 <- mem %newVar8 0
+	%newVar9 <- 1
+	%newVar9 *= 8
+	%newVar10 <- %newVar9
+	%newVar10 += 16
+	%newVar11 <- %m2
+	%newVar11 += %newVar10
+	%m2_l2NewVarLBscope0 <- mem %newVar11 0
+	%newVar12 <- 0
+	%newVar12 *= 8
+	%newVar13 <- %newVar12
+	%newVar13 += 16
+	%newVar14 <- %m3
+	%newVar14 += %newVar13
+	%m3_l1NewVarLBscope0 <- mem %newVar14 0
+	%newVar15 <- 1
+	%newVar15 *= 8
+	%newVar16 <- %newVar15
+	%newVar16 += 16
+	%newVar17 <- %m3
+	%newVar17 += %newVar16
+	%m3_l2NewVarLBscope0 <- mem %newVar17 0
+	%NewVarLA21 <- %m1_l2NewVarLBscope0
+	%NewVarLA21 >>= 1
+	%NewVarLA22 <- %m2_l1NewVarLBscope0
+	%NewVarLA22 >>= 1
+	%NewVarLB3 <- %NewVarLA21 = %NewVarLA22
+	%NewVarLB3 <<= 1
+	%NewVarLB3 += 1
+	%NewVarLA23 <- %NewVarLB3
+	%NewVarLA23 >>= 1
+	cjump %NewVarLA23 = 1 :matrixMultiplication_go1
+	goto :matrixMultiplication_leave
+	:matrixMultiplication_go1
+	%NewVarLA24 <- %m3_l1NewVarLBscope0
+	%NewVarLA24 >>= 1
+	%NewVarLA25 <- %m1_l1NewVarLBscope0
+	%NewVarLA25 >>= 1
+	%NewVarLB4 <- %NewVarLA24 = %NewVarLA25
+	%NewVarLB4 <<= 1
+	%NewVarLB4 += 1
+	%NewVarLA26 <- %NewVarLB4
+	%NewVarLA26 >>= 1
+	cjump %NewVarLA26 = 1 :matrixMultiplication_go2
+	goto :matrixMultiplication_leave
+	:matrixMultiplication_go2
+	%NewVarLA27 <- %m3_l2NewVarLBscope0
+	%NewVarLA27 >>= 1
+	%NewVarLA28 <- %m2_l2NewVarLBscope0
+	%NewVarLA28 >>= 1
+	%NewVarLB5 <- %NewVarLA27 = %NewVarLA28
+	%NewVarLB5 <<= 1
+	%NewVarLB5 += 1
+	%NewVarLA29 <- %NewVarLB5
+	%NewVarLA29 >>= 1
+	cjump %NewVarLA29 = 1 :matrixMultiplication_go
+	goto :matrixMultiplication_leave
+	:matrixMultiplication_go
+	%iNewVarLBscope1 <- 1
+	goto :matrixMultiplication_NewLabelLB3
+	:matrixMultiplication_NewLabelLB3
+	%NewVarLA30 <- %iNewVarLBscope1
+	%NewVarLA30 >>= 1
+	%NewVarLA31 <- %m1_l1NewVarLBscope0
+	%NewVarLA31 >>= 1
+	%NewVarLB6 <- %NewVarLA30 < %NewVarLA31
+	%NewVarLB6 <<= 1
+	%NewVarLB6 += 1
+	%NewVarLA32 <- %NewVarLB6
+	%NewVarLA32 >>= 1
+	cjump %NewVarLA32 = 1 :matrixMultiplication_body1_init
+	goto :matrixMultiplication_done_init
+	:matrixMultiplication_body1_init
+	%jNewVarLBscope1 <- 1
+	goto :matrixMultiplication_NewLabelLB4
+	:matrixMultiplication_NewLabelLB4
+	%NewVarLA33 <- %jNewVarLBscope1
+	%NewVarLA33 >>= 1
+	%NewVarLA34 <- %m2_l2NewVarLBscope0
+	%NewVarLA34 >>= 1
+	%NewVarLB7 <- %NewVarLA33 < %NewVarLA34
+	%NewVarLB7 <<= 1
+	%NewVarLB7 += 1
+	%NewVarLA35 <- %NewVarLB7
+	%NewVarLA35 >>= 1
+	cjump %NewVarLA35 = 1 :matrixMultiplication_body2_init
+	goto :matrixMultiplication_endBody1_init
+	:matrixMultiplication_body2_init
+	%kNewVarLBscope1 <- 1
+	goto :matrixMultiplication_NewLabelLB5
+	:matrixMultiplication_NewLabelLB5
+	%NewVarLA36 <- %kNewVarLBscope1
+	%NewVarLA36 >>= 1
+	%NewVarLA37 <- %m1_l2NewVarLBscope0
+	%NewVarLA37 >>= 1
+	%NewVarLB8 <- %NewVarLA36 < %NewVarLA37
+	%NewVarLB8 <<= 1
+	%NewVarLB8 += 1
+	%NewVarLA38 <- %NewVarLB8
+	%NewVarLA38 >>= 1
+	cjump %NewVarLA38 = 1 :matrixMultiplication_body3_init
+	goto :matrixMultiplication_endBody2_init
+	:matrixMultiplication_body3_init
+	%tmpNewVarLBscope4 <- 3
+	%NewVarLA39 <- %tmpNewVarLBscope4
+	%NewVarLA39 >>= 1
+	%tmpNewVarLBscope4 <- %NewVarLA39
+	%tmpNewVarLBscope4 *= 4
+	%tmpNewVarLBscope4 <<= 1
+	%tmpNewVarLBscope4 += 1
+	%NewVarLA40 <- %tmpNewVarLBscope4
+	%NewVarLA40 >>= 1
+	%tmpNewVarLBscope4 <- %NewVarLA40
+	%tmpNewVarLBscope4 += 2
+	%tmpNewVarLBscope4 <<= 1
+	%tmpNewVarLBscope4 += 1
+	%NewVarLA41 <- %tmpNewVarLBscope4
+	%NewVarLA41 >>= 1
+	%tmpNewVarLBscope4 <- %NewVarLA41
+	%tmpNewVarLBscope4 *= 8
+	%tmpNewVarLBscope4 <<= 1
+	%tmpNewVarLBscope4 += 1
+	%NewVarLA42 <- %m3 = 0
+	cjump %NewVarLA42 = 1 :matrixMultiplication_newLabel3F
+	goto :matrixMultiplication_newLabel3T
+	:matrixMultiplication_newLabel3F
+	rdi <- 0
+	rsi <- 0
+	call array-error 2
+	goto :matrixMultiplication_newLabel3T
+	:matrixMultiplication_newLabel3T
+	%newVar18 <- 0
+	%newVar18 *= 8
+	%newVar19 <- %newVar18
+	%newVar19 += 16
+	%newVar20 <- %m3
+	%newVar20 += %newVar19
+	%NewVarLA43 <- mem %newVar20 0
+	%NewVarLA43 >>= 1
+	%NewVarLA44 <- %iNewVarLBscope1
+	%NewVarLA44 >>= 1
+	%NewVarLA45 <- %NewVarLA44 < %NewVarLA43
+	cjump %NewVarLA45 = 1 :matrixMultiplication_newLabel4T
+	goto :matrixMultiplication_newLabel4F
+	:matrixMultiplication_newLabel4T
+	%newVar21 <- 1
+	%newVar21 *= 8
+	%newVar22 <- %newVar21
+	%newVar22 += 16
+	%newVar23 <- %m3
+	%newVar23 += %newVar22
+	%NewVarLA46 <- mem %newVar23 0
+	%NewVarLA46 >>= 1
+	%NewVarLA47 <- %jNewVarLBscope1
+	%NewVarLA47 >>= 1
+	%NewVarLA48 <- %NewVarLA47 < %NewVarLA46
+	cjump %NewVarLA48 = 1 :matrixMultiplication_newLabel5T
+	goto :matrixMultiplication_newLabel5F
+	:matrixMultiplication_newLabel5T
+	%NewVarLA49 <- %iNewVarLBscope1
+	%NewVarLA49 >>= 1
+	%NewVarLA50 <- %jNewVarLBscope1
+	%NewVarLA50 >>= 1
+	%newVar24 <- %m3
+	%newVar24 += 24
+	%newVar25 <- mem %newVar24 0
+	%newVar26 <- %newVar25
+	%newVar26 >>= 1
+	%newVar27 <- 1
+	%newVar27 *= %newVar26
+	%newVar27 *= %NewVarLA49
+	%newVar28 <- 1
+	%newVar28 *= %NewVarLA50
+	%newVar29 <- 0
+	%newVar29 += %newVar27
+	%newVar29 += %newVar28
+	%newVar29 *= 8
+	%newVar29 += 32
+	%newVar30 <- %m3
+	%newVar30 += %newVar29
+	mem %newVar30 0 <- 1
+	%NewVarLA51 <- %m3 = 0
+	cjump %NewVarLA51 = 1 :matrixMultiplication_newLabel6F
+	goto :matrixMultiplication_newLabel6T
+	:matrixMultiplication_newLabel6F
+	rdi <- 0
+	rsi <- 0
+	call array-error 2
+	goto :matrixMultiplication_newLabel6T
+	:matrixMultiplication_newLabel6T
+	%newVar31 <- 0
+	%newVar31 *= 8
+	%newVar32 <- %newVar31
+	%newVar32 += 16
+	%newVar33 <- %m3
+	%newVar33 += %newVar32
+	%NewVarLA52 <- mem %newVar33 0
+	%NewVarLA52 >>= 1
+	%NewVarLA53 <- %iNewVarLBscope1
+	%NewVarLA53 >>= 1
+	%NewVarLA54 <- %NewVarLA53 < %NewVarLA52
+	cjump %NewVarLA54 = 1 :matrixMultiplication_newLabel7T
+	goto :matrixMultiplication_newLabel7F
+	:matrixMultiplication_newLabel7T
+	%newVar34 <- 1
+	%newVar34 *= 8
+	%newVar35 <- %newVar34
+	%newVar35 += 16
+	%newVar36 <- %m3
+	%newVar36 += %newVar35
+	%NewVarLA55 <- mem %newVar36 0
+	%NewVarLA55 >>= 1
+	%NewVarLA56 <- %jNewVarLBscope1
+	%NewVarLA56 >>= 1
+	%NewVarLA57 <- %NewVarLA56 < %NewVarLA55
+	cjump %NewVarLA57 = 1 :matrixMultiplication_newLabel8T
+	goto :matrixMultiplication_newLabel8F
+	:matrixMultiplication_newLabel8T
+	%NewVarLA58 <- %iNewVarLBscope1
+	%NewVarLA58 >>= 1
+	%NewVarLA59 <- %jNewVarLBscope1
+	%NewVarLA59 >>= 1
+	%newVar37 <- %m3
+	%newVar37 += 24
+	%newVar38 <- mem %newVar37 0
+	%newVar39 <- %newVar38
+	%newVar39 >>= 1
+	%newVar40 <- 1
+	%newVar40 *= %newVar39
+	%newVar40 *= %NewVarLA58
+	%newVar41 <- 1
+	%newVar41 *= %NewVarLA59
+	%newVar42 <- 0
+	%newVar42 += %newVar40
+	%newVar42 += %newVar41
+	%newVar42 *= 8
+	%newVar42 += 32
+	%newVar43 <- %m3
+	%newVar43 += %newVar42
+	%tmpNewVarLBscope4 <- mem %newVar43 0
+	%NewVarLA60 <- %tmpNewVarLBscope4
+	%NewVarLA60 >>= 1
+	%tmpNewVarLBscope4 <- %NewVarLA60
+	%tmpNewVarLBscope4 += 4
+	%tmpNewVarLBscope4 <<= 1
+	%tmpNewVarLBscope4 += 1
+	%NewVarLA61 <- %m3 = 0
+	cjump %NewVarLA61 = 1 :matrixMultiplication_newLabel9F
+	goto :matrixMultiplication_newLabel9T
+	:matrixMultiplication_newLabel9F
+	rdi <- 0
+	rsi <- 0
+	call array-error 2
+	goto :matrixMultiplication_newLabel9T
+	:matrixMultiplication_newLabel9T
+	%newVar44 <- 0
+	%newVar44 *= 8
+	%newVar45 <- %newVar44
+	%newVar45 += 16
+	%newVar46 <- %m3
+	%newVar46 += %newVar45
+	%NewVarLA62 <- mem %newVar46 0
+	%NewVarLA62 >>= 1
+	%NewVarLA63 <- %iNewVarLBscope1
+	%NewVarLA63 >>= 1
+	%NewVarLA64 <- %NewVarLA63 < %NewVarLA62
+	cjump %NewVarLA64 = 1 :matrixMultiplication_newLabel10T
+	goto :matrixMultiplication_newLabel10F
+	:matrixMultiplication_newLabel10T
+	%newVar47 <- 1
+	%newVar47 *= 8
+	%newVar48 <- %newVar47
+	%newVar48 += 16
+	%newVar49 <- %m3
+	%newVar49 += %newVar48
+	%NewVarLA65 <- mem %newVar49 0
+	%NewVarLA65 >>= 1
+	%NewVarLA66 <- %jNewVarLBscope1
+	%NewVarLA66 >>= 1
+	%NewVarLA67 <- %NewVarLA66 < %NewVarLA65
+	cjump %NewVarLA67 = 1 :matrixMultiplication_newLabel11T
+	goto :matrixMultiplication_newLabel11F
+	:matrixMultiplication_newLabel11T
+	%NewVarLA68 <- %iNewVarLBscope1
+	%NewVarLA68 >>= 1
+	%NewVarLA69 <- %jNewVarLBscope1
+	%NewVarLA69 >>= 1
+	%newVar50 <- %m3
+	%newVar50 += 24
+	%newVar51 <- mem %newVar50 0
+	%newVar52 <- %newVar51
+	%newVar52 >>= 1
+	%newVar53 <- 1
+	%newVar53 *= %newVar52
+	%newVar53 *= %NewVarLA68
+	%newVar54 <- 1
+	%newVar54 *= %NewVarLA69
+	%newVar55 <- 0
+	%newVar55 += %newVar53
+	%newVar55 += %newVar54
+	%newVar55 *= 8
+	%newVar55 += 32
+	%newVar56 <- %m3
+	%newVar56 += %newVar55
+	mem %newVar56 0 <- %tmpNewVarLBscope4
+	%NewVarLA70 <- %m3 = 0
+	cjump %NewVarLA70 = 1 :matrixMultiplication_newLabel12F
+	goto :matrixMultiplication_newLabel12T
+	:matrixMultiplication_newLabel12F
+	rdi <- 0
+	rsi <- 0
+	call array-error 2
+	goto :matrixMultiplication_newLabel12T
+	:matrixMultiplication_newLabel12T
+	%newVar57 <- 0
+	%newVar57 *= 8
+	%newVar58 <- %newVar57
+	%newVar58 += 16
+	%newVar59 <- %m3
+	%newVar59 += %newVar58
+	%NewVarLA71 <- mem %newVar59 0
+	%NewVarLA71 >>= 1
+	%NewVarLA72 <- %iNewVarLBscope1
+	%NewVarLA72 >>= 1
+	%NewVarLA73 <- %NewVarLA72 < %NewVarLA71
+	cjump %NewVarLA73 = 1 :matrixMultiplication_newLabel13T
+	goto :matrixMultiplication_newLabel13F
+	:matrixMultiplication_newLabel13T
+	%newVar60 <- 1
+	%newVar60 *= 8
+	%newVar61 <- %newVar60
+	%newVar61 += 16
+	%newVar62 <- %m3
+	%newVar62 += %newVar61
+	%NewVarLA74 <- mem %newVar62 0
+	%NewVarLA74 >>= 1
+	%NewVarLA75 <- %jNewVarLBscope1
+	%NewVarLA75 >>= 1
+	%NewVarLA76 <- %NewVarLA75 < %NewVarLA74
+	cjump %NewVarLA76 = 1 :matrixMultiplication_newLabel14T
+	goto :matrixMultiplication_newLabel14F
+	:matrixMultiplication_newLabel14T
+	%NewVarLA77 <- %iNewVarLBscope1
+	%NewVarLA77 >>= 1
+	%NewVarLA78 <- %jNewVarLBscope1
+	%NewVarLA78 >>= 1
+	%newVar63 <- %m3
+	%newVar63 += 24
+	%newVar64 <- mem %newVar63 0
+	%newVar65 <- %newVar64
+	%newVar65 >>= 1
+	%newVar66 <- 1
+	%newVar66 *= %newVar65
+	%newVar66 *= %NewVarLA77
+	%newVar67 <- 1
+	%newVar67 *= %NewVarLA78
+	%newVar68 <- 0
+	%newVar68 += %newVar66
+	%newVar68 += %newVar67
+	%newVar68 *= 8
+	%newVar68 += 32
+	%newVar69 <- %m3
+	%newVar69 += %newVar68
+	%tmpNewVarLBscope4 <- mem %newVar69 0
+	%NewVarLA79 <- %tmpNewVarLBscope4
+	%NewVarLA79 >>= 1
+	%tmpNewVarLBscope4 <- %NewVarLA79
+	%tmpNewVarLBscope4 *= 4
+	%tmpNewVarLBscope4 <<= 1
+	%tmpNewVarLBscope4 += 1
+	%NewVarLA80 <- %m3 = 0
+	cjump %NewVarLA80 = 1 :matrixMultiplication_newLabel15F
+	goto :matrixMultiplication_newLabel15T
+	:matrixMultiplication_newLabel15F
+	rdi <- 0
+	rsi <- 0
+	call array-error 2
+	goto :matrixMultiplication_newLabel15T
+	:matrixMultiplication_newLabel15T
+	%newVar70 <- 0
+	%newVar70 *= 8
+	%newVar71 <- %newVar70
+	%newVar71 += 16
+	%newVar72 <- %m3
+	%newVar72 += %newVar71
+	%NewVarLA81 <- mem %newVar72 0
+	%NewVarLA81 >>= 1
+	%NewVarLA82 <- %iNewVarLBscope1
+	%NewVarLA82 >>= 1
+	%NewVarLA83 <- %NewVarLA82 < %NewVarLA81
+	cjump %NewVarLA83 = 1 :matrixMultiplication_newLabel16T
+	goto :matrixMultiplication_newLabel16F
+	:matrixMultiplication_newLabel16T
+	%newVar73 <- 1
+	%newVar73 *= 8
+	%newVar74 <- %newVar73
+	%newVar74 += 16
+	%newVar75 <- %m3
+	%newVar75 += %newVar74
+	%NewVarLA84 <- mem %newVar75 0
+	%NewVarLA84 >>= 1
+	%NewVarLA85 <- %jNewVarLBscope1
+	%NewVarLA85 >>= 1
+	%NewVarLA86 <- %NewVarLA85 < %NewVarLA84
+	cjump %NewVarLA86 = 1 :matrixMultiplication_newLabel17T
+	goto :matrixMultiplication_newLabel17F
+	:matrixMultiplication_newLabel17T
+	%NewVarLA87 <- %iNewVarLBscope1
+	%NewVarLA87 >>= 1
+	%NewVarLA88 <- %jNewVarLBscope1
+	%NewVarLA88 >>= 1
+	%newVar76 <- %m3
+	%newVar76 += 24
+	%newVar77 <- mem %newVar76 0
+	%newVar78 <- %newVar77
+	%newVar78 >>= 1
+	%newVar79 <- 1
+	%newVar79 *= %newVar78
+	%newVar79 *= %NewVarLA87
+	%newVar80 <- 1
+	%newVar80 *= %NewVarLA88
+	%newVar81 <- 0
+	%newVar81 += %newVar79
+	%newVar81 += %newVar80
+	%newVar81 *= 8
+	%newVar81 += 32
+	%newVar82 <- %m3
+	%newVar82 += %newVar81
+	mem %newVar82 0 <- %tmpNewVarLBscope4
+	%NewVarLA89 <- %kNewVarLBscope1
+	%NewVarLA89 >>= 1
+	%kNewVarLBscope1 <- %NewVarLA89
+	%kNewVarLBscope1 += 1
+	%kNewVarLBscope1 <<= 1
+	%kNewVarLBscope1 += 1
+	goto :matrixMultiplication_NewLabelLB5
+	:matrixMultiplication_newLabel4F
+	%NewVarLA44 <<= 1
+	%NewVarLA44 += 1
+	rdi <- %m3
+	rsi <- %NewVarLA44
+	call array-error 2
+	goto :matrixMultiplication_newLabel4T
+	:matrixMultiplication_newLabel5F
+	%NewVarLA47 <<= 1
+	%NewVarLA47 += 1
+	rdi <- %m3
+	rsi <- %NewVarLA47
+	call array-error 2
+	goto :matrixMultiplication_newLabel5T
+	:matrixMultiplication_newLabel7F
+	%NewVarLA53 <<= 1
+	%NewVarLA53 += 1
+	rdi <- %m3
+	rsi <- %NewVarLA53
+	call array-error 2
+	goto :matrixMultiplication_newLabel7T
+	:matrixMultiplication_newLabel8F
+	%NewVarLA56 <<= 1
+	%NewVarLA56 += 1
+	rdi <- %m3
+	rsi <- %NewVarLA56
+	call array-error 2
+	goto :matrixMultiplication_newLabel8T
+	:matrixMultiplication_newLabel10F
+	%NewVarLA63 <<= 1
+	%NewVarLA63 += 1
+	rdi <- %m3
+	rsi <- %NewVarLA63
+	call array-error 2
+	goto :matrixMultiplication_newLabel10T
+	:matrixMultiplication_newLabel11F
+	%NewVarLA66 <<= 1
+	%NewVarLA66 += 1
+	rdi <- %m3
+	rsi <- %NewVarLA66
+	call array-error 2
+	goto :matrixMultiplication_newLabel11T
+	:matrixMultiplication_newLabel13F
+	%NewVarLA72 <<= 1
+	%NewVarLA72 += 1
+	rdi <- %m3
+	rsi <- %NewVarLA72
+	call array-error 2
+	goto :matrixMultiplication_newLabel13T
+	:matrixMultiplication_newLabel14F
+	%NewVarLA75 <<= 1
+	%NewVarLA75 += 1
+	rdi <- %m3
+	rsi <- %NewVarLA75
+	call array-error 2
+	goto :matrixMultiplication_newLabel14T
+	:matrixMultiplication_newLabel16F
+	%NewVarLA82 <<= 1
+	%NewVarLA82 += 1
+	rdi <- %m3
+	rsi <- %NewVarLA82
+	call array-error 2
+	goto :matrixMultiplication_newLabel16T
+	:matrixMultiplication_newLabel17F
+	%NewVarLA85 <<= 1
+	%NewVarLA85 += 1
+	rdi <- %m3
+	rsi <- %NewVarLA85
+	call array-error 2
+	goto :matrixMultiplication_newLabel17T
+	:matrixMultiplication_endBody2_init
+	%NewVarLA90 <- %jNewVarLBscope1
+	%NewVarLA90 >>= 1
+	%jNewVarLBscope1 <- %NewVarLA90
+	%jNewVarLBscope1 += 1
+	%jNewVarLBscope1 <<= 1
+	%jNewVarLBscope1 += 1
+	goto :matrixMultiplication_NewLabelLB4
+	:matrixMultiplication_endBody1_init
+	%NewVarLA91 <- %iNewVarLBscope1
+	%NewVarLA91 >>= 1
+	%iNewVarLBscope1 <- %NewVarLA91
+	%iNewVarLBscope1 += 1
+	%iNewVarLBscope1 <<= 1
+	%iNewVarLBscope1 += 1
+	goto :matrixMultiplication_NewLabelLB3
+	:matrixMultiplication_done_init
+	%iNewVarLBscope0 <- 1
+	%totNewVarLBscope0 <- 1
+	goto :matrixMultiplication_NewLabelLB6
+	:matrixMultiplication_NewLabelLB6
+	%NewVarLA92 <- %iNewVarLBscope0
+	%NewVarLA92 >>= 1
+	%NewVarLA93 <- %m1_l1NewVarLBscope0
+	%NewVarLA93 >>= 1
+	%NewVarLB9 <- %NewVarLA92 < %NewVarLA93
+	%NewVarLB9 <<= 1
+	%NewVarLB9 += 1
+	%NewVarLA94 <- %NewVarLB9
+	%NewVarLA94 >>= 1
+	cjump %NewVarLA94 = 1 :matrixMultiplication_body1
+	goto :matrixMultiplication_leave
+	:matrixMultiplication_body1
+	%jNewVarLBscope0 <- 1
+	goto :matrixMultiplication_NewLabelLB7
+	:matrixMultiplication_NewLabelLB7
+	%NewVarLA95 <- %jNewVarLBscope0
+	%NewVarLA95 >>= 1
+	%NewVarLA96 <- %m2_l2NewVarLBscope0
+	%NewVarLA96 >>= 1
+	%NewVarLB10 <- %NewVarLA95 < %NewVarLA96
+	%NewVarLB10 <<= 1
+	%NewVarLB10 += 1
+	%NewVarLA97 <- %NewVarLB10
+	%NewVarLA97 >>= 1
+	cjump %NewVarLA97 = 1 :matrixMultiplication_body2
+	goto :matrixMultiplication_endBody1
+	:matrixMultiplication_body2
+	%kNewVarLBscope0 <- 1
+	goto :matrixMultiplication_NewLabelLB8
+	:matrixMultiplication_NewLabelLB8
+	%NewVarLA98 <- %kNewVarLBscope0
+	%NewVarLA98 >>= 1
+	%NewVarLA99 <- %m1_l2NewVarLBscope0
+	%NewVarLA99 >>= 1
+	%NewVarLB11 <- %NewVarLA98 < %NewVarLA99
+	%NewVarLB11 <<= 1
+	%NewVarLB11 += 1
+	%NewVarLA100 <- %NewVarLB11
+	%NewVarLA100 >>= 1
+	cjump %NewVarLA100 = 1 :matrixMultiplication_body3
+	goto :matrixMultiplication_endBody2
+	:matrixMultiplication_body3
+	%NewVarLA101 <- %m1 = 0
+	cjump %NewVarLA101 = 1 :matrixMultiplication_newLabel18F
+	goto :matrixMultiplication_newLabel18T
+	:matrixMultiplication_newLabel18F
+	rdi <- 0
+	rsi <- 0
+	call array-error 2
+	goto :matrixMultiplication_newLabel18T
+	:matrixMultiplication_newLabel18T
+	%newVar83 <- 0
+	%newVar83 *= 8
+	%newVar84 <- %newVar83
+	%newVar84 += 16
+	%newVar85 <- %m1
+	%newVar85 += %newVar84
+	%NewVarLA102 <- mem %newVar85 0
+	%NewVarLA102 >>= 1
+	%NewVarLA103 <- %iNewVarLBscope0
+	%NewVarLA103 >>= 1
+	%NewVarLA104 <- %NewVarLA103 < %NewVarLA102
+	cjump %NewVarLA104 = 1 :matrixMultiplication_newLabel19T
+	goto :matrixMultiplication_newLabel19F
+	:matrixMultiplication_newLabel19T
+	%newVar86 <- 1
+	%newVar86 *= 8
+	%newVar87 <- %newVar86
+	%newVar87 += 16
+	%newVar88 <- %m1
+	%newVar88 += %newVar87
+	%NewVarLA105 <- mem %newVar88 0
+	%NewVarLA105 >>= 1
+	%NewVarLA106 <- %kNewVarLBscope0
+	%NewVarLA106 >>= 1
+	%NewVarLA107 <- %NewVarLA106 < %NewVarLA105
+	cjump %NewVarLA107 = 1 :matrixMultiplication_newLabel20T
+	goto :matrixMultiplication_newLabel20F
+	:matrixMultiplication_newLabel20T
+	%NewVarLA108 <- %iNewVarLBscope0
+	%NewVarLA108 >>= 1
+	%NewVarLA109 <- %kNewVarLBscope0
+	%NewVarLA109 >>= 1
+	%newVar89 <- %m1
+	%newVar89 += 24
+	%newVar90 <- mem %newVar89 0
+	%newVar91 <- %newVar90
+	%newVar91 >>= 1
+	%newVar92 <- 1
+	%newVar92 *= %newVar91
+	%newVar92 *= %NewVarLA108
+	%newVar93 <- 1
+	%newVar93 *= %NewVarLA109
+	%newVar94 <- 0
+	%newVar94 += %newVar92
+	%newVar94 += %newVar93
+	%newVar94 *= 8
+	%newVar94 += 32
+	%newVar95 <- %m1
+	%newVar95 += %newVar94
+	%ANewVarLBscope3 <- mem %newVar95 0
+	%NewVarLA110 <- %m2 = 0
+	cjump %NewVarLA110 = 1 :matrixMultiplication_newLabel21F
+	goto :matrixMultiplication_newLabel21T
+	:matrixMultiplication_newLabel21F
+	rdi <- 0
+	rsi <- 0
+	call array-error 2
+	goto :matrixMultiplication_newLabel21T
+	:matrixMultiplication_newLabel21T
+	%newVar96 <- 0
+	%newVar96 *= 8
+	%newVar97 <- %newVar96
+	%newVar97 += 16
+	%newVar98 <- %m2
+	%newVar98 += %newVar97
+	%NewVarLA111 <- mem %newVar98 0
+	%NewVarLA111 >>= 1
+	%NewVarLA112 <- %kNewVarLBscope0
+	%NewVarLA112 >>= 1
+	%NewVarLA113 <- %NewVarLA112 < %NewVarLA111
+	cjump %NewVarLA113 = 1 :matrixMultiplication_newLabel22T
+	goto :matrixMultiplication_newLabel22F
+	:matrixMultiplication_newLabel22T
+	%newVar99 <- 1
+	%newVar99 *= 8
+	%newVar100 <- %newVar99
+	%newVar100 += 16
+	%newVar101 <- %m2
+	%newVar101 += %newVar100
+	%NewVarLA114 <- mem %newVar101 0
+	%NewVarLA114 >>= 1
+	%NewVarLA115 <- %jNewVarLBscope0
+	%NewVarLA115 >>= 1
+	%NewVarLA116 <- %NewVarLA115 < %NewVarLA114
+	cjump %NewVarLA116 = 1 :matrixMultiplication_newLabel23T
+	goto :matrixMultiplication_newLabel23F
+	:matrixMultiplication_newLabel23T
+	%NewVarLA117 <- %kNewVarLBscope0
+	%NewVarLA117 >>= 1
+	%NewVarLA118 <- %jNewVarLBscope0
+	%NewVarLA118 >>= 1
+	%newVar102 <- %m2
+	%newVar102 += 24
+	%newVar103 <- mem %newVar102 0
+	%newVar104 <- %newVar103
+	%newVar104 >>= 1
+	%newVar105 <- 1
+	%newVar105 *= %newVar104
+	%newVar105 *= %NewVarLA117
+	%newVar106 <- 1
+	%newVar106 *= %NewVarLA118
+	%newVar107 <- 0
+	%newVar107 += %newVar105
+	%newVar107 += %newVar106
+	%newVar107 *= 8
+	%newVar107 += 32
+	%newVar108 <- %m2
+	%newVar108 += %newVar107
+	%BNewVarLBscope3 <- mem %newVar108 0
+	%NewVarLA119 <- %ANewVarLBscope3
+	%NewVarLA119 >>= 1
+	%NewVarLA120 <- %BNewVarLBscope3
+	%NewVarLA120 >>= 1
+	%CNewVarLBscope3 <- %NewVarLA119
+	%CNewVarLBscope3 *= %NewVarLA120
+	%CNewVarLBscope3 <<= 1
+	%CNewVarLBscope3 += 1
+	%NewVarLA121 <- %m3 = 0
+	cjump %NewVarLA121 = 1 :matrixMultiplication_newLabel24F
+	goto :matrixMultiplication_newLabel24T
+	:matrixMultiplication_newLabel24F
+	rdi <- 0
+	rsi <- 0
+	call array-error 2
+	goto :matrixMultiplication_newLabel24T
+	:matrixMultiplication_newLabel24T
+	%newVar109 <- 0
+	%newVar109 *= 8
+	%newVar110 <- %newVar109
+	%newVar110 += 16
+	%newVar111 <- %m3
+	%newVar111 += %newVar110
+	%NewVarLA122 <- mem %newVar111 0
+	%NewVarLA122 >>= 1
+	%NewVarLA123 <- %iNewVarLBscope0
+	%NewVarLA123 >>= 1
+	%NewVarLA124 <- %NewVarLA123 < %NewVarLA122
+	cjump %NewVarLA124 = 1 :matrixMultiplication_newLabel25T
+	goto :matrixMultiplication_newLabel25F
+	:matrixMultiplication_newLabel25T
+	%newVar112 <- 1
+	%newVar112 *= 8
+	%newVar113 <- %newVar112
+	%newVar113 += 16
+	%newVar114 <- %m3
+	%newVar114 += %newVar113
+	%NewVarLA125 <- mem %newVar114 0
+	%NewVarLA125 >>= 1
+	%NewVarLA126 <- %jNewVarLBscope0
+	%NewVarLA126 >>= 1
+	%NewVarLA127 <- %NewVarLA126 < %NewVarLA125
+	cjump %NewVarLA127 = 1 :matrixMultiplication_newLabel26T
+	goto :matrixMultiplication_newLabel26F
+	:matrixMultiplication_newLabel26T
+	%NewVarLA128 <- %iNewVarLBscope0
+	%NewVarLA128 >>= 1
+	%NewVarLA129 <- %jNewVarLBscope0
+	%NewVarLA129 >>= 1
+	%newVar115 <- %m3
+	%newVar115 += 24
+	%newVar116 <- mem %newVar115 0
+	%newVar117 <- %newVar116
+	%newVar117 >>= 1
+	%newVar118 <- 1
+	%newVar118 *= %newVar117
+	%newVar118 *= %NewVarLA128
+	%newVar119 <- 1
+	%newVar119 *= %NewVarLA129
+	%newVar120 <- 0
+	%newVar120 += %newVar118
+	%newVar120 += %newVar119
+	%newVar120 *= 8
+	%newVar120 += 32
+	%newVar121 <- %m3
+	%newVar121 += %newVar120
+	%DNewVarLBscope3 <- mem %newVar121 0
+	%NewVarLA130 <- %DNewVarLBscope3
+	%NewVarLA130 >>= 1
+	%ENewVarLBscope3 <- %NewVarLA130
+	%ENewVarLBscope3 *= 4
+	%ENewVarLBscope3 <<= 1
+	%ENewVarLBscope3 += 1
+	%NewVarLA131 <- %ENewVarLBscope3
+	%NewVarLA131 >>= 1
+	%FNewVarLBscope3 <- %NewVarLA131
+	%FNewVarLBscope3 += 2
+	%FNewVarLBscope3 <<= 1
+	%FNewVarLBscope3 += 1
+	%NewVarLA132 <- %m3 = 0
+	cjump %NewVarLA132 = 1 :matrixMultiplication_newLabel27F
+	goto :matrixMultiplication_newLabel27T
+	:matrixMultiplication_newLabel27F
+	rdi <- 0
+	rsi <- 0
+	call array-error 2
+	goto :matrixMultiplication_newLabel27T
+	:matrixMultiplication_newLabel27T
+	%newVar122 <- 0
+	%newVar122 *= 8
+	%newVar123 <- %newVar122
+	%newVar123 += 16
+	%newVar124 <- %m3
+	%newVar124 += %newVar123
+	%NewVarLA133 <- mem %newVar124 0
+	%NewVarLA133 >>= 1
+	%NewVarLA134 <- %iNewVarLBscope0
+	%NewVarLA134 >>= 1
+	%NewVarLA135 <- %NewVarLA134 < %NewVarLA133
+	cjump %NewVarLA135 = 1 :matrixMultiplication_newLabel28T
+	goto :matrixMultiplication_newLabel28F
+	:matrixMultiplication_newLabel28T
+	%newVar125 <- 1
+	%newVar125 *= 8
+	%newVar126 <- %newVar125
+	%newVar126 += 16
+	%newVar127 <- %m3
+	%newVar127 += %newVar126
+	%NewVarLA136 <- mem %newVar127 0
+	%NewVarLA136 >>= 1
+	%NewVarLA137 <- %jNewVarLBscope0
+	%NewVarLA137 >>= 1
+	%NewVarLA138 <- %NewVarLA137 < %NewVarLA136
+	cjump %NewVarLA138 = 1 :matrixMultiplication_newLabel29T
+	goto :matrixMultiplication_newLabel29F
+	:matrixMultiplication_newLabel29T
+	%NewVarLA139 <- %iNewVarLBscope0
+	%NewVarLA139 >>= 1
+	%NewVarLA140 <- %jNewVarLBscope0
+	%NewVarLA140 >>= 1
+	%newVar128 <- %m3
+	%newVar128 += 24
+	%newVar129 <- mem %newVar128 0
+	%newVar130 <- %newVar129
+	%newVar130 >>= 1
+	%newVar131 <- 1
+	%newVar131 *= %newVar130
+	%newVar131 *= %NewVarLA139
+	%newVar132 <- 1
+	%newVar132 *= %NewVarLA140
+	%newVar133 <- 0
+	%newVar133 += %newVar131
+	%newVar133 += %newVar132
+	%newVar133 *= 8
+	%newVar133 += 32
+	%newVar134 <- %m3
+	%newVar134 += %newVar133
+	mem %newVar134 0 <- %FNewVarLBscope3
+	%NewVarLA141 <- %FNewVarLBscope3
+	%NewVarLA141 >>= 1
+	%GNewVarLBscope3 <- %NewVarLA141
+	%GNewVarLBscope3 *= 1
+	%GNewVarLBscope3 <<= 1
+	%GNewVarLBscope3 += 1
+	%NewVarLA142 <- %m3 = 0
+	cjump %NewVarLA142 = 1 :matrixMultiplication_newLabel30F
+	goto :matrixMultiplication_newLabel30T
+	:matrixMultiplication_newLabel30F
+	rdi <- 0
+	rsi <- 0
+	call array-error 2
+	goto :matrixMultiplication_newLabel30T
+	:matrixMultiplication_newLabel30T
+	%newVar135 <- 0
+	%newVar135 *= 8
+	%newVar136 <- %newVar135
+	%newVar136 += 16
+	%newVar137 <- %m3
+	%newVar137 += %newVar136
+	%NewVarLA143 <- mem %newVar137 0
+	%NewVarLA143 >>= 1
+	%NewVarLA144 <- %iNewVarLBscope0
+	%NewVarLA144 >>= 1
+	%NewVarLA145 <- %NewVarLA144 < %NewVarLA143
+	cjump %NewVarLA145 = 1 :matrixMultiplication_newLabel31T
+	goto :matrixMultiplication_newLabel31F
+	:matrixMultiplication_newLabel31T
+	%newVar138 <- 1
+	%newVar138 *= 8
+	%newVar139 <- %newVar138
+	%newVar139 += 16
+	%newVar140 <- %m3
+	%newVar140 += %newVar139
+	%NewVarLA146 <- mem %newVar140 0
+	%NewVarLA146 >>= 1
+	%NewVarLA147 <- %jNewVarLBscope0
+	%NewVarLA147 >>= 1
+	%NewVarLA148 <- %NewVarLA147 < %NewVarLA146
+	cjump %NewVarLA148 = 1 :matrixMultiplication_newLabel32T
+	goto :matrixMultiplication_newLabel32F
+	:matrixMultiplication_newLabel32T
+	%NewVarLA149 <- %iNewVarLBscope0
+	%NewVarLA149 >>= 1
+	%NewVarLA150 <- %jNewVarLBscope0
+	%NewVarLA150 >>= 1
+	%newVar141 <- %m3
+	%newVar141 += 24
+	%newVar142 <- mem %newVar141 0
+	%newVar143 <- %newVar142
+	%newVar143 >>= 1
+	%newVar144 <- 1
+	%newVar144 *= %newVar143
+	%newVar144 *= %NewVarLA149
+	%newVar145 <- 1
+	%newVar145 *= %NewVarLA150
+	%newVar146 <- 0
+	%newVar146 += %newVar144
+	%newVar146 += %newVar145
+	%newVar146 *= 8
+	%newVar146 += 32
+	%newVar147 <- %m3
+	%newVar147 += %newVar146
+	mem %newVar147 0 <- %GNewVarLBscope3
+	%NewVarLA151 <- %FNewVarLBscope3
+	%NewVarLA151 >>= 1
+	%GNewVarLBscope3 <- %NewVarLA151
+	%GNewVarLBscope3 += 0
+	%GNewVarLBscope3 <<= 1
+	%GNewVarLBscope3 += 1
+	%NewVarLA152 <- %m3 = 0
+	cjump %NewVarLA152 = 1 :matrixMultiplication_newLabel33F
+	goto :matrixMultiplication_newLabel33T
+	:matrixMultiplication_newLabel33F
+	rdi <- 0
+	rsi <- 0
+	call array-error 2
+	goto :matrixMultiplication_newLabel33T
+	:matrixMultiplication_newLabel33T
+	%newVar148 <- 0
+	%newVar148 *= 8
+	%newVar149 <- %newVar148
+	%newVar149 += 16
+	%newVar150 <- %m3
+	%newVar150 += %newVar149
+	%NewVarLA153 <- mem %newVar150 0
+	%NewVarLA153 >>= 1
+	%NewVarLA154 <- %iNewVarLBscope0
+	%NewVarLA154 >>= 1
+	%NewVarLA155 <- %NewVarLA154 < %NewVarLA153
+	cjump %NewVarLA155 = 1 :matrixMultiplication_newLabel34T
+	goto :matrixMultiplication_newLabel34F
+	:matrixMultiplication_newLabel34T
+	%newVar151 <- 1
+	%newVar151 *= 8
+	%newVar152 <- %newVar151
+	%newVar152 += 16
+	%newVar153 <- %m3
+	%newVar153 += %newVar152
+	%NewVarLA156 <- mem %newVar153 0
+	%NewVarLA156 >>= 1
+	%NewVarLA157 <- %jNewVarLBscope0
+	%NewVarLA157 >>= 1
+	%NewVarLA158 <- %NewVarLA157 < %NewVarLA156
+	cjump %NewVarLA158 = 1 :matrixMultiplication_newLabel35T
+	goto :matrixMultiplication_newLabel35F
+	:matrixMultiplication_newLabel35T
+	%NewVarLA159 <- %iNewVarLBscope0
+	%NewVarLA159 >>= 1
+	%NewVarLA160 <- %jNewVarLBscope0
+	%NewVarLA160 >>= 1
+	%newVar154 <- %m3
+	%newVar154 += 24
+	%newVar155 <- mem %newVar154 0
+	%newVar156 <- %newVar155
+	%newVar156 >>= 1
+	%newVar157 <- 1
+	%newVar157 *= %newVar156
+	%newVar157 *= %NewVarLA159
+	%newVar158 <- 1
+	%newVar158 *= %NewVarLA160
+	%newVar159 <- 0
+	%newVar159 += %newVar157
+	%newVar159 += %newVar158
+	%newVar159 *= 8
+	%newVar159 += 32
+	%newVar160 <- %m3
+	%newVar160 += %newVar159
+	mem %newVar160 0 <- %GNewVarLBscope3
+	%NewVarLA161 <- %FNewVarLBscope3
+	%NewVarLA161 >>= 1
+	%GNewVarLBscope3 <- %NewVarLA161
+	%GNewVarLBscope3 *= 1
+	%GNewVarLBscope3 <<= 1
+	%GNewVarLBscope3 += 1
+	%NewVarLA162 <- %m3 = 0
+	cjump %NewVarLA162 = 1 :matrixMultiplication_newLabel36F
+	goto :matrixMultiplication_newLabel36T
+	:matrixMultiplication_newLabel36F
+	rdi <- 0
+	rsi <- 0
+	call array-error 2
+	goto :matrixMultiplication_newLabel36T
+	:matrixMultiplication_newLabel36T
+	%newVar161 <- 0
+	%newVar161 *= 8
+	%newVar162 <- %newVar161
+	%newVar162 += 16
+	%newVar163 <- %m3
+	%newVar163 += %newVar162
+	%NewVarLA163 <- mem %newVar163 0
+	%NewVarLA163 >>= 1
+	%NewVarLA164 <- %iNewVarLBscope0
+	%NewVarLA164 >>= 1
+	%NewVarLA165 <- %NewVarLA164 < %NewVarLA163
+	cjump %NewVarLA165 = 1 :matrixMultiplication_newLabel37T
+	goto :matrixMultiplication_newLabel37F
+	:matrixMultiplication_newLabel37T
+	%newVar164 <- 1
+	%newVar164 *= 8
+	%newVar165 <- %newVar164
+	%newVar165 += 16
+	%newVar166 <- %m3
+	%newVar166 += %newVar165
+	%NewVarLA166 <- mem %newVar166 0
+	%NewVarLA166 >>= 1
+	%NewVarLA167 <- %jNewVarLBscope0
+	%NewVarLA167 >>= 1
+	%NewVarLA168 <- %NewVarLA167 < %NewVarLA166
+	cjump %NewVarLA168 = 1 :matrixMultiplication_newLabel38T
+	goto :matrixMultiplication_newLabel38F
+	:matrixMultiplication_newLabel38T
+	%NewVarLA169 <- %iNewVarLBscope0
+	%NewVarLA169 >>= 1
+	%NewVarLA170 <- %jNewVarLBscope0
+	%NewVarLA170 >>= 1
+	%newVar167 <- %m3
+	%newVar167 += 24
+	%newVar168 <- mem %newVar167 0
+	%newVar169 <- %newVar168
+	%newVar169 >>= 1
+	%newVar170 <- 1
+	%newVar170 *= %newVar169
+	%newVar170 *= %NewVarLA169
+	%newVar171 <- 1
+	%newVar171 *= %NewVarLA170
+	%newVar172 <- 0
+	%newVar172 += %newVar170
+	%newVar172 += %newVar171
+	%newVar172 *= 8
+	%newVar172 += 32
+	%newVar173 <- %m3
+	%newVar173 += %newVar172
+	mem %newVar173 0 <- %GNewVarLBscope3
+	%NewVarLA171 <- %FNewVarLBscope3
+	%NewVarLA171 >>= 1
+	%GNewVarLBscope3 <- %NewVarLA171
+	%GNewVarLBscope3 += 0
+	%GNewVarLBscope3 <<= 1
+	%GNewVarLBscope3 += 1
+	%NewVarLA172 <- %m3 = 0
+	cjump %NewVarLA172 = 1 :matrixMultiplication_newLabel39F
+	goto :matrixMultiplication_newLabel39T
+	:matrixMultiplication_newLabel39F
+	rdi <- 0
+	rsi <- 0
+	call array-error 2
+	goto :matrixMultiplication_newLabel39T
+	:matrixMultiplication_newLabel39T
+	%newVar174 <- 0
+	%newVar174 *= 8
+	%newVar175 <- %newVar174
+	%newVar175 += 16
+	%newVar176 <- %m3
+	%newVar176 += %newVar175
+	%NewVarLA173 <- mem %newVar176 0
+	%NewVarLA173 >>= 1
+	%NewVarLA174 <- %iNewVarLBscope0
+	%NewVarLA174 >>= 1
+	%NewVarLA175 <- %NewVarLA174 < %NewVarLA173
+	cjump %NewVarLA175 = 1 :matrixMultiplication_newLabel40T
+	goto :matrixMultiplication_newLabel40F
+	:matrixMultiplication_newLabel40T
+	%newVar177 <- 1
+	%newVar177 *= 8
+	%newVar178 <- %newVar177
+	%newVar178 += 16
+	%newVar179 <- %m3
+	%newVar179 += %newVar178
+	%NewVarLA176 <- mem %newVar179 0
+	%NewVarLA176 >>= 1
+	%NewVarLA177 <- %jNewVarLBscope0
+	%NewVarLA177 >>= 1
+	%NewVarLA178 <- %NewVarLA177 < %NewVarLA176
+	cjump %NewVarLA178 = 1 :matrixMultiplication_newLabel41T
+	goto :matrixMultiplication_newLabel41F
+	:matrixMultiplication_newLabel41T
+	%NewVarLA179 <- %iNewVarLBscope0
+	%NewVarLA179 >>= 1
+	%NewVarLA180 <- %jNewVarLBscope0
+	%NewVarLA180 >>= 1
+	%newVar180 <- %m3
+	%newVar180 += 24
+	%newVar181 <- mem %newVar180 0
+	%newVar182 <- %newVar181
+	%newVar182 >>= 1
+	%newVar183 <- 1
+	%newVar183 *= %newVar182
+	%newVar183 *= %NewVarLA179
+	%newVar184 <- 1
+	%newVar184 *= %NewVarLA180
+	%newVar185 <- 0
+	%newVar185 += %newVar183
+	%newVar185 += %newVar184
+	%newVar185 *= 8
+	%newVar185 += 32
+	%newVar186 <- %m3
+	%newVar186 += %newVar185
+	mem %newVar186 0 <- %GNewVarLBscope3
+	%tmpNewVarLBscope3 <- %GNewVarLBscope3
+	%NewVarLA181 <- %tmpNewVarLBscope3
+	%NewVarLA181 >>= 1
+	%tmpNewVarLBscope3 <- %NewVarLA181
+	%tmpNewVarLBscope3 *= 4
+	%tmpNewVarLBscope3 <<= 1
+	%tmpNewVarLBscope3 += 1
+	%NewVarLA182 <- %tmpNewVarLBscope3
+	%NewVarLA182 >>= 1
+	%tmpNewVarLBscope3 <- %NewVarLA182
+	%tmpNewVarLBscope3 += 2
+	%tmpNewVarLBscope3 <<= 1
+	%tmpNewVarLBscope3 += 1
+	%NewVarLA183 <- %tmpNewVarLBscope3
+	%NewVarLA183 >>= 1
+	%tmpNewVarLBscope3 <- %NewVarLA183
+	%tmpNewVarLBscope3 *= 8
+	%tmpNewVarLBscope3 <<= 1
+	%tmpNewVarLBscope3 += 1
+	%NewVarLA184 <- %tmpNewVarLBscope3
+	%NewVarLA184 >>= 1
+	%tmpNewVarLBscope3 <- %NewVarLA184
+	%tmpNewVarLBscope3 *= 4
+	%tmpNewVarLBscope3 <<= 1
+	%tmpNewVarLBscope3 += 1
+	%NewVarLA185 <- %tmpNewVarLBscope3
+	%NewVarLA185 >>= 1
+	%tmpNewVarLBscope3 <- %NewVarLA185
+	%tmpNewVarLBscope3 += 2
+	%tmpNewVarLBscope3 <<= 1
+	%tmpNewVarLBscope3 += 1
+	%NewVarLA186 <- %tmpNewVarLBscope3
+	%NewVarLA186 >>= 1
+	%tmpNewVarLBscope3 <- %NewVarLA186
+	%tmpNewVarLBscope3 *= 8
+	%tmpNewVarLBscope3 <<= 1
+	%tmpNewVarLBscope3 += 1
+	%NewVarLA187 <- %tmpNewVarLBscope3
+	%NewVarLA187 >>= 1
+	%tmpNewVarLBscope3 <- %NewVarLA187
+	%tmpNewVarLBscope3 *= 4
+	%tmpNewVarLBscope3 <<= 1
+	%tmpNewVarLBscope3 += 1
+	%NewVarLA188 <- %tmpNewVarLBscope3
+	%NewVarLA188 >>= 1
+	%tmpNewVarLBscope3 <- %NewVarLA188
+	%tmpNewVarLBscope3 += 2
+	%tmpNewVarLBscope3 <<= 1
+	%tmpNewVarLBscope3 += 1
+	%NewVarLA189 <- %tmpNewVarLBscope3
+	%NewVarLA189 >>= 1
+	%tmpNewVarLBscope3 <- %NewVarLA189
+	%tmpNewVarLBscope3 *= 8
+	%tmpNewVarLBscope3 <<= 1
+	%tmpNewVarLBscope3 += 1
+	%NewVarLA190 <- %tmpNewVarLBscope3
+	%NewVarLA190 >>= 1
+	%tmpNewVarLBscope3 <- %NewVarLA190
+	%tmpNewVarLBscope3 *= 4
+	%tmpNewVarLBscope3 <<= 1
+	%tmpNewVarLBscope3 += 1
+	%NewVarLA191 <- %tmpNewVarLBscope3
+	%NewVarLA191 >>= 1
+	%tmpNewVarLBscope3 <- %NewVarLA191
+	%tmpNewVarLBscope3 += 2
+	%tmpNewVarLBscope3 <<= 1
+	%tmpNewVarLBscope3 += 1
+	%NewVarLA192 <- %tmpNewVarLBscope3
+	%NewVarLA192 >>= 1
+	%tmpNewVarLBscope3 <- %NewVarLA192
+	%tmpNewVarLBscope3 *= 8
+	%tmpNewVarLBscope3 <<= 1
+	%tmpNewVarLBscope3 += 1
+	%NewVarLA193 <- %tmpNewVarLBscope3
+	%NewVarLA193 >>= 1
+	%tmpNewVarLBscope3 <- %NewVarLA193
+	%tmpNewVarLBscope3 *= 4
+	%tmpNewVarLBscope3 <<= 1
+	%tmpNewVarLBscope3 += 1
+	%NewVarLA194 <- %tmpNewVarLBscope3
+	%NewVarLA194 >>= 1
+	%tmpNewVarLBscope3 <- %NewVarLA194
+	%tmpNewVarLBscope3 += 2
+	%tmpNewVarLBscope3 <<= 1
+	%tmpNewVarLBscope3 += 1
+	%NewVarLA195 <- %tmpNewVarLBscope3
+	%NewVarLA195 >>= 1
+	%tmpNewVarLBscope3 <- %NewVarLA195
+	%tmpNewVarLBscope3 *= 8
+	%tmpNewVarLBscope3 <<= 1
+	%tmpNewVarLBscope3 += 1
+	%NewVarLA196 <- %tmpNewVarLBscope3
+	%NewVarLA196 >>= 1
+	%tmpNewVarLBscope3 <- %NewVarLA196
+	%tmpNewVarLBscope3 *= 4
+	%tmpNewVarLBscope3 <<= 1
+	%tmpNewVarLBscope3 += 1
+	%NewVarLA197 <- %tmpNewVarLBscope3
+	%NewVarLA197 >>= 1
+	%tmpNewVarLBscope3 <- %NewVarLA197
+	%tmpNewVarLBscope3 += 2
+	%tmpNewVarLBscope3 <<= 1
+	%tmpNewVarLBscope3 += 1
+	%NewVarLA198 <- %tmpNewVarLBscope3
+	%NewVarLA198 >>= 1
+	%tmpNewVarLBscope3 <- %NewVarLA198
+	%tmpNewVarLBscope3 *= 8
+	%tmpNewVarLBscope3 <<= 1
+	%tmpNewVarLBscope3 += 1
+	%NewVarLA199 <- %tmpNewVarLBscope3
+	%NewVarLA199 >>= 1
+	%tmpNewVarLBscope3 <- %NewVarLA199
+	%tmpNewVarLBscope3 <<= 2
+	%tmpNewVarLBscope3 <<= 1
+	%tmpNewVarLBscope3 += 1
+	%NewVarLA200 <- %tmpNewVarLBscope3
+	%NewVarLA200 >>= 1
+	%tmpNewVarLBscope3 <- %NewVarLA200
+	%tmpNewVarLBscope3 += 2
+	%tmpNewVarLBscope3 <<= 1
+	%tmpNewVarLBscope3 += 1
+	%NewVarLA201 <- %tmpNewVarLBscope3
+	%NewVarLA201 >>= 1
+	%tmpNewVarLBscope3 <- %NewVarLA201
+	%tmpNewVarLBscope3 *= 8
+	%tmpNewVarLBscope3 <<= 1
+	%tmpNewVarLBscope3 += 1
+	%NewVarLA202 <- %tmpNewVarLBscope3
+	%NewVarLA202 >>= 1
+	%tmpNewVarLBscope3 <- %NewVarLA202
+	%tmpNewVarLBscope3 *= 4
+	%tmpNewVarLBscope3 <<= 1
+	%tmpNewVarLBscope3 += 1
+	%NewVarLA203 <- %tmpNewVarLBscope3
+	%NewVarLA203 >>= 1
+	%tmpNewVarLBscope3 <- %NewVarLA203
+	%tmpNewVarLBscope3 <<= 2
+	%tmpNewVarLBscope3 <<= 1
+	%tmpNewVarLBscope3 += 1
+	%NewVarLA204 <- %tmpNewVarLBscope3
+	%NewVarLA204 >>= 1
+	%tmpNewVarLBscope3 <- %NewVarLA204
+	%tmpNewVarLBscope3 += 2
+	%tmpNewVarLBscope3 <<= 1
+	%tmpNewVarLBscope3 += 1
+	%NewVarLA205 <- %tmpNewVarLBscope3
+	%NewVarLA205 >>= 1
+	%tmpNewVarLBscope3 <- %NewVarLA205
+	%tmpNewVarLBscope3 *= 8
+	%tmpNewVarLBscope3 <<= 1
+	%tmpNewVarLBscope3 += 1
+	%NewVarLA206 <- %tmpNewVarLBscope3
+	%NewVarLA206 >>= 1
+	%tmpNewVarLBscope3 <- %NewVarLA206
+	%tmpNewVarLBscope3 *= 4
+	%tmpNewVarLBscope3 <<= 1
+	%tmpNewVarLBscope3 += 1
+	%NewVarLA207 <- %tmpNewVarLBscope3
+	%NewVarLA207 >>= 1
+	%tmpNewVarLBscope3 <- %NewVarLA207
+	%tmpNewVarLBscope3 <<= 4
+	%tmpNewVarLBscope3 <<= 1
+	%tmpNewVarLBscope3 += 1
+	%NewVarLA208 <- %tmpNewVarLBscope3
+	%NewVarLA208 >>= 1
+	%tmpNewVarLBscope3 <- %NewVarLA208
+	%tmpNewVarLBscope3 += 2
+	%tmpNewVarLBscope3 <<= 1
+	%tmpNewVarLBscope3 += 1
+	%NewVarLA209 <- %tmpNewVarLBscope3
+	%NewVarLA209 >>= 1
+	%tmpNewVarLBscope3 <- %NewVarLA209
+	%tmpNewVarLBscope3 >>= 2
+	%tmpNewVarLBscope3 <<= 1
+	%tmpNewVarLBscope3 += 1
+	%NewVarLA210 <- %tmpNewVarLBscope3
+	%NewVarLA210 >>= 1
+	%tmpNewVarLBscope3 <- %NewVarLA210
+	%tmpNewVarLBscope3 *= 8
+	%tmpNewVarLBscope3 <<= 1
+	%tmpNewVarLBscope3 += 1
+	%NewVarLA211 <- %tmpNewVarLBscope3
+	%NewVarLA211 >>= 1
+	%tmpNewVarLBscope3 <- %NewVarLA211
+	%tmpNewVarLBscope3 *= 4
+	%tmpNewVarLBscope3 <<= 1
+	%tmpNewVarLBscope3 += 1
+	%NewVarLA212 <- %tmpNewVarLBscope3
+	%NewVarLA212 >>= 1
+	%tmpNewVarLBscope3 <- %NewVarLA212
+	%tmpNewVarLBscope3 += 2
+	%tmpNewVarLBscope3 <<= 1
+	%tmpNewVarLBscope3 += 1
+	%NewVarLA213 <- %tmpNewVarLBscope3
+	%NewVarLA213 >>= 1
+	%tmpNewVarLBscope3 <- %NewVarLA213
+	%tmpNewVarLBscope3 *= 8
+	%tmpNewVarLBscope3 <<= 1
+	%tmpNewVarLBscope3 += 1
+	%NewVarLA214 <- %tmpNewVarLBscope3
+	%NewVarLA214 >>= 1
+	%tmpNewVarLBscope3 <- %NewVarLA214
+	%tmpNewVarLBscope3 *= 4
+	%tmpNewVarLBscope3 <<= 1
+	%tmpNewVarLBscope3 += 1
+	%NewVarLA215 <- %tmpNewVarLBscope3
+	%NewVarLA215 >>= 1
+	%tmpNewVarLBscope3 <- %NewVarLA215
+	%tmpNewVarLBscope3 += 2
+	%tmpNewVarLBscope3 <<= 1
+	%tmpNewVarLBscope3 += 1
+	%NewVarLA216 <- %tmpNewVarLBscope3
+	%NewVarLA216 >>= 1
+	%tmpNewVarLBscope3 <- %NewVarLA216
+	%tmpNewVarLBscope3 *= 8
+	%tmpNewVarLBscope3 <<= 1
+	%tmpNewVarLBscope3 += 1
+	%NewVarLA217 <- %totNewVarLBscope0
+	%NewVarLA217 >>= 1
+	%tot2NewVarLBscope3 <- %NewVarLA217
+	%tot2NewVarLBscope3 *= 4
+	%tot2NewVarLBscope3 <<= 1
+	%tot2NewVarLBscope3 += 1
+	%NewVarLA218 <- %tot2NewVarLBscope3
+	%NewVarLA218 >>= 1
+	%tot3NewVarLBscope3 <- %NewVarLA218
+	%tot3NewVarLBscope3 += 2
+	%tot3NewVarLBscope3 <<= 1
+	%tot3NewVarLBscope3 += 1
+	%totNewVarLBscope0 <- %totNewVarLBscope0
+	%NewVarLA219 <- %kNewVarLBscope0
+	%NewVarLA219 >>= 1
+	%kNewVarLBscope0 <- %NewVarLA219
+	%kNewVarLBscope0 += 1
+	%kNewVarLBscope0 <<= 1
+	%kNewVarLBscope0 += 1
+	goto :matrixMultiplication_NewLabelLB8
+	:matrixMultiplication_newLabel19F
+	%NewVarLA103 <<= 1
+	%NewVarLA103 += 1
+	rdi <- %m1
+	rsi <- %NewVarLA103
+	call array-error 2
+	goto :matrixMultiplication_newLabel19T
+	:matrixMultiplication_newLabel20F
+	%NewVarLA106 <<= 1
+	%NewVarLA106 += 1
+	rdi <- %m1
+	rsi <- %NewVarLA106
+	call array-error 2
+	goto :matrixMultiplication_newLabel20T
+	:matrixMultiplication_newLabel22F
+	%NewVarLA112 <<= 1
+	%NewVarLA112 += 1
+	rdi <- %m2
+	rsi <- %NewVarLA112
+	call array-error 2
+	goto :matrixMultiplication_newLabel22T
+	:matrixMultiplication_newLabel23F
+	%NewVarLA115 <<= 1
+	%NewVarLA115 += 1
+	rdi <- %m2
+	rsi <- %NewVarLA115
+	call array-error 2
+	goto :matrixMultiplication_newLabel23T
+	:matrixMultiplication_newLabel25F
+	%NewVarLA123 <<= 1
+	%NewVarLA123 += 1
+	rdi <- %m3
+	rsi <- %NewVarLA123
+	call array-error 2
+	goto :matrixMultiplication_newLabel25T
+	:matrixMultiplication_newLabel26F
+	%NewVarLA126 <<= 1
+	%NewVarLA126 += 1
+	rdi <- %m3
+	rsi <- %NewVarLA126
+	call array-error 2
+	goto :matrixMultiplication_newLabel26T
+	:matrixMultiplication_newLabel28F
+	%NewVarLA134 <<= 1
+	%NewVarLA134 += 1
+	rdi <- %m3
+	rsi <- %NewVarLA134
+	call array-error 2
+	goto :matrixMultiplication_newLabel28T
+	:matrixMultiplication_newLabel29F
+	%NewVarLA137 <<= 1
+	%NewVarLA137 += 1
+	rdi <- %m3
+	rsi <- %NewVarLA137
+	call array-error 2
+	goto :matrixMultiplication_newLabel29T
+	:matrixMultiplication_newLabel31F
+	%NewVarLA144 <<= 1
+	%NewVarLA144 += 1
+	rdi <- %m3
+	rsi <- %NewVarLA144
+	call array-error 2
+	goto :matrixMultiplication_newLabel31T
+	:matrixMultiplication_newLabel32F
+	%NewVarLA147 <<= 1
+	%NewVarLA147 += 1
+	rdi <- %m3
+	rsi <- %NewVarLA147
+	call array-error 2
+	goto :matrixMultiplication_newLabel32T
+	:matrixMultiplication_newLabel34F
+	%NewVarLA154 <<= 1
+	%NewVarLA154 += 1
+	rdi <- %m3
+	rsi <- %NewVarLA154
+	call array-error 2
+	goto :matrixMultiplication_newLabel34T
+	:matrixMultiplication_newLabel35F
+	%NewVarLA157 <<= 1
+	%NewVarLA157 += 1
+	rdi <- %m3
+	rsi <- %NewVarLA157
+	call array-error 2
+	goto :matrixMultiplication_newLabel35T
+	:matrixMultiplication_newLabel37F
+	%NewVarLA164 <<= 1
+	%NewVarLA164 += 1
+	rdi <- %m3
+	rsi <- %NewVarLA164
+	call array-error 2
+	goto :matrixMultiplication_newLabel37T
+	:matrixMultiplication_newLabel38F
+	%NewVarLA167 <<= 1
+	%NewVarLA167 += 1
+	rdi <- %m3
+	rsi <- %NewVarLA167
+	call array-error 2
+	goto :matrixMultiplication_newLabel38T
+	:matrixMultiplication_newLabel40F
+	%NewVarLA174 <<= 1
+	%NewVarLA174 += 1
+	rdi <- %m3
+	rsi <- %NewVarLA174
+	call array-error 2
+	goto :matrixMultiplication_newLabel40T
+	:matrixMultiplication_newLabel41F
+	%NewVarLA177 <<= 1
+	%NewVarLA177 += 1
+	rdi <- %m3
+	rsi <- %NewVarLA177
+	call array-error 2
+	goto :matrixMultiplication_newLabel41T
+	:matrixMultiplication_endBody2
+	%NewVarLA220 <- %jNewVarLBscope0
+	%NewVarLA220 >>= 1
+	%jNewVarLBscope0 <- %NewVarLA220
+	%jNewVarLBscope0 += 1
+	%jNewVarLBscope0 <<= 1
+	%jNewVarLBscope0 += 1
+	goto :matrixMultiplication_NewLabelLB7
+	:matrixMultiplication_endBody1
+	%NewVarLA221 <- %iNewVarLBscope0
+	%NewVarLA221 >>= 1
+	%iNewVarLBscope0 <- %NewVarLA221
+	%iNewVarLBscope0 += 1
+	%iNewVarLBscope0 <<= 1
+	%iNewVarLBscope0 += 1
+	goto :matrixMultiplication_NewLabelLB6
+	:matrixMultiplication_leave
+	return
+)
+
+(:totalSum
+1
+	%m <- rdi
+	:totalSum_newLabel49
+	%newVar0 <- 0
+	%newVar0 *= 8
+	%newVar1 <- %newVar0
+	%newVar1 += 16
+	%newVar2 <- %m
+	%newVar2 += %newVar1
+	%l1NewVarLBscope0 <- mem %newVar2 0
+	%newVar3 <- 1
+	%newVar3 *= 8
+	%newVar4 <- %newVar3
+	%newVar4 += 16
+	%newVar5 <- %m
+	%newVar5 += %newVar4
+	%l2NewVarLBscope0 <- mem %newVar5 0
+	%index1NewVarLBscope0 <- 1
+	%sumNewVarLBscope0 <- 1
+	goto :totalSum_NewLabelLB9
+	:totalSum_NewLabelLB9
+	%NewVarLA222 <- %index1NewVarLBscope0
+	%NewVarLA222 >>= 1
+	%NewVarLA223 <- %l1NewVarLBscope0
+	%NewVarLA223 >>= 1
+	%NewVarLB12 <- %NewVarLA222 < %NewVarLA223
+	%NewVarLB12 <<= 1
+	%NewVarLB12 += 1
+	%NewVarLA224 <- %NewVarLB12
+	%NewVarLA224 >>= 1
+	cjump %NewVarLA224 = 1 :totalSum_outerBody
+	goto :totalSum_leave
+	:totalSum_outerBody
+	%index2NewVarLBscope1 <- 1
+	goto :totalSum_NewLabelLB10
+	:totalSum_NewLabelLB10
+	%NewVarLA225 <- %index2NewVarLBscope1
+	%NewVarLA225 >>= 1
+	%NewVarLA226 <- %l2NewVarLBscope0
+	%NewVarLA226 >>= 1
+	%NewVarLB13 <- %NewVarLA225 < %NewVarLA226
+	%NewVarLB13 <<= 1
+	%NewVarLB13 += 1
+	%NewVarLA227 <- %NewVarLB13
+	%NewVarLA227 >>= 1
+	cjump %NewVarLA227 = 1 :totalSum_innerBody
+	goto :totalSum_endOuterBody
+	:totalSum_innerBody
+	%NewVarLA228 <- %m = 0
+	cjump %NewVarLA228 = 1 :totalSum_newLabel42F
+	goto :totalSum_newLabel42T
+	:totalSum_newLabel42F
+	rdi <- 0
+	rsi <- 0
+	call array-error 2
+	goto :totalSum_newLabel42T
+	:totalSum_newLabel42T
+	%newVar6 <- 0
+	%newVar6 *= 8
+	%newVar7 <- %newVar6
+	%newVar7 += 16
+	%newVar8 <- %m
+	%newVar8 += %newVar7
+	%NewVarLA229 <- mem %newVar8 0
+	%NewVarLA229 >>= 1
+	%NewVarLA230 <- %index1NewVarLBscope0
+	%NewVarLA230 >>= 1
+	%NewVarLA231 <- %NewVarLA230 < %NewVarLA229
+	cjump %NewVarLA231 = 1 :totalSum_newLabel43T
+	goto :totalSum_newLabel43F
+	:totalSum_newLabel43T
+	%newVar9 <- 1
+	%newVar9 *= 8
+	%newVar10 <- %newVar9
+	%newVar10 += 16
+	%newVar11 <- %m
+	%newVar11 += %newVar10
+	%NewVarLA232 <- mem %newVar11 0
+	%NewVarLA232 >>= 1
+	%NewVarLA233 <- %index2NewVarLBscope1
+	%NewVarLA233 >>= 1
+	%NewVarLA234 <- %NewVarLA233 < %NewVarLA232
+	cjump %NewVarLA234 = 1 :totalSum_newLabel44T
+	goto :totalSum_newLabel44F
+	:totalSum_newLabel44T
+	%NewVarLA235 <- %index1NewVarLBscope0
+	%NewVarLA235 >>= 1
+	%NewVarLA236 <- %index2NewVarLBscope1
+	%NewVarLA236 >>= 1
+	%newVar12 <- %m
+	%newVar12 += 24
+	%newVar13 <- mem %newVar12 0
+	%newVar14 <- %newVar13
+	%newVar14 >>= 1
+	%newVar15 <- 1
+	%newVar15 *= %newVar14
+	%newVar15 *= %NewVarLA235
+	%newVar16 <- 1
+	%newVar16 *= %NewVarLA236
+	%newVar17 <- 0
+	%newVar17 += %newVar15
+	%newVar17 += %newVar16
+	%newVar17 *= 8
+	%newVar17 += 32
+	%newVar18 <- %m
+	%newVar18 += %newVar17
+	%tempNewVarLBscope2 <- mem %newVar18 0
+	%NewVarLA237 <- %sumNewVarLBscope0
+	%NewVarLA237 >>= 1
+	%NewVarLA238 <- %tempNewVarLBscope2
+	%NewVarLA238 >>= 1
+	%sumNewVarLBscope0 <- %NewVarLA237
+	%sumNewVarLBscope0 += %NewVarLA238
+	%sumNewVarLBscope0 <<= 1
+	%sumNewVarLBscope0 += 1
+	%NewVarLA239 <- %index2NewVarLBscope1
+	%NewVarLA239 >>= 1
+	%index2NewVarLBscope1 <- %NewVarLA239
+	%index2NewVarLBscope1 += 1
+	%index2NewVarLBscope1 <<= 1
+	%index2NewVarLBscope1 += 1
+	goto :totalSum_NewLabelLB10
+	:totalSum_newLabel43F
+	%NewVarLA230 <<= 1
+	%NewVarLA230 += 1
+	rdi <- %m
+	rsi <- %NewVarLA230
+	call array-error 2
+	goto :totalSum_newLabel43T
+	:totalSum_newLabel44F
+	%NewVarLA233 <<= 1
+	%NewVarLA233 += 1
+	rdi <- %m
+	rsi <- %NewVarLA233
+	call array-error 2
+	goto :totalSum_newLabel44T
+	:totalSum_endOuterBody
+	%NewVarLA240 <- %index1NewVarLBscope0
+	%NewVarLA240 >>= 1
+	%index1NewVarLBscope0 <- %NewVarLA240
+	%index1NewVarLBscope0 += 1
+	%index1NewVarLBscope0 <<= 1
+	%index1NewVarLBscope0 += 1
+	goto :totalSum_NewLabelLB9
+	:totalSum_leave
+	rax <- %sumNewVarLBscope0
 	return
 )
 

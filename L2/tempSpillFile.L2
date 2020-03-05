@@ -1,14 +1,197 @@
-(:main
-	0
-	:main_entry
-	cjump 0 = 1 :main_TRUE
-	goto :main_FALSE
-	:main_TRUE
-	rdi <- 3
-	call print 1
-	return
-:main_FALSE
-	rdi <- 5
-	call print 1
+(:totalSum
+	1
+	%mm00000 <- rdi
+	mem rsp 0 <- %mm00000
+	:totalSum_newLabel49
+	%newVar0 <- 0
+	%newVar0 *= 8
+	%newVar1 <- %newVar0
+	%newVar1 += 16
+	%mm00001 <- mem rsp 0
+	%newVar2 <- %mm00001
+	%newVar2 += %newVar1
+	%l1NewVarLBscope0l1NewVarLBscope000000 <- mem %newVar2 0
+	mem rsp 24 <- %l1NewVarLBscope0l1NewVarLBscope000000
+	%newVar3 <- 1
+	%newVar3 *= 8
+	%newVar4 <- %newVar3
+	%newVar4 += 16
+	%mm00002 <- mem rsp 0
+	%newVar5 <- %mm00002
+	%newVar5 += %newVar4
+	%l2NewVarLBscope0l2NewVarLBscope000000 <- mem %newVar5 0
+	mem rsp 16 <- %l2NewVarLBscope0l2NewVarLBscope000000
+	%index1NewVarLBscope0index1NewVarLBscope000000 <- 1
+	mem rsp 8 <- %index1NewVarLBscope0index1NewVarLBscope000000
+	%sumNewVarLBscope0sumNewVarLBscope000000 <- 1
+	mem rsp 32 <- %sumNewVarLBscope0sumNewVarLBscope000000
+	goto :totalSum_NewLabelLB9
+	:totalSum_NewLabelLB9
+	%index1NewVarLBscope0index1NewVarLBscope000001 <- mem rsp 8
+	%NewVarLA222 <- %index1NewVarLBscope0index1NewVarLBscope000001
+	%NewVarLA222 >>= 1
+	%l1NewVarLBscope0l1NewVarLBscope000001 <- mem rsp 24
+	%NewVarLA223 <- %l1NewVarLBscope0l1NewVarLBscope000001
+	%NewVarLA223 >>= 1
+	%NewVarLB12 <- %NewVarLA222 < %NewVarLA223
+	%NewVarLB12 <<= 1
+	%NewVarLB12 += 1
+	%NewVarLA224 <- %NewVarLB12
+	%NewVarLA224 >>= 1
+	cjump %NewVarLA224 = 1 :totalSum_outerBody
+	goto :totalSum_leave
+	:totalSum_outerBody
+	%index2NewVarLBscope1index2NewVarLBscope100000 <- 1
+	mem rsp 40 <- %index2NewVarLBscope1index2NewVarLBscope100000
+	goto :totalSum_NewLabelLB10
+	:totalSum_NewLabelLB10
+	%index2NewVarLBscope1index2NewVarLBscope100001 <- mem rsp 40
+	%NewVarLA225 <- %index2NewVarLBscope1index2NewVarLBscope100001
+	%NewVarLA225 >>= 1
+	%l2NewVarLBscope0l2NewVarLBscope000001 <- mem rsp 16
+	%NewVarLA226 <- %l2NewVarLBscope0l2NewVarLBscope000001
+	%NewVarLA226 >>= 1
+	%NewVarLB13 <- %NewVarLA225 < %NewVarLA226
+	%NewVarLB13 <<= 1
+	%NewVarLB13 += 1
+	%NewVarLA227 <- %NewVarLB13
+	%NewVarLA227 >>= 1
+	cjump %NewVarLA227 = 1 :totalSum_innerBody
+	goto :totalSum_endOuterBody
+	:totalSum_innerBody
+	%mm00003 <- mem rsp 0
+	%NewVarLA228 <- %mm00003 = 0
+	cjump %NewVarLA228 = 1 :totalSum_newLabel42F
+	goto :totalSum_newLabel42T
+	:totalSum_newLabel42F
+	rdi <- 0
+	rsi <- 0
+	call array-error 2
+	goto :totalSum_newLabel42T
+	:totalSum_newLabel42T
+	%newVar6 <- 0
+	%newVar6 *= 8
+	%newVar7 <- %newVar6
+	%newVar7 += 16
+	%mm00004 <- mem rsp 0
+	%newVar8 <- %mm00004
+	%newVar8 += %newVar7
+	%NewVarLA229 <- mem %newVar8 0
+	%NewVarLA229 >>= 1
+	%index1NewVarLBscope0index1NewVarLBscope000002 <- mem rsp 8
+	%NewVarLA230 <- %index1NewVarLBscope0index1NewVarLBscope000002
+	%NewVarLA230 >>= 1
+	%NewVarLA231 <- %NewVarLA230 < %NewVarLA229
+	cjump %NewVarLA231 = 1 :totalSum_newLabel43T
+	goto :totalSum_newLabel43F
+	:totalSum_newLabel43T
+	%newVar9 <- 1
+	%newVar9 *= 8
+	%newVar10 <- %newVar9
+	%newVar10 += 16
+	%mm00005 <- mem rsp 0
+	%newVar11 <- %mm00005
+	%newVar11 += %newVar10
+	%NewVarLA232 <- mem %newVar11 0
+	%NewVarLA232 >>= 1
+	%index2NewVarLBscope1index2NewVarLBscope100002 <- mem rsp 40
+	%NewVarLA233 <- %index2NewVarLBscope1index2NewVarLBscope100002
+	%NewVarLA233 >>= 1
+	%NewVarLA234 <- %NewVarLA233 < %NewVarLA232
+	cjump %NewVarLA234 = 1 :totalSum_newLabel44T
+	goto :totalSum_newLabel44F
+	:totalSum_newLabel44T
+	%index1NewVarLBscope0index1NewVarLBscope000003 <- mem rsp 8
+	%NewVarLA235 <- %index1NewVarLBscope0index1NewVarLBscope000003
+	%NewVarLA235 >>= 1
+	%index2NewVarLBscope1index2NewVarLBscope100003 <- mem rsp 40
+	%NewVarLA236 <- %index2NewVarLBscope1index2NewVarLBscope100003
+	%NewVarLA236 >>= 1
+	%mm00006 <- mem rsp 0
+	%newVar12 <- %mm00006
+	%newVar12 += 24
+	%newVar13 <- mem %newVar12 0
+	%newVar14 <- %newVar13
+	%newVar14 >>= 1
+	%newVar15 <- 1
+	%newVar15 *= %newVar14
+	%newVar15 *= %NewVarLA235
+	%newVar16 <- 1
+	%newVar16 *= %NewVarLA236
+	%newVar17 <- 0
+	%newVar17 += %newVar15
+	%newVar17 += %newVar16
+	%newVar17 *= 8
+	%newVar17 += 32
+	%mm00007 <- mem rsp 0
+	%newVar18 <- %mm00007
+	%newVar18 += %newVar17
+	%tempNewVarLBscope2 <- mem %newVar18 0
+	%sumNewVarLBscope0sumNewVarLBscope000001 <- mem rsp 32
+	%NewVarLA237 <- %sumNewVarLBscope0sumNewVarLBscope000001
+	%NewVarLA237 >>= 1
+	%NewVarLA238 <- %tempNewVarLBscope2
+	%NewVarLA238 >>= 1
+	%sumNewVarLBscope0sumNewVarLBscope000002 <- %NewVarLA237
+	mem rsp 32 <- %sumNewVarLBscope0sumNewVarLBscope000002
+	%sumNewVarLBscope0sumNewVarLBscope000003 <- mem rsp 32
+	%sumNewVarLBscope0sumNewVarLBscope000003 += %NewVarLA238
+	mem rsp 32 <- %sumNewVarLBscope0sumNewVarLBscope000003
+	%sumNewVarLBscope0sumNewVarLBscope000004 <- mem rsp 32
+	%sumNewVarLBscope0sumNewVarLBscope000004 <<= 1
+	mem rsp 32 <- %sumNewVarLBscope0sumNewVarLBscope000004
+	%sumNewVarLBscope0sumNewVarLBscope000005 <- mem rsp 32
+	%sumNewVarLBscope0sumNewVarLBscope000005 += 1
+	mem rsp 32 <- %sumNewVarLBscope0sumNewVarLBscope000005
+	%index2NewVarLBscope1index2NewVarLBscope100004 <- mem rsp 40
+	%NewVarLA239 <- %index2NewVarLBscope1index2NewVarLBscope100004
+	%NewVarLA239 >>= 1
+	%index2NewVarLBscope1index2NewVarLBscope100005 <- %NewVarLA239
+	mem rsp 40 <- %index2NewVarLBscope1index2NewVarLBscope100005
+	%index2NewVarLBscope1index2NewVarLBscope100006 <- mem rsp 40
+	%index2NewVarLBscope1index2NewVarLBscope100006 += 1
+	mem rsp 40 <- %index2NewVarLBscope1index2NewVarLBscope100006
+	%index2NewVarLBscope1index2NewVarLBscope100007 <- mem rsp 40
+	%index2NewVarLBscope1index2NewVarLBscope100007 <<= 1
+	mem rsp 40 <- %index2NewVarLBscope1index2NewVarLBscope100007
+	%index2NewVarLBscope1index2NewVarLBscope100008 <- mem rsp 40
+	%index2NewVarLBscope1index2NewVarLBscope100008 += 1
+	mem rsp 40 <- %index2NewVarLBscope1index2NewVarLBscope100008
+	goto :totalSum_NewLabelLB10
+	:totalSum_newLabel43F
+	%NewVarLA230 <<= 1
+	%NewVarLA230 += 1
+	%mm00008 <- mem rsp 0
+	rdi <- %mm00008
+	rsi <- %NewVarLA230
+	call array-error 2
+	goto :totalSum_newLabel43T
+	:totalSum_newLabel44F
+	%NewVarLA233 <<= 1
+	%NewVarLA233 += 1
+	%mm00009 <- mem rsp 0
+	rdi <- %mm00009
+	rsi <- %NewVarLA233
+	call array-error 2
+	goto :totalSum_newLabel44T
+	:totalSum_endOuterBody
+	%index1NewVarLBscope0index1NewVarLBscope000004 <- mem rsp 8
+	%NewVarLA240 <- %index1NewVarLBscope0index1NewVarLBscope000004
+	%NewVarLA240 >>= 1
+	%index1NewVarLBscope0index1NewVarLBscope000005 <- %NewVarLA240
+	mem rsp 8 <- %index1NewVarLBscope0index1NewVarLBscope000005
+	%index1NewVarLBscope0index1NewVarLBscope000006 <- mem rsp 8
+	%index1NewVarLBscope0index1NewVarLBscope000006 += 1
+	mem rsp 8 <- %index1NewVarLBscope0index1NewVarLBscope000006
+	%index1NewVarLBscope0index1NewVarLBscope000007 <- mem rsp 8
+	%index1NewVarLBscope0index1NewVarLBscope000007 <<= 1
+	mem rsp 8 <- %index1NewVarLBscope0index1NewVarLBscope000007
+	%index1NewVarLBscope0index1NewVarLBscope000008 <- mem rsp 8
+	%index1NewVarLBscope0index1NewVarLBscope000008 += 1
+	mem rsp 8 <- %index1NewVarLBscope0index1NewVarLBscope000008
+	goto :totalSum_NewLabelLB9
+	:totalSum_leave
+	%sumNewVarLBscope0sumNewVarLBscope000006 <- mem rsp 32
+	rax <- %sumNewVarLBscope0sumNewVarLBscope000006
 	return
 )

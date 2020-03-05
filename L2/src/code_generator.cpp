@@ -70,7 +70,7 @@ namespace L2{
 			for(string k : GraphColorResult.first){
 				p = parse_function_file((char*)"tempSpillFile.L2");
 				entryFun = p.functions.back();
-				nvar.labelName = "%"+k+"0000";
+				nvar.labelName = "%"+k+k+"0000";
 				svar.labelName = "%"+k;
 				nvar.isAVar = true;
 				svar.isAVar = true;

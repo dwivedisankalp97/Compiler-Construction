@@ -114,7 +114,7 @@ int64 compute_num(int64 N) {
 }
 
 // basically the same as compute_num, but using an array
-int64 static_arr(int64 N) {
+void static_arr(int64 N) {
   int64[][] newton
   int64[] inv
   int64 I

@@ -1,0 +1,48 @@
+diff --git a/322_framework/IR/tests/new/tuparr.IR b/322_framework/IR/tests/new/tuparr.IR
+index 0e692af..56ab1a6 100644
+--- a/322_framework/IR/tests/new/tuparr.IR
++++ b/322_framework/IR/tests/new/tuparr.IR
+@@ -133,11 +133,13 @@ define void :main() {
+     int64 %j
+     int64 %resid
+     int64 %notresid
++    %j <- 0
+     %icmp <- %i <= 10
+     br %icmp :B5 :B3_5
+ :B3_5
+     %j <- %i - 1
+     %resid <- %j & 33554431
++    %resid <- %resid > 0
+     %notresid <- 1 - %resid
+     br %notresid :B5 :B4
+ :B4
+diff --git a/322_framework/LA/tests/new/2020compute.a b/322_framework/LA/tests/new/2020compute.a
+index 2d815f4..4930ac0 100644
+--- a/322_framework/LA/tests/new/2020compute.a
++++ b/322_framework/LA/tests/new/2020compute.a
+@@ -114,7 +114,7 @@ int64 compute_num(int64 N) {
+ }
+ 
+ // basically the same as compute_num, but using an array
+-int64 static_arr(int64 N) {
++void static_arr(int64 N) {
+   int64[][] newton
+   int64[] inv
+   int64 I
+diff --git a/322_framework/LA/tests/new/tuparr.a b/322_framework/LA/tests/new/tuparr.a
+index 87b43e2..e3ff7f7 100644
+--- a/322_framework/LA/tests/new/tuparr.a
++++ b/322_framework/LA/tests/new/tuparr.a
+@@ -118,10 +118,12 @@ void main() {
+     int64 resid
+     int64 notresid
+     icmp <- i <= 10
++    j <- 0
+     br icmp :B5 :B3_5
+ :B3_5
+     j <- i - 1
+     resid <- j & 33554431
++    resid <- resid > 0
+     notresid <- 1 - resid
+     br notresid :B5 :B4
+ :B4

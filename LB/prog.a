@@ -1,22 +1,259 @@
 void main (){
-	int64 iNewVarLBscope0
-	iNewVarLBscope0 <- 10
+	int64[][] m1NewVarLBscope0
+	int64[][] m2NewVarLBscope0
+	int64[][] m3NewVarLBscope0
+	int64 dimNewVarLBscope0
+	dimNewVarLBscope0 <- 300
+	m1NewVarLBscope0 <- new Array  (dimNewVarLBscope0,dimNewVarLBscope0)
+	m2NewVarLBscope0 <- new Array  (dimNewVarLBscope0,dimNewVarLBscope0)
+	m3NewVarLBscope0 <- new Array  (dimNewVarLBscope0,dimNewVarLBscope0)
+	computeAndPrint (m1NewVarLBscope0,m2NewVarLBscope0,m3NewVarLBscope0,0)
+	return
+}
+
+void computeAndPrint (int64[][] m1,int64[][] m2,int64[][] m3,int64 v1){
+	initMatrix (m1,v1)
+	initMatrix (m2,v1)
+	matrixMultiplication (m1,m2,m3)
+	int64 tNewVarLBscope0
+	tNewVarLBscope0 <- totalSum (m1)
+	print (tNewVarLBscope0)
+	tNewVarLBscope0 <- totalSum (m2)
+	print (tNewVarLBscope0)
+	tNewVarLBscope0 <- totalSum (m3)
+	print (tNewVarLBscope0)
+	return
+}
+
+void initMatrix (int64[][] m,int64 initValue){
+	int64 l1NewVarLBscope0
+	int64 l2NewVarLBscope0
+	int64 index1NewVarLBscope0
+	l1NewVarLBscope0 <- length  m 0
+	l2NewVarLBscope0 <- length  m 1
+	index1NewVarLBscope0 <- 0
 :NewLabelLB1
 	int64 NewVarLB1
-	NewVarLB1 <- iNewVarLBscope0 > 0
-	br NewVarLB1 :new_label0 :new_label1
-	:new_label0
-	print (iNewVarLBscope0)
-	iNewVarLBscope0 <- iNewVarLBscope0 - 1
+	NewVarLB1 <- index1NewVarLBscope0 < l1NewVarLBscope0
+	br NewVarLB1 :outerBody :leave
+	:outerBody
+	int64 index2NewVarLBscope1
+	index2NewVarLBscope1 <- 0
+:NewLabelLB2
 	int64 NewVarLB2
-	NewVarLB2 <- iNewVarLBscope0 > 2
-	br NewVarLB2 :true_label :false_label
-	:true_label
-	br :new_label1
-	:false_label
-	iNewVarLBscope0 <- iNewVarLBscope0 - 1
+	NewVarLB2 <- index2NewVarLBscope1 < l2NewVarLBscope0
+	br NewVarLB2 :innerBody :endOuterBody
+	:innerBody
+	int64 valueToStoreNewVarLBscope2
+	valueToStoreNewVarLBscope2 <- initValue + index1NewVarLBscope0
+	valueToStoreNewVarLBscope2 <- valueToStoreNewVarLBscope2 + index2NewVarLBscope1
+	m[index1NewVarLBscope0][index2NewVarLBscope1] <- valueToStoreNewVarLBscope2
+	index2NewVarLBscope1 <- index2NewVarLBscope1 + 1
+	br :NewLabelLB2
+	:endOuterBody
+	index1NewVarLBscope0 <- index1NewVarLBscope0 + 1
 	br :NewLabelLB1
-	:new_label1
+	:leave
 	return
+}
+
+void matrixMultiplication (int64[][] m1,int64[][] m2,int64[][] m3){
+	int64 m1_l1NewVarLBscope0
+	int64 m1_l2NewVarLBscope0
+	int64 m2_l1NewVarLBscope0
+	int64 m2_l2NewVarLBscope0
+	int64 m3_l1NewVarLBscope0
+	int64 m3_l2NewVarLBscope0
+	m1_l1NewVarLBscope0 <- length  m1 0
+	m1_l2NewVarLBscope0 <- length  m1 1
+	m2_l1NewVarLBscope0 <- length  m2 0
+	m2_l2NewVarLBscope0 <- length  m2 1
+	m3_l1NewVarLBscope0 <- length  m3 0
+	m3_l2NewVarLBscope0 <- length  m3 1
+	int64 NewVarLB3
+	NewVarLB3 <- m1_l2NewVarLBscope0 = m2_l1NewVarLBscope0
+	br NewVarLB3 :go1 :leave
+	:go1
+	int64 NewVarLB4
+	NewVarLB4 <- m3_l1NewVarLBscope0 = m1_l1NewVarLBscope0
+	br NewVarLB4 :go2 :leave
+	:go2
+	int64 NewVarLB5
+	NewVarLB5 <- m3_l2NewVarLBscope0 = m2_l2NewVarLBscope0
+	br NewVarLB5 :go :leave
+	:go
+	int64 iNewVarLBscope1
+	int64 jNewVarLBscope1
+	int64 kNewVarLBscope1
+	iNewVarLBscope1 <- 0
+:NewLabelLB3
+	int64 NewVarLB6
+	NewVarLB6 <- iNewVarLBscope1 < m1_l1NewVarLBscope0
+	br NewVarLB6 :body1_init :done_init
+	:body1_init
+	jNewVarLBscope1 <- 0
+:NewLabelLB4
+	int64 NewVarLB7
+	NewVarLB7 <- jNewVarLBscope1 < m2_l2NewVarLBscope0
+	br NewVarLB7 :body2_init :endBody1_init
+	:body2_init
+	kNewVarLBscope1 <- 0
+:NewLabelLB5
+	int64 NewVarLB8
+	NewVarLB8 <- kNewVarLBscope1 < m1_l2NewVarLBscope0
+	br NewVarLB8 :body3_init :endBody2_init
+	:body3_init
+	int64 tmpNewVarLBscope4
+	tmpNewVarLBscope4 <- 1
+	tmpNewVarLBscope4 <- tmpNewVarLBscope4 * 4
+	tmpNewVarLBscope4 <- tmpNewVarLBscope4 + 2
+	tmpNewVarLBscope4 <- tmpNewVarLBscope4 * 8
+	m3[iNewVarLBscope1][jNewVarLBscope1] <- 0
+	tmpNewVarLBscope4 <- m3[iNewVarLBscope1][jNewVarLBscope1]
+	tmpNewVarLBscope4 <- tmpNewVarLBscope4 + 4
+	m3[iNewVarLBscope1][jNewVarLBscope1] <- tmpNewVarLBscope4
+	tmpNewVarLBscope4 <- m3[iNewVarLBscope1][jNewVarLBscope1]
+	tmpNewVarLBscope4 <- tmpNewVarLBscope4 * 4
+	m3[iNewVarLBscope1][jNewVarLBscope1] <- tmpNewVarLBscope4
+	kNewVarLBscope1 <- kNewVarLBscope1 + 1
+	br :NewLabelLB5
+	:endBody2_init
+	jNewVarLBscope1 <- jNewVarLBscope1 + 1
+	br :NewLabelLB4
+	:endBody1_init
+	iNewVarLBscope1 <- iNewVarLBscope1 + 1
+	br :NewLabelLB3
+	:done_init
+	int64 totNewVarLBscope0
+	int64 iNewVarLBscope0
+	int64 jNewVarLBscope0
+	int64 kNewVarLBscope0
+	iNewVarLBscope0 <- 0
+	totNewVarLBscope0 <- 0
+:NewLabelLB6
+	int64 NewVarLB9
+	NewVarLB9 <- iNewVarLBscope0 < m1_l1NewVarLBscope0
+	br NewVarLB9 :body1 :leave
+	:body1
+	jNewVarLBscope0 <- 0
+:NewLabelLB7
+	int64 NewVarLB10
+	NewVarLB10 <- jNewVarLBscope0 < m2_l2NewVarLBscope0
+	br NewVarLB10 :body2 :endBody1
+	:body2
+	kNewVarLBscope0 <- 0
+:NewLabelLB8
+	int64 NewVarLB11
+	NewVarLB11 <- kNewVarLBscope0 < m1_l2NewVarLBscope0
+	br NewVarLB11 :body3 :endBody2
+	:body3
+	int64 ANewVarLBscope3
+	int64 BNewVarLBscope3
+	int64 CNewVarLBscope3
+	int64 DNewVarLBscope3
+	int64 ENewVarLBscope3
+	int64 FNewVarLBscope3
+	ANewVarLBscope3 <- m1[iNewVarLBscope0][kNewVarLBscope0]
+	BNewVarLBscope3 <- m2[kNewVarLBscope0][jNewVarLBscope0]
+	CNewVarLBscope3 <- ANewVarLBscope3 * BNewVarLBscope3
+	DNewVarLBscope3 <- m3[iNewVarLBscope0][jNewVarLBscope0]
+	ENewVarLBscope3 <- DNewVarLBscope3 * 4
+	FNewVarLBscope3 <- ENewVarLBscope3 + 2
+	m3[iNewVarLBscope0][jNewVarLBscope0] <- FNewVarLBscope3
+	int64 GNewVarLBscope3
+	GNewVarLBscope3 <- FNewVarLBscope3 * 1
+	m3[iNewVarLBscope0][jNewVarLBscope0] <- GNewVarLBscope3
+	GNewVarLBscope3 <- FNewVarLBscope3 + 0
+	m3[iNewVarLBscope0][jNewVarLBscope0] <- GNewVarLBscope3
+	GNewVarLBscope3 <- FNewVarLBscope3 * 1
+	m3[iNewVarLBscope0][jNewVarLBscope0] <- GNewVarLBscope3
+	GNewVarLBscope3 <- FNewVarLBscope3 + 0
+	m3[iNewVarLBscope0][jNewVarLBscope0] <- GNewVarLBscope3
+	int64 tmpNewVarLBscope3
+	tmpNewVarLBscope3 <- GNewVarLBscope3
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 * 4
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 2
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 * 8
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 * 4
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 2
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 * 8
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 * 4
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 2
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 * 8
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 * 4
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 2
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 * 8
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 * 4
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 2
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 * 8
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 * 4
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 2
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 * 8
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 << 2
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 2
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 * 8
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 * 4
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 << 2
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 2
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 * 8
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 * 4
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 << 4
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 2
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 >> 2
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 * 8
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 * 4
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 2
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 * 8
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 * 4
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 + 2
+	tmpNewVarLBscope3 <- tmpNewVarLBscope3 * 8
+	int64 tot2NewVarLBscope3
+	int64 tot3NewVarLBscope3
+	tot2NewVarLBscope3 <- totNewVarLBscope0 * 4
+	tot3NewVarLBscope3 <- tot2NewVarLBscope3 + 2
+	totNewVarLBscope0 <- totNewVarLBscope0
+	kNewVarLBscope0 <- kNewVarLBscope0 + 1
+	br :NewLabelLB8
+	:endBody2
+	jNewVarLBscope0 <- jNewVarLBscope0 + 1
+	br :NewLabelLB7
+	:endBody1
+	iNewVarLBscope0 <- iNewVarLBscope0 + 1
+	br :NewLabelLB6
+	:leave
+	return
+}
+
+int64 totalSum (int64[][] m){
+	int64 sumNewVarLBscope0
+	int64 l1NewVarLBscope0
+	int64 l2NewVarLBscope0
+	int64 index1NewVarLBscope0
+	l1NewVarLBscope0 <- length  m 0
+	l2NewVarLBscope0 <- length  m 1
+	index1NewVarLBscope0 <- 0
+	sumNewVarLBscope0 <- 0
+:NewLabelLB9
+	int64 NewVarLB12
+	NewVarLB12 <- index1NewVarLBscope0 < l1NewVarLBscope0
+	br NewVarLB12 :outerBody :leave
+	:outerBody
+	int64 index2NewVarLBscope1
+	index2NewVarLBscope1 <- 0
+:NewLabelLB10
+	int64 NewVarLB13
+	NewVarLB13 <- index2NewVarLBscope1 < l2NewVarLBscope0
+	br NewVarLB13 :innerBody :endOuterBody
+	:innerBody
+	int64 tempNewVarLBscope2
+	tempNewVarLBscope2 <- m[index1NewVarLBscope0][index2NewVarLBscope1]
+	sumNewVarLBscope0 <- sumNewVarLBscope0 + tempNewVarLBscope2
+	index2NewVarLBscope1 <- index2NewVarLBscope1 + 1
+	br :NewLabelLB10
+	:endOuterBody
+	index1NewVarLBscope0 <- index1NewVarLBscope0 + 1
+	br :NewLabelLB9
+	:leave
+	return sumNewVarLBscope0
 }
 

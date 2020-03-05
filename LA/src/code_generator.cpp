@@ -20,6 +20,8 @@ namespace LA{
 	int newLabelNum = 0;
 	string newVarString = "NewVarLA";
 	unordered_set<string> codeMap;
+	unordered_set<string> arrayMap;
+	unordered_set<string> tupleMap;
 
 	void AddPercent(Item &c){
 		if(c.isAVar){
@@ -52,6 +54,15 @@ namespace LA{
   	if(entryFun->arguments.size()>0){
 	  	for(j=0 ;j<entryFun->arguments.size();j++){
 	  		s = s + entryFun->argumentsType[j].labelName + " "+entryFun->arguments[j].labelName + ",";
+	  		if(entryFun->argumentsType[j].labelName == "tuple"){
+					tupleMap.insert(entryFun->arguments[j].labelName);
+			}
+			else if(entryFun->argumentsType[j].labelName.size() > 5){
+					arrayMap.insert(entryFun->arguments[j].labelName);
+			}
+			else if(entryFun->argumentsType[j].labelName == "code"){
+					codeMap.insert(entryFun->arguments[j].labelName);
+			}
 	  	}
 	  	s.pop_back();
 	  	outputFile<<s;
@@ -156,6 +167,13 @@ namespace LA{
 				if(g1->type.labelName == "code"){
 					codeMap.insert(g1->var.labelName);
 				}
+				else if(g1->type.labelName.size() > 5){
+					arrayMap.insert(g1->var.labelName);
+				}
+				else if(g1->type.labelName == "tuple"){
+					tupleMap.insert(g1->var.labelName);
+				}
+
 				outputFile<<g1->tostring();
 				if(g1->type.labelName.size() > 5 || g1->type.labelName == "tuple"){
 					outputFile<<"\t";
@@ -238,7 +256,9 @@ namespace LA{
 				outputFile<<":newLabel"<<newLabelNum<<"T"<<endl;
 				newLabelNum++;
 				newVarNum++;
-				if(g1->dimensions.size()>1){
+				unordered_set<string>::iterator usiter;
+				usiter = arrayMap.find(g1->var.labelName);
+				if(usiter != arrayMap.end()){
 					int numOfDimension = 0;
 					for(vector<Item>::iterator v1 = g1->dimensions.begin();v1 != g1->dimensions.end(); v1++){
 						DeclarNewVar(outputFile);
@@ -304,7 +324,9 @@ namespace LA{
 				outputFile<<":newLabel"<<newLabelNum<<"T"<<endl;
 				newLabelNum++;
 				newVarNum++;
-				if(g1->dimensions.size()>1){
+				unordered_set<string>::iterator usiter;
+				usiter = arrayMap.find(g1->var.labelName);
+				if(usiter != arrayMap.end()){
 					int numOfDimension = 0;
 					for(vector<Item>::iterator v1 = g1->dimensions.begin();v1 != g1->dimensions.end(); v1++){
 						DeclarNewVar(outputFile);

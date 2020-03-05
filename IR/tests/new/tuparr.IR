@@ -133,11 +133,13 @@ define void :main() {
     int64 %j
     int64 %resid
     int64 %notresid
+    %j <- 0
     %icmp <- %i <= 10
     br %icmp :B5 :B3_5
 :B3_5
     %j <- %i - 1
     %resid <- %j & 33554431
+    %resid <- %resid > 0
     %notresid <- 1 - %resid
     br %notresid :B5 :B4
 :B4

@@ -24,6 +24,7 @@ namespace IR{
 
 	set<BasicBlock*> markedBasicBlocks;
 	vector<string> arguments{"rdi","rsi","rdx","rcx","r8","r9"};
+	set<string> tupleMap;
 
 
   void GenerateBasicBlocks(vector<BasicBlock*> &BasicBlocks,Function* entryFun,map<string,int> &labels){
@@ -99,6 +100,9 @@ namespace IR{
   	if(entryFun->arguments.size()>0){
 	  	for(j=0 ;j<entryFun->arguments.size();j++){
 	  		s = s + entryFun->arguments[j].labelName + ",";
+	  		if(entryFun->argumentsType[j].labelName == "tuple"){
+					tupleMap.insert(entryFun->arguments[j].labelName);
+			}
 	  	}
 	  	s.pop_back();
 	  	outputFile<<s;
@@ -219,6 +223,10 @@ namespace IR{
 			}
 
 			case define:{
+				Instruction_define* g1 = static_cast<Instruction_define*>(g);
+				if(g1->type.labelName == "tuple"){
+					tupleMap.insert(g1->var.labelName);
+				}
 				break;
 			}
 
@@ -301,18 +309,20 @@ namespace IR{
 			case array_dest:{
 				Instruction_array_dest* g1 = static_cast<Instruction_array_dest*>(g);
 				vector<int> tempIndexNums;
-				// if(g1->dimensions.size() == 1){
-				// 	outputFile<<"\t";
-				// 	outputFile<<"%newVar"<<newVarNum<<" <- "<<g1->dimensions[0].labelName<<" * 8"<<endl;
-				// 	outputFile<<"\t";
-				// 	outputFile<<"%newVar"<<newVarNum<<" <- %newVar"<<newVarNum<<" + 8"<<endl;
-				// 	outputFile<<"\t";
-				// 	outputFile<<"%newVar"<<newVarNum<<" <- %newVar"<<newVarNum<<" + "<<g1->var.labelName<<endl;
-				// 	outputFile<<"\t";
-				// 	outputFile<<"store %newVar"<<newVarNum<<" <- "<<g1->src.labelName<<endl;
-				// 	newVarNum++;
-				// 	break;
-				// }
+				set<string>::iterator tempiter;
+				tempiter = tupleMap.find(g1->var.labelName);
+				if(tempiter != tupleMap.end()){
+					outputFile<<"\t";
+					outputFile<<"%newVar"<<newVarNum<<" <- "<<g1->dimensions[0].labelName<<" * 8"<<endl;
+					outputFile<<"\t";
+					outputFile<<"%newVar"<<newVarNum<<" <- %newVar"<<newVarNum<<" + 8"<<endl;
+					outputFile<<"\t";
+					outputFile<<"%newVar"<<newVarNum<<" <- %newVar"<<newVarNum<<" + "<<g1->var.labelName<<endl;
+					outputFile<<"\t";
+					outputFile<<"store %newVar"<<newVarNum<<" <- "<<g1->src.labelName<<endl;
+					newVarNum++;
+					break;
+				}
 				tempint = 24;
 				// Loading lengths in variables
 				for(tempint1 = 1; tempint1 < g1->dimensions.size(); tempint1++){
@@ -371,18 +381,20 @@ namespace IR{
 			case array_src:{
 				Instruction_array_src* g1 = static_cast<Instruction_array_src*>(g);
 				vector<int> tempIndexNums;
-				// if(g1->dimensions.size() == 1){
-				// 	outputFile<<"\t";
-				// 	outputFile<<"%newVar"<<newVarNum<<" <- "<<g1->dimensions[0].labelName<<" * 8"<<endl;
-				// 	outputFile<<"\t";
-				// 	outputFile<<"%newVar"<<newVarNum<<" <- %newVar"<<newVarNum<<" + 8"<<endl;
-				// 	outputFile<<"\t";
-				// 	outputFile<<"%newVar"<<newVarNum<<" <- %newVar"<<newVarNum<<" + "<<g1->var.labelName<<endl;
-				// 	outputFile<<"\t";
-				// 	outputFile<<g1->dest.labelName<<" <- load %newVar"<<newVarNum<<endl;
-				// 	newVarNum++;
-				// 	break;
-				// }
+				set<string>::iterator tempiter;
+				tempiter = tupleMap.find(g1->var.labelName);
+				if(tempiter != tupleMap.end()){
+					outputFile<<"\t";
+					outputFile<<"%newVar"<<newVarNum<<" <- "<<g1->dimensions[0].labelName<<" * 8"<<endl;
+					outputFile<<"\t";
+					outputFile<<"%newVar"<<newVarNum<<" <- %newVar"<<newVarNum<<" + 8"<<endl;
+					outputFile<<"\t";
+					outputFile<<"%newVar"<<newVarNum<<" <- %newVar"<<newVarNum<<" + "<<g1->var.labelName<<endl;
+					outputFile<<"\t";
+					outputFile<<g1->dest.labelName<<" <- load %newVar"<<newVarNum<<endl;
+					newVarNum++;
+					break;
+				}
 				tempint = 24;
 				for(tempint1 = 1; tempint1 < g1->dimensions.size(); tempint1++){
 					outputFile<<"\t";
@@ -472,6 +484,7 @@ namespace IR{
 	for (vector<Function *>::iterator i = p.functions.begin();i!=p.functions.end();i++){
 		auto g = *i;
 		GenerateInstructions(g,outputFile);
+		tupleMap.clear();
 		outputFile<<"}\n\n";
 	}
     outputFile.close();
